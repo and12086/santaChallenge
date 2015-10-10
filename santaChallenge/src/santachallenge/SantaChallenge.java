@@ -5,11 +5,16 @@
  */
 package santachallenge;
 
+import byui.cit260.santaChallenge.model.BreakfastFood;
 import byui.cit260.santaChallenge.model.DeliveryScene;
+import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.InventoryView;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
+import byui.cit260.santaChallenge.model.NorthPoleScene;
 import byui.cit260.santaChallenge.model.Player;
+import byui.cit260.santaChallenge.model.Present;
+import byui.cit260.santaChallenge.model.Reindeer;
 import byui.cit260.santaChallenge.model.Santa;
 import byui.cit260.santaChallenge.model.Sleigh;
 
@@ -33,7 +38,7 @@ public class SantaChallenge {
         
         Sleigh sleighOne = new Sleigh();
         
-            sleighOne.setTotalWeight(100);
+            sleighOne.setTotalWeight(400);
             sleighOne.setPresentNumber(2);
             sleighOne.setFlyingSpeed(3000);
         
@@ -86,6 +91,46 @@ public class SantaChallenge {
             String locationInfo = locationOne.toString();
             System.out.println(locationInfo);
             
+            
+        Reindeer reindeerOne = new Reindeer();
+            
+            reindeerOne.setName("Dasher");
+            reindeerOne.setPullCapacity(50);
+            
+            String reindeerInfo = reindeerOne.toString();
+            System.out.println(reindeerInfo);
+            
+        Present presentOne = new Present();
+        
+            presentOne.setPresentWeight(50);
+            
+            String presentInfo = presentOne.toString();
+            System.out.println(presentInfo);
+            
+        Game gameOne = new Game();
+        
+            gameOne.setTimeLimit(24);
+            gameOne.setCompanion("Frosty");
+            
+            String gameInfo = gameOne.toString();
+            System.out.println(gameInfo);
+            
+        BreakfastFood breakfastFoodOne = new BreakfastFood();
+            
+            breakfastFoodOne.setFoodName("Poptart");
+            breakfastFoodOne.setCalorieCount(140);
+            breakfastFoodOne.setHealthBenefit(-300);
+            
+            String breakfastFoodInfo = breakfastFoodOne.toString();
+            System.out.println(breakfastFoodInfo);
+            
+        NorthPoleScene northPoleSceneOne = new NorthPoleScene();
+     
+            northPoleSceneOne.setDescription("Santa's kitchen is warm and toasty, full of good things to eat!");
+            northPoleSceneOne.setActivityName("Fuel Santa for his journey ahead!");
+            
+            String northPoleSceneInfo = northPoleSceneOne.toString();
+            System.out.println(northPoleSceneInfo);
     }
     
 }
