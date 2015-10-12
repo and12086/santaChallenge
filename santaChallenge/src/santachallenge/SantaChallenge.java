@@ -21,6 +21,7 @@ import byui.cit260.santaChallenge.model.Sleigh;
 /**
  *
  * @author Wendy
+ * @author Lisa   
  */
 public class SantaChallenge {
 

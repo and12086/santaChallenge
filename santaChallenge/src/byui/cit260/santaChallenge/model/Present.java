@@ -10,6 +10,7 @@ import java.io.Serializable;
 /**
  *
  * @author Wendy
+ * @author Lisa
  */
 public class Present implements Serializable{
     private double presentWeight;

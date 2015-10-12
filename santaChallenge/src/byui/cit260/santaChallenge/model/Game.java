@@ -11,6 +11,7 @@ import java.util.Objects;
 /**
  *
  * @author Wendy
+ * @author Lisa
  */
 public class Game implements Serializable {
     private double timeLimit;

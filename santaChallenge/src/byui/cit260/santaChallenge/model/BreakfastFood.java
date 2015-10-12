@@ -11,6 +11,7 @@ import java.util.Objects;
 /**
  *
  * @author Wendy
+ * @author Lisa
  */
 public class BreakfastFood implements Serializable{
     private String foodName;
