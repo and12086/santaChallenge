@@ -33,14 +33,17 @@ public class BreakfastFoodControlTest {
         double calorieCount2 = 80.0;
         double calorieCount3 = 160.0;
         double calorieCount4 = 250.0;
-        double healthBenefit = 50.0;
+        double healthBenefit1 = 50.0;
+        double healthBenefit2 = 0.0;
+        double healthBenefit3 = 0.0;
+        double healthBenefit4 = 0.0;
         
         //create instance o f BreakfastFoodControl class
         BreakfastFoodControl instance = new BreakfastFoodControl();
         double expResult = 640.0; //expected output for returned value
         
         //call function to run test
-        double result = instance.calcCaloriesConsumed(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit);
+        double result = instance.calcCaloriesConsumed(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
         
         //compare expected return value with actual value returned
         assertEquals(expResult, result, 0.0);
@@ -48,5 +51,4 @@ public class BreakfastFoodControlTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
 }

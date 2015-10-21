@@ -11,30 +11,37 @@ package byui.cit260.santsChallenge.control;
  */
 public class BreakfastFoodControl {
     
-    public double calcCaloriesConsumed(double calorieCount1, double calorieCount2, double calorieCount3, double calorieCount4, double healthBenefit) {
+    public double calcCaloriesConsumed(double calorieCount1, double calorieCount2, double calorieCount3, double calorieCount4, 
+                double healthBenefit1, double healthBenefit2, double healthBenefit3, double healthBenefit4) {
         
- 
         //consequence for poor food choices (pop-tart, Lucky Charms, and nothing)   
-        if (calorieCount1 == 1 || calorieCount1 == 5 ||calorieCount1 == 8) {
-            return healthBenefit = 50;
+        if (calorieCount1 == 200 || calorieCount1 == 220 || calorieCount1 == 0) {
+            healthBenefit1 = 50;
         }
-        if (calorieCount2 == 1 || calorieCount2== 5 ||calorieCount2 == 8) {
-            return healthBenefit = 50;
-        }
-        if (calorieCount3 == 1 || calorieCount3 == 5 ||calorieCount3 == 8) {
-            return healthBenefit = 50;
-        }
-        if (calorieCount4 == 1 || calorieCount4 == 5 ||calorieCount4 == 8) {
-            return healthBenefit = 50;
-        }
-        
         //no consequence because they made good choices
         else {
-           return healthBenefit = 0;
+            healthBenefit1 = 0;
         }
-        
-        
-    double caloriesConsumed = (calorieCount1 + calorieCount2 + calorieCount3 + calorieCount4)- healthBenefit;
+        if (calorieCount2 == 200 || calorieCount2== 220 ||calorieCount2 == 0) {
+            healthBenefit2 = 50;
+        }
+        else {
+            healthBenefit2 = 0;
+        }
+        if (calorieCount3 == 200 || calorieCount3 == 220 ||calorieCount3 == 0) {
+            healthBenefit3 = 50;
+        }
+        else {
+            healthBenefit3 = 0;
+        }
+        if (calorieCount4 == 200 || calorieCount4 == 220 ||calorieCount4 == 0) {
+            healthBenefit4 = 50;
+        }
+        else {
+            healthBenefit4 = 0;
+        }
+            
+    double caloriesConsumed = (calorieCount1 + calorieCount2 + calorieCount3 + calorieCount4) - (healthBenefit1 + healthBenefit2 + healthBenefit3 + healthBenefit4);
     
     
     return caloriesConsumed;
