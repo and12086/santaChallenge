@@ -11,4 +11,13 @@ package byui.cit260.santsChallenge.control;
  */
 public class MapControl {
     
+    public double calcTimeTraveled(double flyingSpeed, double presetTimeLimit, double miles) {
+        
+        if (miles <= 0 || miles > 19200){
+            return -1;
+        }
+        
+        double timeTraveled = presetTimeLimit - (miles / flyingSpeed);
+        return timeTraveled;
+    }
 }
