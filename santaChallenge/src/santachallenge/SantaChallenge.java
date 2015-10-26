@@ -17,6 +17,7 @@ import byui.cit260.santaChallenge.model.Present;
 import byui.cit260.santaChallenge.model.Reindeer;
 import byui.cit260.santaChallenge.model.Santa;
 import byui.cit260.santaChallenge.model.Sleigh;
+import byui.cit260.santaChallenge.view.StartProgramView;
 
 /**
  *
@@ -29,7 +30,12 @@ public class SantaChallenge {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Player playerOne = new Player();
+       //creat StartProgramView and start the program
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.startProgram();
+       
+        
+        /**Player playerOne = new Player();
         
             playerOne.setName("Lisa");
             playerOne.setBestTime(7.00);
@@ -131,7 +137,7 @@ public class SantaChallenge {
             northPoleSceneOne.setActivityName("Fuel Santa for his journey ahead!");
             
             String northPoleSceneInfo = northPoleSceneOne.toString();
-            System.out.println(northPoleSceneInfo);
+            System.out.println(northPoleSceneInfo);**/
     }
     
 }
