@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.santsChallenge.control;
+package byui.cit260.santaChallenge.view;
 
 /**
  *
- * @author Lisa Lou
+ * @author Wendy
  */
-public class InventoryControl {
+public class StartProgramView {
     
 }

@@ -5,7 +5,6 @@
  */
 package byui.cit260.santaChallenge.control;
 
-import byui.cit260.santsChallenge.control.MapControl;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
