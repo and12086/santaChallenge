@@ -5,6 +5,10 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.ProgramControl;
+import byui.cit260.santaChallenge.model.Player;
+import java.util.Scanner;
+
 /**
  *
  * @author Wendy
@@ -18,10 +22,19 @@ public class StartProgramView {
            
         //Display the banner screen
         this.displayBanner();
+        
         //Get the players name
+        String playersName = this.getPlayersName();
+        
         //Create a new player
+        Player player = ProgramControl.createPlayer(playersName);
+        
         //Display a customized welcome message
+        this.displayWelcomeMessage(player);
+        
         //Display the main menu
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.displayMenu();
             
         }   
 
@@ -57,5 +70,35 @@ public class StartProgramView {
         
         System.out.println     ("*********************************************");   
                 
+    }
+
+    public String getPlayersName() {
+        boolean valid = false; //indicates if the name has been retrieved
+        String playersName = null;
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+        
+        while(!valid){//while a valid name has not been retrieved
+            //prompt for the player's name
+            System.out.println("Enter the player's name below:");
+            
+            //get the name from the keyboard and trim off the blanks
+            playersName = keyboard.nextLine();
+            playersName = playersName.trim();
+            
+            //if the name is invalid (less than 1 character in length)
+            if (playersName.length() <1){
+                System.out.println("Invalid entry.  You must enter a name.");
+                continue; //and repeat again
+            }
+            break; // Exit out of the repitition
+        }
+        return playersName; //return the name
+    }
+
+    private void displayWelcomeMessage(Player player) {
+        System.out.println("\n\n*********************************************");
+        System.out.println("\tWelcome to the Santa Challenge " + player.getName());
+        System.out.println("\tWe hope you have a jolly time!");
+        System.out.println("*********************************************");
     }
 }

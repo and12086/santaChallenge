@@ -26,6 +26,9 @@ import byui.cit260.santaChallenge.view.StartProgramView;
  */
 public class SantaChallenge {
 
+    private static Game currentGame = null;
+    private static Player player = null;
+    
     /**
      * @param args the command line arguments
      */
@@ -35,15 +38,16 @@ public class SantaChallenge {
         startProgramView.startProgram();
        
         
-        /**Player playerOne = new Player();
         
-            playerOne.setName("Lisa");
-            playerOne.setBestTime(7.00);
+        //Player playersName = new Player();
         
-            String playerInfo = playerOne.toString();
-            System.out.println(playerInfo);
+            //playersName.setName("Lisa");
+            //playerOne.setBestTime(7.00);
         
-        Sleigh sleighOne = new Sleigh();
+            //String playerInfo = playersName.toString();
+            //System.out.println(playerInfo);
+        
+        /*Sleigh sleighOne = new Sleigh();
         
             sleighOne.setTotalWeight(400);
             sleighOne.setPresentNumber(2);
@@ -138,6 +142,22 @@ public class SantaChallenge {
             
             String northPoleSceneInfo = northPoleSceneOne.toString();
             System.out.println(northPoleSceneInfo);**/
+    }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        SantaChallenge.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        SantaChallenge.player = player;
     }
     
 }
