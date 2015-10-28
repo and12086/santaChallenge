@@ -5,10 +5,16 @@
  */
 package byui.cit260.santaChallenge.control;
 
+import byui.cit260.santaChallenge.model.Player;
+
 /**
  *
  * @author Lisa Lou
  */
 public class GameControl {
+
+    public static void createNewGame(Player player) {
+        System.out.println("\n*** creatNewGame stub function called***");
+    }
     
 }

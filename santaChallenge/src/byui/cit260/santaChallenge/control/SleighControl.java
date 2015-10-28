@@ -11,4 +11,20 @@ package byui.cit260.santaChallenge.control;
  */
 public class SleighControl {
     
+    public double calcPullCapacity(double numberOfPresents, double numberOfReindeer) {
+        if (numberOfPresents != 60 || numberOfPresents != 80 || numberOfPresents != 100 ) {
+            return -1;
+        }
+        if (numberOfReindeer !=3 || numberOfReindeer !=6 || numberOfReindeer !=9) {
+            return -1;
+        }
+        
+        double pullCapacity = (numberOfPresents*2)/(numberOfReindeer*30);
+
+        return pullCapacity;
+    }
 }
+
+
+	
+	

@@ -12,27 +12,27 @@ import java.io.Serializable;
  */
 public class Sleigh implements Serializable{
     //class instance variables
-    private double totalWeight;
-    private double presentNumber;
+    private double pullCapacity;
+    private double numberOfPresents;
     private double flyingSpeed;
 
     public Sleigh() {
     }
     
-    public double getTotalWeight() {
-        return totalWeight;
+    public double getPullCapacity() {
+        return pullCapacity;
     }
 
-    public void setTotalWeight(double totalWeight) {
-        this.totalWeight = totalWeight;
+    public void setPullCapacity(double pullCapacity) {
+        this.pullCapacity = pullCapacity;
     }
 
-    public double getPresentNumber() {
-        return presentNumber;
+    public double getNumberOfPresents() {
+        return numberOfPresents;
     }
 
-    public void setPresentNumber(double presentNumber) {
-        this.presentNumber = presentNumber;
+    public void setNumberOfPresents(double numberOfPresents) {
+        this.numberOfPresents = numberOfPresents;
     }
 
     public double getFlyingSpeed() {
@@ -45,14 +45,14 @@ public class Sleigh implements Serializable{
 
     @Override
     public String toString() {
-        return "Sleigh{" + "totalWeight=" + totalWeight + ", presentNumber=" + presentNumber + ", flyingSpeed=" + flyingSpeed + '}';
+        return "Sleigh{" + "pullCapacity=" + pullCapacity + ", numberOfPresents=" + numberOfPresents + ", flyingSpeed=" + flyingSpeed + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.totalWeight) ^ (Double.doubleToLongBits(this.totalWeight) >>> 32));
-        hash = 17 * hash + (int) (Double.doubleToLongBits(this.presentNumber) ^ (Double.doubleToLongBits(this.presentNumber) >>> 32));
+        hash = 17 * hash + (int) (Double.doubleToLongBits(this.pullCapacity) ^ (Double.doubleToLongBits(this.pullCapacity) >>> 32));
+        hash = 17 * hash + (int) (Double.doubleToLongBits(this.numberOfPresents) ^ (Double.doubleToLongBits(this.numberOfPresents) >>> 32));
         hash = 17 * hash + (int) (Double.doubleToLongBits(this.flyingSpeed) ^ (Double.doubleToLongBits(this.flyingSpeed) >>> 32));
         return hash;
     }
@@ -66,10 +66,10 @@ public class Sleigh implements Serializable{
             return false;
         }
         final Sleigh other = (Sleigh) obj;
-        if (Double.doubleToLongBits(this.totalWeight) != Double.doubleToLongBits(other.totalWeight)) {
+        if (Double.doubleToLongBits(this.pullCapacity) != Double.doubleToLongBits(other.pullCapacity)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.presentNumber) != Double.doubleToLongBits(other.presentNumber)) {
+        if (Double.doubleToLongBits(this.numberOfPresents) != Double.doubleToLongBits(other.numberOfPresents)) {
             return false;
         }
         if (Double.doubleToLongBits(this.flyingSpeed) != Double.doubleToLongBits(other.flyingSpeed)) {

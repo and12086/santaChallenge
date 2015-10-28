@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.view.GameMenuView;
+import byui.cit260.santaChallenge.control.GameControl;
 import java.util.Scanner;
+import santachallenge.SantaChallenge;
 
 /**
  *
@@ -81,6 +83,29 @@ public class MainMenuView {
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        
         }
+    }
+
+    private void startNewGame() {
+        //Create a new game
+        GameControl.createNewGame(SantaChallenge.getPlayer());
+        
+        //Display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
+        
+    }
+
+    private void startExistingGame() {
+        System.out.println("*** startExistingGame function called");
+    }
+
+    private void saveGame() {
+        System.out.println("*** startsaveGame function called");
+
+    }
+
+    private void displayHelpMenu() {
+        System.out.println("*** displayHelpMenu function called");
     }
     
 }
