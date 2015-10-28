@@ -35,9 +35,24 @@ public class SantaChallenge {
     public static void main(String[] args) {
        //creat StartProgramView and start the program
         StartProgramView startProgramView = new StartProgramView();
-        startProgramView.startProgram();
-       
-        
+        startProgramView.startProgram();       
+    }
+    
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        SantaChallenge.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        SantaChallenge.player = player;
+    }    
         
         //Player playersName = new Player();
         
@@ -142,22 +157,7 @@ public class SantaChallenge {
             
             String northPoleSceneInfo = northPoleSceneOne.toString();
             System.out.println(northPoleSceneInfo);**/
-    }
+    
 
-    public static Game getCurrentGame() {
-        return currentGame;
-    }
-
-    public static void setCurrentGame(Game currentGame) {
-        SantaChallenge.currentGame = currentGame;
-    }
-
-    public static Player getPlayer() {
-        return player;
-    }
-
-    public static void setPlayer(Player player) {
-        SantaChallenge.player = player;
-    }
     
 }

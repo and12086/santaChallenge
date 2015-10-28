@@ -6,6 +6,7 @@
 
 import byui.cit260.santaChallenge.view.GameMenuView;
 import byui.cit260.santaChallenge.control.GameControl;
+import byui.cit260.santaChallenge.view.HelpMenuView;
 import java.util.Scanner;
 import santachallenge.SantaChallenge;
 
@@ -105,7 +106,11 @@ public class MainMenuView {
     }
 
     private void displayHelpMenu() {
-        System.out.println("*** displayHelpMenu function called");
+        
+        
+        //display the help menu
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayMenu();
     }
     
 }
