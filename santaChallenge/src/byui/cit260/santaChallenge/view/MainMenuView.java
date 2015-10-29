@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.view.GameMenuView;
 import byui.cit260.santaChallenge.control.GameControl;
@@ -21,7 +22,7 @@ public class MainMenuView {
             + "\n| Main Menu                                 |"
             + "\n*********************************************"
             + "\nPlay - Start game"
-            + "\nRestart - Get and start a saved game"
+            + "\nContinue - Get and start a saved game"
             + "\nSave - Save your game"
             + "\nHelp - Get help on how to play the game"
             + "\nExit - Exit menu"
@@ -56,7 +57,7 @@ public class MainMenuView {
             selection = input.charAt(0);
             
             //if the menu selection is invalid
-           if (selection != 'P' && selection != 'R' && selection != 'S' && selection != 'H' && selection != 'E'){
+           if (selection != 'P' && selection != 'C' && selection != 'S' && selection != 'H' && selection != 'E'){
                 System.out.println("Invalid menu selection!");
                 continue; //and repeat again
             }
@@ -64,13 +65,13 @@ public class MainMenuView {
         }
             return input; //return the menu selection   
     }
-    private void doAction(char selection) {
+    public void doAction(char selection) {
         switch (selection){
             case 'P'://start a new game
                 this.startNewGame();
                 break;
-            case 'R'://restart and existing game
-                this.startExistingGame();
+            case 'C'://restart and existing game
+                this.startContinueGame();
                 break;
             case 'S'://Save the current game
                 this.saveGame();
@@ -96,8 +97,8 @@ public class MainMenuView {
         
     }
 
-    private void startExistingGame() {
-        System.out.println("*** startExistingGame function called");
+    private void startContinueGame() {
+        System.out.println("*** startContinueGame function called");
     }
 
     private void saveGame() {

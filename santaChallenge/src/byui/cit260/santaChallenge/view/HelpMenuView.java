@@ -24,9 +24,8 @@ public class HelpMenuView {
             + "\nR - How to Choose Reindeer"
             + "\nI - How to View Inventory"
             + "\nS - How to Save a Game"
-            + "\nF - How to Fetch a Saved Game"
-            + "\nX - Return to the Main Menu"
-            + "\nP - Return to Game Play"
+            + "\nC - How to Continue a Saved Game"
+            + "\nE - Exit Help Menu"
             + "\n*********************************************";           
 
     public void displayMenu() {
@@ -38,7 +37,7 @@ public class HelpMenuView {
             selection = input.charAt(0); //get the first character of the string
             
             this.doAction(selection); //do action based on selection
-        } while (selection != 'X' || selection != 'P'); //unless selection is not "Exit"
+        } while (selection != 'E'); //unless selection is not "Exit"
         
     }
 
@@ -60,7 +59,7 @@ public class HelpMenuView {
             //if the menu selection is invalid
            if (selection != 'W' && selection != 'M' && selection != 'B' && 
                    selection != 'L' && selection != 'R' && selection != 'I' && 
-                   selection != 'S' && selection != 'X' && selection != 'P'){
+                   selection != 'S' && selection != 'C' && selection != 'E'){
                 System.out.println("Invalid menu selection!");
                 continue; //and repeat again
             }
@@ -91,13 +90,12 @@ public class HelpMenuView {
             case 'S':// displays how to save game
                 this.displaySave();
                 break;
-            case 'F'://displays how to fetch a saved game
-                this.displayFetch();
+            case 'C'://displays how to continue a saved game
+                this.displayContinue();
                 break;
-            case 'X':// exits back to main menu
-                return;
-            case 'P':// exits back to game play
-                return;
+            case 'E':// exits back to main menu
+                System.out.println("***RETURNING TO MAIN MENU***");
+                break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        
@@ -132,7 +130,7 @@ public class HelpMenuView {
         System.out.println("*** displaySave function called");
     }
 
-    private void displayFetch() {
-        System.out.println("*** displayFetch function called");
+    private void displayContinue() {
+        System.out.println("*** displayContinue function called");
     }
 }
