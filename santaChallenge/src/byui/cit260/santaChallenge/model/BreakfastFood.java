@@ -15,8 +15,8 @@ import java.util.Objects;
  */
 public class BreakfastFood implements Serializable{
     private String foodName;
-    private double calorieCount;
-    private double healthBenefit;
+    private double calorieCount1;
+    private double healthBenefit1;
 
     public BreakfastFood() {
     }
@@ -29,33 +29,33 @@ public class BreakfastFood implements Serializable{
         this.foodName = foodName;
     }
 
-    public double getCalorieCount() {
-        return calorieCount;
+    public double getCalorieCount1() {
+        return calorieCount1;
     }
 
-    public void setCalorieCount(double calorieCount) {
-        this.calorieCount = calorieCount;
+    public void setCalorieCount(double calorieCount1) {
+        this.calorieCount1 = calorieCount1;
     }
 
-    public double getHealthBenefit() {
-        return healthBenefit;
+    public double getHealthBenefit1() {
+        return healthBenefit1;
     }
 
-    public void setHealthBenefit(double healthBenefit) {
-        this.healthBenefit = healthBenefit;
+    public void setHealthBenefit(double healthBenefit1) {
+        this.healthBenefit1 = healthBenefit1;
     }
 
     @Override
     public String toString() {
-        return "BreakfastFood{" + "foodName=" + foodName + ", calorieCount=" + calorieCount + ", healthBenefit=" + healthBenefit + '}';
+        return "BreakfastFood{" + "foodName=" + foodName + ", calorieCount1=" + calorieCount1 + ", healthBenefit1=" + healthBenefit1 + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
         hash = 47 * hash + Objects.hashCode(this.foodName);
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.calorieCount) ^ (Double.doubleToLongBits(this.calorieCount) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.healthBenefit) ^ (Double.doubleToLongBits(this.healthBenefit) >>> 32));
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.calorieCount1) ^ (Double.doubleToLongBits(this.calorieCount1) >>> 32));
+        hash = 47 * hash + (int) (Double.doubleToLongBits(this.healthBenefit1) ^ (Double.doubleToLongBits(this.healthBenefit1) >>> 32));
         return hash;
     }
 
@@ -71,10 +71,10 @@ public class BreakfastFood implements Serializable{
         if (!Objects.equals(this.foodName, other.foodName)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.calorieCount) != Double.doubleToLongBits(other.calorieCount)) {
+        if (Double.doubleToLongBits(this.calorieCount1) != Double.doubleToLongBits(other.calorieCount1)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.healthBenefit) != Double.doubleToLongBits(other.healthBenefit)) {
+        if (Double.doubleToLongBits(this.healthBenefit1) != Double.doubleToLongBits(other.healthBenefit1)) {
             return false;
         }
         return true;

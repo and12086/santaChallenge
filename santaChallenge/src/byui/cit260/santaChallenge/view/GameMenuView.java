@@ -48,7 +48,7 @@ public class GameMenuView {
 
             while(!valid){//while a valid menu selection has not been retrieved
                 //prompt the player for a valid menu selection
-                System.out.println("Please enter a valid menu selection.");
+                System.out.println("Please enter a valid menu selection, and watch your Caps.");
 
                 //get the menu selection from the keyboard and trim off the blanks
                 input = keyboard.nextLine();
@@ -83,7 +83,8 @@ public class GameMenuView {
 
     private void startNewGame() {
         //create new game
-        GameControl.createNewGame(SantaChallenge.getPlayer());
+        CaloriesConsumed1View breakfastFoodMenu = new CaloriesConsumed1View();
+        breakfastFoodMenu.displayMenu();
     }
 
     private void startContinueGame() {
