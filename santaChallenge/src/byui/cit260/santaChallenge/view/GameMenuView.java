@@ -70,7 +70,7 @@ public class GameMenuView {
                 this.startNewGame();
                 break;
             case 'C'://Continue an existing game
-                this.startContinueGame();
+                this.continueGame();
                 break;
             case 'Q'://Quit the current game
                 System.out.println("***QUITTING GAME***");
@@ -87,8 +87,8 @@ public class GameMenuView {
         breakfastFoodMenu.displayMenu();
     }
 
-    private void startContinueGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void continueGame() {
+        System.out.println("*** continueGame function called");
     }
 
 }

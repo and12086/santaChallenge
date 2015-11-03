@@ -76,42 +76,63 @@ public class CaloriesConsumed2View {
             case 'P'://selects a food
                 System.out.println("Santa has consumed 200 calories, but that food choice had very little nutritional value."
                         + "\nSanta may not make it around the world in 24 hours.");
+                this.foodView3();
                 break;
             case 'B':
                 System.out.println("Santa has consumed 105 calories.  That was a good healthy choice!");
+                this.foodView3();
                 break;
             case 'H':
                 System.out.println("Santa has consumed 250 calories.  That was a good healthy choice with lots of protein for energy!");
+                this.foodView3();
                 break;
             case 'T':
                 System.out.println("Santa has consumed 267 calories.  That was a good healthy choice with lots of protein for energy!");
+                this.foodView3();
                 break;
             case 'L':
                 System.out.println("Santa has consumed 220 calories, but that food choice had very little nutritional value.  "
                         + "\nSanta may not make it around the world in 24 hours.");
+                this.foodView3();
                 break;
             case 'O':
                 System.out.println("Santa has consumed 160 calories.  That was a good healthy choice!");
+                this.foodView3();
                 break;
             case 'Y':
                 System.out.println("Santa has consumed 100 calories.  That was a good healthy choice!");
+                this.foodView3();
                 break;
             case 'N':
                 System.out.println("You should always fuel your body in the mornings.  That was a bad choice!"
                         + "Santa may not make it around the world in 24 hours.");
+                this.foodView3();
                 break;
             case 'C':
                 System.out.println("Santa has consumed 80 calories.  That was a good healthy choice with lots of protein for energy!");
+                this.foodView3();
                 break;
             case 'S':
                 System.out.println("Santa has consumed 210 calories.  That was a good healthy choice with lots of protein for energy!");
+                this.foodView3();
                 break;
             case 'Q'://Quit the current game
                 System.out.println("***Returning to the game menu.***");
+                this.returnToMainMenu();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        
         }
+    }
+
+    private void returnToMainMenu() {
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.displayMenu();
+    }
+
+    private void foodView3() {
+        CaloriesConsumed3View  breakfastFoodMenu = new CaloriesConsumed3View();
+         breakfastFoodMenu.displayMenu();
     }
 }

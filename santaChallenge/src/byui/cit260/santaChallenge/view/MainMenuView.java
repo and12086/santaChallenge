@@ -71,7 +71,7 @@ public class MainMenuView {
                 this.startNewGame();
                 break;
             case 'C'://restart and existing game
-                this.startContinueGame();
+                this.continueGame();
                 break;
             case 'S'://Save the current game
                 this.saveGame();
@@ -97,12 +97,12 @@ public class MainMenuView {
         
     }
 
-    private void startContinueGame() {
-        System.out.println("*** startContinueGame function called");
+    private void continueGame() {
+        System.out.println("*** continueGame function called");
     }
 
     private void saveGame() {
-        System.out.println("*** startsaveGame function called");
+        System.out.println("*** startSaveGame function called");
 
     }
 
