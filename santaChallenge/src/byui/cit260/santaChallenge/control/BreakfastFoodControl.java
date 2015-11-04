@@ -10,52 +10,53 @@ package byui.cit260.santaChallenge.control;
  * @author Lisa Lou
  */
 public class BreakfastFoodControl {
-    
-    public double calcCaloriesConsumed(double calorieCount1, double calorieCount2, double calorieCount3, double calorieCount4, 
+   
+            
+    public double calcCaloriesConsumed(double input1, double input2, double input3, double input5, 
                 double healthBenefit1, double healthBenefit2, double healthBenefit3, double healthBenefit4) {
 
-if (calorieCount1 != 200 && calorieCount1 != 105 && calorieCount1 != 250 && calorieCount1 != 267 && calorieCount1 != 220 && calorieCount1 != 160 && calorieCount1 != 100 && calorieCount1 != 0 && calorieCount1 !=80 && calorieCount1 != 210){
+if (input1 != 200 && input1 != 105 && input1 != 250 && input1 != 267 && input1 != 220 && input1 != 160 && input1 != 100 && input1 != 0 && input1 !=80 && input1 != 210){
             return -1;
             }
-if (calorieCount2 != 200 && calorieCount2 != 105 && calorieCount2 != 250 && calorieCount2 != 267 && calorieCount2 != 220 && calorieCount2 != 160 && calorieCount2 != 100 && calorieCount2 != 0 && calorieCount2 !=80 && calorieCount2 != 210){
+if (input2 != 200 && input2 != 105 && input2 != 250 && input2 != 267 && input2 != 220 && input2 != 160 && input2 != 100 && input2 != 0 && input2 !=80 && input2 != 210){
             return -1;
             }
-if (calorieCount3 != 200 && calorieCount3 != 105 && calorieCount3 != 250 && calorieCount3 != 267 && calorieCount3 != 220 && calorieCount3 != 160 && calorieCount3 != 100 && calorieCount3 != 0 && calorieCount3 !=80 && calorieCount3 != 210){
+if (input3 != 200 && input3 != 105 && input3 != 250 && input3 != 267 && input3 != 220 && input3 != 160 && input3 != 100 && input3 != 0 && input3 !=80 && input3 != 210){
             return -1;
             }
-if (calorieCount4 != 200 && calorieCount4 != 105 && calorieCount4 != 250 && calorieCount4 != 267 && calorieCount4 != 220 && calorieCount4 != 160 && calorieCount4 != 100 && calorieCount4 != 0 && calorieCount4 !=80 && calorieCount4 != 210){
+if (input5 != 200 && input5 != 105 && input5 != 250 && input5 != 267 && input5 != 220 && input5 != 160 && input5 != 100 && input5 != 0 && input5 !=80 && input5 != 210){
             return -1;
             }
 
 
 //consequence for poor food choices (pop-tart, Lucky Charms, and nothing)   
-        if (calorieCount1 == 200 || calorieCount1 == 220 || calorieCount1 == 0) {
+        if (input1 == 200 || input1 == 220 || input1 == 0) {
             healthBenefit1 = 50;
         }
         //no consequence because they made good choices
         else {
             healthBenefit1 = 0;
         }
-        if (calorieCount2 == 200 || calorieCount2== 220 ||calorieCount2 == 0) {
+        if (input2 == 200 || input2== 220 ||input2 == 0) {
             healthBenefit2 = 50;
         }
         else {
             healthBenefit2 = 0;
         }
-        if (calorieCount3 == 200 || calorieCount3 == 220 ||calorieCount3 == 0) {
+        if (input3 == 200 || input3 == 220 ||input3 == 0) {
             healthBenefit3 = 50;
         }
         else {
             healthBenefit3 = 0;
         }
-        if (calorieCount4 == 200 || calorieCount4 == 220 ||calorieCount4 == 0) {
+        if (input5 == 200 || input5 == 220 ||input5 == 0) {
             healthBenefit4 = 50;
         }
         else {
             healthBenefit4 = 0;
         }
             
-    double caloriesConsumed = (calorieCount1 + calorieCount2 + calorieCount3 + calorieCount4) - (healthBenefit1 + healthBenefit2 + healthBenefit3 + healthBenefit4);
+    double caloriesConsumed = (input1 + input2 + input3 + input5) - (healthBenefit1 + healthBenefit2 + healthBenefit3 + healthBenefit4);
     
     
     return caloriesConsumed;
