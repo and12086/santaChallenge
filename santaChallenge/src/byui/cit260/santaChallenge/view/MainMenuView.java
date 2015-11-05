@@ -93,7 +93,7 @@ public class MainMenuView {
         
         //Display the game introduction view
         GameIntroductionView gameIntroduction = new GameIntroductionView();
-        gameIntroduction.displayGameIntro();
+        gameIntroduction.displayMenu();
         /*
         //Display game menu
         GameMenuView gameMenu = new GameMenuView();

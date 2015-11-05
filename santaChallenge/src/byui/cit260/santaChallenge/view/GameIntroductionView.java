@@ -11,24 +11,10 @@ import java.util.Scanner;
  *
  * @author Lisa Lou
  */
-public class GameIntroductionView {
-    //private Object gameMenu;
+public class GameIntroductionView { 
 
-    public GameIntroductionView() {
-    }
-    
-    public void gameIntroduction() {
-        
-        //display game intoduction
-        this.displayGameIntro();
-        
-        //display the Game Menu
-       // GameMenuView gameMenu = GameMenuView();
-        //gameMenu.displayMenu();
-    }
-
-    public void displayGameIntro() {
-        System.out.println ("*********************************************"
+   private final String INTRO = "\n"
+                    + "\n*********************************************"
                     + "\n* There are a few things you must do before *"
                     + "\n* you can take off to deliver presents.     *"
                     + "\n*                                           *"
@@ -44,25 +30,37 @@ public class GameIntroductionView {
                     + "\n* most presents that you can...don't leave  *"
                     + "\n* any contininents out.                     *"
                     + "\n*                                           *"
-                    + "\n*********************************************");  
+                    + "\n*********************************************";
+                    
+    
+        public void displayMenu() {
+        char selection = ' ';
+        do {
+            System.out.println(INTRO);//display the main menu
+            
+            String input = this.getInput(); //get the user's selection
+            selection = input.charAt(0); //get the first character of string
+            
+            this.doAction(selection); //do action based on selection
+        } while (selection != 'E'); //unless selection is not "Exit"
         
-        System.out.println("Please type 'C' to continue:");
     }
+
     
     private String getInput() {
         boolean valid = false; //indicates if the input has been retrieved
         char selection = ' ';
-        String playersChoice = null;
+        String input = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
         while(!valid){//while a valid selection has not been retrieved
             //prompt for the user input
-            System.out.println("Please type 'C' to continue:");
+            System.out.println("Please type 'C' to continue.");
             
             //get the selection from the keyboard and trim off the blanks
-            playersChoice = keyboard.nextLine();
-            playersChoice = playersChoice.trim();
-            selection = playersChoice.charAt(0);
+            input = keyboard.nextLine();
+            input = input.trim();
+            selection = input.charAt(0);
             
             //if the name is invalid (less than 1 character in length)
             if (selection != 'C'){
@@ -71,7 +69,7 @@ public class GameIntroductionView {
             }
             break; // Exit out of the repitition
         }
-        return playersChoice; //return the input
+        return input; //return the input
     }
     
      public void doAction(char selection) {
@@ -80,11 +78,11 @@ public class GameIntroductionView {
         } 
         
         else {        
-            this.GameMenuView();
+            this.gameMenuView();
         }
      }
         
-    public void GameMenuView() {
+    public void gameMenuView() {
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
     }
