@@ -75,7 +75,7 @@ public class GameMenuView {
                 this.mapView();
                 break;
             case 'F'://Feed Santa
-                this.caloriesConsumed1View();
+                this.feedSanta();
                 break;
             case 'L'://Load Sleigh/Choose Reindeer
                 this.loadSleigh();
@@ -100,8 +100,9 @@ public class GameMenuView {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void caloriesConsumed1View() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void feedSanta() {
+        FeedSantaView feedSanta = new FeedSantaView();
+        feedSanta.displayMenu();
     }
     
     private void loadSleigh() {
