@@ -10,7 +10,7 @@ import byui.cit260.santaChallenge.control.GameControl;
 import byui.cit260.santaChallenge.view.HelpMenuView;
 import java.util.Scanner;
 import santachallenge.SantaChallenge;
-
+import byui.cit260.santaChallenge.view.GameIntroductionView;
 /**
  *
  * @author Wendy
@@ -91,9 +91,14 @@ public class MainMenuView {
         //Create a new game
         GameControl.createNewGame(SantaChallenge.getPlayer());
         
-        //Display the game menu
+        //Display the game introduction view
+        GameIntroductionView gameIntroduction = new GameIntroductionView();
+        gameIntroduction.displayGameIntro();
+        /*
+        //Display game menu
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
+        */
         
     }
 

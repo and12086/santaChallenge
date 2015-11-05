@@ -20,9 +20,14 @@ public class GameMenuView {
             + "\n*********************************************"
             + "\n| Game Menu                                 |"
             + "\n*********************************************"
-            + "\nN - Start New Game"
-            + "\nC - Continue a saved game"
-            + "\nQ - Quit your game"
+            + "\n Where to now chief? The night is up to you.*"
+            + "\n Choose an option from below.              *"
+            + "\n*********************************************"
+            + "\nM - View Map/Choose a Location              *"
+            + "\nF - Feed Santa                              *"
+            + "\nL - Load the sleigh, and choose reindeer    *"
+            + "\nI - View your inventory                     *"
+            + "\nC - Continue your game                          *"
             + "\n*********************************************";   
     public void displayMenu() {
        char selection = ' ';
@@ -35,7 +40,7 @@ public class GameMenuView {
             
             this.doAction(selection); //do action based on selection
         
-       } while (selection !='Q'); //a selection is not "exit" or "quit"
+       } while (selection !='C'); //a selection is not "exit" or "quit"
     
        
     }
@@ -56,7 +61,7 @@ public class GameMenuView {
                 selection = input.charAt(0);
 
                 //if the menu selection is invalid
-               if (selection != 'N' && selection != 'C' && selection != 'Q'){
+               if (selection != 'M' && selection != 'F' && selection != 'L' && selection != 'I'){
                     System.out.println("Invalid menu selection!");
                     continue; //and repeat again
                 }
@@ -66,29 +71,45 @@ public class GameMenuView {
     }
     private void doAction(char selection) {
         switch (selection){
-            case 'N'://start a new game
-                this.startNewGame();
+            case 'M'://View Map/Choose Location
+                this.mapView();
                 break;
-            case 'C'://Continue an existing game
-                this.continueGame();
+            case 'F'://Feed Santa
+                this.caloriesConsumed1View();
                 break;
-            case 'Q'://Quit the current game
-                System.out.println("***QUITTING GAME***");
+            case 'L'://Load Sleigh/Choose Reindeer
+                this.loadSleigh();
                 break;
+            case 'I'://View Inventory
+                this.inventory();
+                break; 
+            case 'C'://return to your game
+                return;    
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        
         }
     }
 
-    private void startNewGame() {
-        //create new game
-        CaloriesConsumed1View breakfastFoodMenu = new CaloriesConsumed1View();
-        breakfastFoodMenu.displayMenu();
-    }
-
+   
     private void continueGame() {
         System.out.println("*** continueGame function called");
+    }
+
+    private void mapView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void caloriesConsumed1View() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void loadSleigh() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void inventory() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
