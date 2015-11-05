@@ -16,6 +16,11 @@ public class MapControl {
         if (miles <= 0 || miles > 19200){
             return -1;
         }
+        if (presetTimeLimit != 24){
+            return -1;
+        }
+        if (flyingSpeed != 600 && flyingSpeed != 700 && flyingSpeed != 800)
+            return -1;
         
         double timeTraveled = presetTimeLimit - (miles / flyingSpeed);
         return timeTraveled;

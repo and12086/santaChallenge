@@ -26,7 +26,7 @@ public class MapControlTest {
         
         System.out.println("calcTimeTraveled");
         /******************************
-         * Test Case #1
+         * Test Case #1 - Valid values
          ******************************/
         System.out.println("\tTest case #1");
         
@@ -48,7 +48,7 @@ public class MapControlTest {
         assertEquals(expResult, result, 0.01);
         
         /******************************
-         * Test Case #2
+         * Test Case #2 - Valid values
          ******************************/
         System.out.println("\tTest case #2");
         
@@ -67,7 +67,7 @@ public class MapControlTest {
         assertEquals(expResult, result, 0.01);
         
         /******************************
-         * Test Case #3
+         * Test Case #3 - Valid values
          ******************************/
         System.out.println("\tTest case #3");
         
@@ -86,13 +86,13 @@ public class MapControlTest {
         assertEquals(expResult, result, 0.01);
         
         /******************************
-         * Test Case #4
+         * Test Case #4 - Invalid presetTimeLimit and miles values
          ******************************/
         System.out.println("\tTest case #4");
         
         //input values for test case 4
-        flyingSpeed = 700.0;
-        presetTimeLimit = 24.0;
+        flyingSpeed = 600.0;
+        presetTimeLimit = 20.0;
         miles = 0.0;
         
         //expected output for returned value
@@ -105,14 +105,14 @@ public class MapControlTest {
         assertEquals(expResult, result, 0.01);
         
         /******************************
-         * Test Case #5
+         * Test Case #5 - invalid flyingSpeed value
          ******************************/
         System.out.println("\tTest case #5");
         
         //input values for test case 5
-        flyingSpeed = 600.0;
+        flyingSpeed = 555.0;
         presetTimeLimit = 24.0;
-        miles = 19201.0;
+        miles = 19200.0;
         
         //expected output for returned value
         expResult = -1;
@@ -124,7 +124,7 @@ public class MapControlTest {
         assertEquals(expResult, result, 0.01);
         
         /******************************
-         * Test Case #6
+         * Test Case #6 - Lower boundary of miles
          ******************************/
         System.out.println("\tTest case #6");
         
@@ -143,7 +143,7 @@ public class MapControlTest {
         assertEquals(expResult, result, 0.01);
         
         /******************************
-         * Test Case #7
+         * Test Case #7 - Upper boundary of miles
          ******************************/
         System.out.println("\tTest case #7");
         
