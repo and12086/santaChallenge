@@ -103,7 +103,7 @@ public class GameMenuView {
     private void caloriesConsumed1View() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     private void loadSleigh() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -111,6 +111,6 @@ public class GameMenuView {
     private void inventory() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }
+    
 

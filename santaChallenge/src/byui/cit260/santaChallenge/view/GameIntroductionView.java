@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package byui.cit260.santaChallenge.view;
-
 import java.util.Scanner;
 
 
@@ -13,7 +12,7 @@ import java.util.Scanner;
  * @author Lisa Lou
  */
 public class GameIntroductionView {
-    private Object gameMenu;
+    //private Object gameMenu;
 
     public GameIntroductionView() {
     }
@@ -24,11 +23,11 @@ public class GameIntroductionView {
         this.displayGameIntro();
         
         //display the Game Menu
-        GameMenuView gameMenu = GameMenuView();
-        gameMenu.displayMenu();
+       // GameMenuView gameMenu = GameMenuView();
+        //gameMenu.displayMenu();
     }
 
-    void displayGameIntro() {
+    public void displayGameIntro() {
         System.out.println ("*********************************************"
                     + "\n* There are a few things you must do before *"
                     + "\n* you can take off to deliver presents.     *"
@@ -54,7 +53,7 @@ public class GameIntroductionView {
         boolean valid = false; //indicates if the input has been retrieved
         char selection = ' ';
         String playersChoice = null;
-            Scanner keyboard = new Scanner(System.in); //keyboard input stream
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
         while(!valid){//while a valid selection has not been retrieved
             //prompt for the user input
@@ -67,7 +66,7 @@ public class GameIntroductionView {
             
             //if the name is invalid (less than 1 character in length)
             if (selection != 'C'){
-                System.out.println("Invalid entry.  You must enter 'C' to continue.");
+                System.out.println("Try Again.  You must enter 'C' to continue.");
                 continue; //and repeat again
             }
             break; // Exit out of the repitition
@@ -76,19 +75,22 @@ public class GameIntroductionView {
     }
     
      public void doAction(char selection) {
-        switch (selection){
-            case 'C'://continue to next view
-                this.GameMenuView();
-                break;
-            default:
-                System.out.println("\n*** Invalid selection *** Try again!");
-                break;        
+        if (selection != 'C'){
+            System.out.println("\n*** Invalid selection *** Try again!");            
+        } 
+        
+        else {        
+            this.GameMenuView();
         }
      }
         
-    private GameMenuView GameMenuView() {
+    public void GameMenuView() {
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
-        return null;
     }
+
+    /*private GameMenuView GameMenuView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    */
 }
