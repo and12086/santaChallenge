@@ -32,7 +32,7 @@ public class GameIntroductionView {
                     + "\n*                                           *"
                     + "\n*********************************************";
                     
-    
+                    
         public void displayMenu() {
         char selection = ' ';
         do {
@@ -76,6 +76,12 @@ public class GameIntroductionView {
         if (selection != 'C'){
             System.out.println("\n*** Invalid selection *** Try again!");            
         } 
+        
+        /*
+        else if (selection =='E') {
+            System.out.println("\n*** Are you sure you want to exit the game?");
+        }
+        */
         
         else {        
             this.gameMenuView();

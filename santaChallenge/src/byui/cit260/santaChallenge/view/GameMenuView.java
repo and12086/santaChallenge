@@ -40,7 +40,7 @@ public class GameMenuView {
             
             this.doAction(selection); //do action based on selection
         
-       } while (selection !='C'); //a selection is not "exit" or "quit"
+       } while (selection !='C'); //a selection is not "C" for continue                                                
     
        
     }
@@ -75,7 +75,7 @@ public class GameMenuView {
                 this.mapView();
                 break;
             case 'F'://Feed Santa
-                this.caloriesConsumed1View();
+                this.FeedSantaView();
                 break;
             case 'L'://Load Sleigh/Choose Reindeer
                 this.loadSleigh();
@@ -100,7 +100,7 @@ public class GameMenuView {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void caloriesConsumed1View() {
+    private void FeedSantaView() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

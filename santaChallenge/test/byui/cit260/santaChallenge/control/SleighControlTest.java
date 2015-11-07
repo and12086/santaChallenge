@@ -65,6 +65,24 @@ public class SleighControlTest {
         //compare expected return value with actual returned
         assertEquals(expResult, result, 0.01);
  
+        /******************************
+         * * Test Case #
+         ******************************/
+        System.out.println("\tTest Case #3");
+        
+        //input values for Test Case #2
+        numberOfPresents = 80.0;
+        numberOfReindeer = 9.0;
+        
+        //expected output returned value
+        expResult = 0.59;
+        
+        //call function to run test
+        result = instance.calcPullCapacity(numberOfPresents, numberOfReindeer);
+        
+        //compare expected return value with actual returned
+        assertEquals(expResult, result, 0.01);
+ 
     }
     
 }
