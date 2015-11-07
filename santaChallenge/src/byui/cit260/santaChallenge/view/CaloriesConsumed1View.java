@@ -117,7 +117,7 @@ public class CaloriesConsumed1View {
                 this.foodView2();
                 break;
             case 'Q'://Quit the current game
-                System.out.println("***Returning to the game menu.***");
+                System.out.println("***Returning to the main menu.***");
                 this.returnToMainMenu();
                 return;
             default:
