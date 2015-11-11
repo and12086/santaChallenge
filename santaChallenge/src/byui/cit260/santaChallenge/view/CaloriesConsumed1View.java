@@ -133,6 +133,6 @@ public class CaloriesConsumed1View {
 
     private void returnToMainMenu() {
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        mainMenu.display();
     }
 }
