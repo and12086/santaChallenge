@@ -71,28 +71,29 @@ public class MainMenuView extends View {
     @Override
     public boolean doAction(Object obj) {
         
-        String input = (String) obj;
-        int selection = 0;
+        String value = (String) obj;
+        value = value.toUpperCase();
         
-        switch (selection){
-            case 'P'://start a new game
+        switch (value){
+            case "P"://start a new game
                 this.startNewGame();
                 break;
-            case 'C'://restart and existing game
+            case "C"://restart and existing game
                 this.continueGame();
                 break;
-            case 'S'://Save the current game
+            case "S"://Save the current game
                 this.saveGame();
                 break;
-            case 'H'://display the help menu
+            case "H"://display the help menu
                 this.displayHelpMenu();
                 break;
-            case 'E'://exit the program
-                return;
+            case "E"://exit the program
+                return false;
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        
-        }
+        } 
+        return false;
     }
 
 
@@ -126,7 +127,6 @@ public class MainMenuView extends View {
         //display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.displayMenu();
-    }
-    
+    }   
 }
    

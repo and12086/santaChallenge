@@ -21,22 +21,21 @@ public abstract class View implements ViewInterface{
     
     @Override
     public void display() {
-        char selection = ' ';
+        String value = "";
+        boolean done = false;
+        
         do {
-            System.out.println(MENU);//display the main menu
+            System.out.println(this.promptMessage);//display the main menu
             
-            String input = this.getInput(); //get the user's selection
-            selection = input.charAt(0); //get the first character of string
-            
-            this.doAction(Object obj); //do action based on selection
-        } while (selection != 'E'); //unless selection is not "Exit"
+            value = this.getInput(); //get the user's selection            
+            done = this.doAction(value); //do action based on selection
+        } while (!done); //unless selection is not "Exit"
         
     }
     @Override
-    private String getInput() {
-    boolean valid = false; //indicates if the menu selection has been retrieved
-    char selection = ' ';    
-    String input = null;
+    public String getInput() {
+        boolean valid = false; //indicates if the menu selection has been retrieved   
+        String value = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
         
         while(!valid){//while a valid menu selection has not been retrieved
@@ -44,23 +43,17 @@ public abstract class View implements ViewInterface{
             System.out.println("Please enter a valid menu selection.");
             
             //get the menu selection from the keyboard and trim off the blanks
-            input = keyboard.nextLine();
-            input = input.trim();
-            input = input.toUpperCase();
-            selection = input.charAt(0);
-           
-            
-            
-            
+            value = keyboard.nextLine();
+            value = value.trim();
             
             //if the menu selection is invalid
-           if (selection != 'P' && selection != 'C' && selection != 'S' && selection != 'H' && selection != 'E'){
+           if (value != "P" && value != "C" && value != "S" && value != "H" && value != "E"){
                 System.out.println("Invalid menu selection!");
                 continue; //and repeat again
             }
             break; // Exit out of the repitition
         }
-            return input; //return the menu selection   
+            return value; //return the menu selection   
     }
     
     public String getPromptMessage() {
@@ -70,4 +63,6 @@ public abstract class View implements ViewInterface{
     public void setPromptMessage(String promptMessage) {
         this.promptMessage = promptMessage;
     }
+
+   
 }
