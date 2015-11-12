@@ -6,7 +6,6 @@
 package byui.cit260.santaChallenge.view;
 
 import java.util.Scanner;
-
 /**
  *
  * @author Wendy

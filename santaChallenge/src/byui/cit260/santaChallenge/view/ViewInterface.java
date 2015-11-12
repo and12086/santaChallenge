@@ -9,9 +9,9 @@ package byui.cit260.santaChallenge.view;
  *
  * @author Wendy
  */
-public class ViewInterface {
+public interface ViewInterface {
     
     public void display();
     public String getInput();
-    public boolean doAction(Object obj);
+    public boolean doAction(Oject obj);
 }
