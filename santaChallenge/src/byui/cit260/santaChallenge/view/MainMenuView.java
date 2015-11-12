@@ -68,7 +68,7 @@ public class MainMenuView extends View {
     public boolean doAction(Object obj) {
         
         String value = (String) obj;
-        value = value.toUpperCase();
+       // value = value.toUpperCase();
         
         switch (value){
             case "P"://start a new game
@@ -84,7 +84,7 @@ public class MainMenuView extends View {
                 this.displayHelpMenu();
                 break;
             case "E"://exit the program
-                return false;
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        
