@@ -62,10 +62,10 @@ public class MainMenuView extends View {
         //Display the game introduction view
         GameIntroductionView gameIntroduction = new GameIntroductionView();
         gameIntroduction.display();
-        /*
+        
         //Display game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
         
         
     }
