@@ -5,14 +5,14 @@
  */
 package byui.cit260.santaChallenge.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Wendy
  */
-public class FeedSantaView {
-    private final String INTRO = "\n"
+public class FeedSantaView extends View {
+    
+    public FeedSantaView (){
+               super ("\n"
                     + "\n**********************************************"
                     + "\n* Santa will be busy all day long. You must  *"
                     + "\n* make sure Santa eats a hearty breakfast or *"
@@ -31,67 +31,36 @@ public class FeedSantaView {
                     + "\n* an elf will calulate whether Santa has     *"
                     + "\n* enough calories to complete his deliveries *"
                     + "\n* on time or whether he will run out of fuel.*"
-                    + "\n*********************************************";
-                    
-    
-        public void displayMenu() {
-        char selection = ' ';
-        do {
-            System.out.println(INTRO);//display the main menu
-            
-            String input = this.getInput(); //get the user's selection
-            selection = input.charAt(0); //get the first character of string
-            
-            this.doAction(selection); //do action based on selection
-        } while (selection != 'E'); //unless selection is not "Exit"
-        
-    }
-
-    
-    private String getInput() {
-        boolean valid = false; //indicates if the input has been retrieved
-        char selection = ' ';
-        String input = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while(!valid){//while a valid selection has not been retrieved
-            //prompt for the user input
-            System.out.println("Please type 'C' to continue.");
-            
-            //get the selection from the keyboard and trim off the blanks
-            input = keyboard.nextLine();
-            input = input.trim();
-            selection = input.charAt(0);
-            
-            //if the name is invalid (less than 1 character in length)
-            if (selection != 'C'){
-                System.out.println("Try Again.  You must enter 'C' to continue.");
-                continue; //and repeat again
-            }
-            break; // Exit out of the repitition
-        }
-        return input; //return the input
+                    + "\n**********************************************"
+                    + "\n               Type C to continue             "
+                    + "\n**********************************************");
     }
     
-     public void doAction(char selection) {
-        if (selection != 'C'){
-            System.out.println("\n*** Invalid selection *** Try again!");            
+    @Override
+     public boolean doAction(Object obj) {
+         
+         String value = (String) obj;
+        if ("C".equals(value)){
+            this.caloriesConsumed1View();
         } 
         
         else {        
-            this.caloriesConsumed1View();
+            System.out.println("\n*** Invalid selection *** Try again!");
         }
+        return false;
      }
         
     public void caloriesConsumed1View() {
         CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();
-        caloriesConsumed1.displayMenu();
+        caloriesConsumed1.display();
     }
 
     /*private GameMenuView GameMenuView() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     */
+
+   
 }
 
 
