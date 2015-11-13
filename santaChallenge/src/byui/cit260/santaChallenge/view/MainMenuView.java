@@ -5,30 +5,28 @@
  */
 package byui.cit260.santaChallenge.view;
 
-import byui.cit260.santaChallenge.view.GameMenuView;
 import byui.cit260.santaChallenge.control.GameControl;
-import byui.cit260.santaChallenge.view.HelpMenuView;
-import java.util.Scanner;
 import santachallenge.SantaChallenge;
-import byui.cit260.santaChallenge.view.GameIntroductionView;
 /**
  *
  * @author Wendy
  */
-public class MainMenuView {
+public class MainMenuView extends View {
     
-    private final String MENU = "\n"
-            + "\n*********************************************"
-            + "\n| Main Menu                                 |"
-            + "\n*********************************************"
-            + "\nPlay - Start game"
-            + "\nContinue - Get and start a saved game"
-            + "\nSave - Save your game"
-            + "\nHelp - Get help on how to play the game"
-            + "\nExit - Exit menu"
-            + "\n*********************************************";           
-
-    public void displayMenu() {
+    public MainMenuView() {
+        super("\n"
+        + "\n*********************************************"
+        + "\n| Main Menu                                 |"
+        + "\n*********************************************"
+        + "\nPlay - Start game"
+        + "\nContinue - Get and start a saved game"
+        + "\nSave - Save your game"
+        + "\nHelp - Get help on how to play the game"
+        + "\nExit - Exit menu"
+        + "\n*********************************************");           
+    }
+    
+    /*public void display() {
         char selection = ' ';
         do {
             System.out.println(MENU);//display the main menu
@@ -64,28 +62,36 @@ public class MainMenuView {
             break; // Exit out of the repitition
         }
             return input; //return the menu selection   
-    }
-    public void doAction(char selection) {
-        switch (selection){
-            case 'P'://start a new game
+    }*/
+    
+    @Override
+    public boolean doAction(Object obj) {
+        
+        String value = (String) obj;
+       // value = value.toUpperCase();
+        
+        switch (value){
+            case "P"://start a new game
                 this.startNewGame();
                 break;
-            case 'C'://restart and existing game
+            case "C"://restart and existing game
                 this.continueGame();
                 break;
-            case 'S'://Save the current game
+            case "S"://Save the current game
                 this.saveGame();
                 break;
-            case 'H'://display the help menu
+            case "H"://display the help menu
                 this.displayHelpMenu();
                 break;
-            case 'E'://exit the program
-                return;
+            case "E"://exit the program
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        
-        }
+        } 
+        return false;
     }
+
 
     private void startNewGame() {
         //Create a new game
@@ -112,12 +118,9 @@ public class MainMenuView {
     }
 
     private void displayHelpMenu() {
-        
-        
         //display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.displayMenu();
-    }
-    
+    }   
 }
    

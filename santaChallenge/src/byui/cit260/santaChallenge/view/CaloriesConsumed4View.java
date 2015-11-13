@@ -127,7 +127,7 @@ public class CaloriesConsumed4View {
 
     private void returnToMainMenu() {
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.displayMenu();
+        mainMenu.display();
     }
 
     private void calculate() {

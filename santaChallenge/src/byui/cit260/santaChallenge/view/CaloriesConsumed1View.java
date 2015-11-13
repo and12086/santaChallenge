@@ -117,7 +117,8 @@ public class CaloriesConsumed1View {
                 this.foodView2();
                 break;
             case 'Q'://Quit the current game
-                System.out.println("***Returning to the game menu.***");
+                System.out.println("***Returning to the main menu.***");
+                this.returnToMainMenu();
                 return;
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
@@ -128,5 +129,10 @@ public class CaloriesConsumed1View {
     private void foodView2() {
          CaloriesConsumed2View  breakfastFoodMenu = new CaloriesConsumed2View();
          breakfastFoodMenu.displayMenu();
+    }
+
+    private void returnToMainMenu() {
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.display();
     }
 }
