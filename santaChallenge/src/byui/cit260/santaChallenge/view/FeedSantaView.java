@@ -11,7 +11,7 @@ package byui.cit260.santaChallenge.view;
  */
 public class FeedSantaView extends View {
     
-    public FeedSantaView (){
+    public FeedSantaView(){
                super ("\n"
                     + "\n**********************************************"
                     + "\n* Santa will be busy all day long. You must  *"

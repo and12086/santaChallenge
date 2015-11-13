@@ -18,11 +18,11 @@ public class MainMenuView extends View {
         + "\n*********************************************"
         + "\n| Main Menu                                 |"
         + "\n*********************************************"
-        + "\nPlay - Start game"
-        + "\nContinue - Get and start a saved game"
-        + "\nSave - Save your game"
-        + "\nHelp - Get help on how to play the game"
-        + "\nExit - Exit menu"
+        + "\nP - Start game"
+        + "\nC - Get and start a saved game"
+        + "\nS - Save your game"
+        + "\nH - Get help on how to play the game"
+        + "\nE - Exit menu"
         + "\n*********************************************");           
     }
     
@@ -46,7 +46,7 @@ public class MainMenuView extends View {
                 this.displayHelpMenu();
                 break;
             case "E"://exit the program
-                return true;
+                System.out.println("\n*** Thank you for playing the Santa Challenge!");
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        

@@ -111,7 +111,8 @@ public class HelpMenuView {
     }
 
     private void displayBreakfast() {
-        System.out.println("*** displayBreakfast function called");
+        HelpFeedSantaView feedSanta = new HelpFeedSantaView();
+        feedSanta.display();
     }
 
     private void displayLoad() {
