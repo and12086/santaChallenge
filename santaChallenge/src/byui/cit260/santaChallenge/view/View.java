@@ -46,7 +46,7 @@ public abstract class View implements ViewInterface{
             value = value.trim();
             
             //if the menu selection is invalid
-           if (value != "P" && value != "C" && value != "S" && value != "H" && value != "E"){
+           if (value.length() < 1){
                 System.out.println("Invalid menu selection!");
                 continue; //and repeat again
             }

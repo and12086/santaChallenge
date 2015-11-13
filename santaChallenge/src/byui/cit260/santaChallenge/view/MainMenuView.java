@@ -26,44 +26,6 @@ public class MainMenuView extends View {
         + "\n*********************************************");           
     }
     
-    /*public void display() {
-        char selection = ' ';
-        do {
-            System.out.println(MENU);//display the main menu
-            
-            String input = this.getInput(); //get the user's selection
-            selection = input.charAt(0); //get the first character of string
-            
-            this.doAction(selection); //do action based on selection
-        } while (selection != 'E'); //unless selection is not "Exit"
-        
-    }
-
-    private String getInput() {
-    boolean valid = false; //indicates if the menu selection has been retrieved
-    char selection = ' ';    
-    String input = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
-        while(!valid){//while a valid menu selection has not been retrieved
-            //prompt the player for a valid menu selection
-            System.out.println("Please enter a valid menu selection.");
-            
-            //get the menu selection from the keyboard and trim off the blanks
-            input = keyboard.nextLine();
-            input = input.trim();
-            selection = input.charAt(0);
-            
-            //if the menu selection is invalid
-           if (selection != 'P' && selection != 'C' && selection != 'S' && selection != 'H' && selection != 'E'){
-                System.out.println("Invalid menu selection!");
-                continue; //and repeat again
-            }
-            break; // Exit out of the repitition
-        }
-            return input; //return the menu selection   
-    }*/
-    
     @Override
     public boolean doAction(Object obj) {
         
@@ -104,7 +66,7 @@ public class MainMenuView extends View {
         //Display game menu
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.displayMenu();
-        */
+        
         
     }
 

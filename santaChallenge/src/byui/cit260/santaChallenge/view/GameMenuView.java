@@ -113,7 +113,7 @@ public class GameMenuView extends View {
 
     private void feedSanta() {
         FeedSantaView feedSanta = new FeedSantaView();
-        feedSanta.displayMenu();
+        feedSanta.display();
     }
     
     private void loadSleigh() {
