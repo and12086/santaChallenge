@@ -13,10 +13,10 @@ import santachallenge.SantaChallenge;
  *
  * @author Lisa Lou
  */
-public class GameMenuView {
+public class GameMenuView extends View {
     
-    
-    private final String MENU = "\n"
+    public GameMenuView(){
+        super ("\n"
             + "\n*********************************************"
             + "\n| Game Menu                                 |"
             + "\n*********************************************"
@@ -27,8 +27,10 @@ public class GameMenuView {
             + "\nF - Feed Santa                              *"
             + "\nL - Load the sleigh, and choose reindeer    *"
             + "\nI - View your inventory                     *"
-            + "\nC - Continue your game                          *"
-            + "\n*********************************************";   
+            + "\nC - Continue your game                      *"
+            + "\n*********************************************");   
+    }
+    /*
     public void displayMenu() {
        char selection = ' ';
        do {
@@ -45,7 +47,7 @@ public class GameMenuView {
        
     }
 
-    private String getInput() {
+   private String getInput() {
         boolean valid = false; //indicates if the menu selection has been retrieved
         char selection = ' ';    
         String input = null;
@@ -69,26 +71,35 @@ public class GameMenuView {
             }
                 return input; //return the menu selection   
     }
-    private void doAction(char selection) {
-        switch (selection){
-            case 'M'://View Map/Choose Location
+    */
+    
+    @Override
+    public boolean doAction(Object obj) {
+        
+        String value = (String) obj;
+        //value = value.toUpperCase();
+        
+        switch (value){
+            case "M"://View Map/Choose Location
                 this.mapView();
                 break;
-            case 'F'://Feed Santa
+            case "F"://Feed Santa
                 this.feedSanta();
                 break;
-            case 'L'://Load Sleigh/Choose Reindeer
+            case "L"://Load Sleigh/Choose Reindeer
                 this.loadSleigh();
                 break;
-            case 'I'://View Inventory
+            case "I"://View Inventory
                 this.inventory();
                 break; 
-            case 'C'://return to your game
-                return;    
+            case "C"://return to your game
+                return true;    
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        
         }
+        return false;
+                
     }
 
    

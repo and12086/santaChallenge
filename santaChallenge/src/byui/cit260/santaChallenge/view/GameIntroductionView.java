@@ -11,9 +11,10 @@ import java.util.Scanner;
  *
  * @author Lisa Lou
  */
-public class GameIntroductionView { 
+public class GameIntroductionView extends View{ 
 
-   private final String INTRO = "\n"
+    public GameIntroductionView() {
+        super("\n"
                     + "\n*********************************************"
                     + "\n* There are a few things you must do before *"
                     + "\n* you can take off to deliver presents.     *"
@@ -30,19 +31,19 @@ public class GameIntroductionView {
                     + "\n* most presents that you can...don't leave  *"
                     + "\n* any contininents out.                     *"
                     + "\n*                                           *"
-                    + "\n*********************************************";
-                    
-                    
-        public void displayMenu() {
-        char selection = ' ';
-        do {
-            System.out.println(INTRO);//display the main menu
-            
-            String input = this.getInput(); //get the user's selection
-            selection = input.charAt(0); //get the first character of string
-            
-            this.doAction(selection); //do action based on selection
-        } while (selection != 'E'); //unless selection is not "Exit"
+                    + "\n*********************************************");
+    }            
+    /*                
+    public void displayMenu() {
+    char selection = ' ';
+    do {
+        System.out.println(INTRO);//display the main menu
+
+        String input = this.getInput(); //get the user's selection
+        selection = input.charAt(0); //get the first character of string
+
+        this.doAction(selection); //do action based on selection
+    } while (selection != 'E'); //unless selection is not "Exit"
         
     }
 
@@ -71,26 +72,34 @@ public class GameIntroductionView {
         }
         return input; //return the input
     }
-    
-     public void doAction(char selection) {
-        if (selection != 'C'){
+   */ 
+   
+   @Override
+    public boolean doAction(Object obj) {
+        
+        String value = (String) obj;
+        //// value = value.toUpperCase();
+        
+        if (value != "C"){
             System.out.println("\n*** Invalid selection *** Try again!");            
         } 
         
-        /*
-        else if (selection =='E') {
-            System.out.println("\n*** Are you sure you want to exit the game?");
+        
+        else if (value =="E") {
+          System.out.println("\n*** Are you sure you want to exit the game?");
         }
-        */
+        
         
         else {        
             this.gameMenuView();
         }
-     }
+        
+        return false;
+    }
         
     public void gameMenuView() {
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 
     /*private GameMenuView GameMenuView() {

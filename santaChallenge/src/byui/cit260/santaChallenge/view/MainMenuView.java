@@ -77,7 +77,7 @@ public class MainMenuView extends View {
             case "C"://restart and existing game
                 this.continueGame();
                 break;
-            case "S"://Save the current game
+            case "S"://save the current game
                 this.saveGame();
                 break;
             case "H"://display the help menu
@@ -99,7 +99,7 @@ public class MainMenuView extends View {
         
         //Display the game introduction view
         GameIntroductionView gameIntroduction = new GameIntroductionView();
-        gameIntroduction.displayMenu();
+        gameIntroduction.display();
         /*
         //Display game menu
         GameMenuView gameMenu = new GameMenuView();
