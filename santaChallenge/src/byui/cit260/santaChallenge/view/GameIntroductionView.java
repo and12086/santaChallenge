@@ -31,7 +31,11 @@ public class GameIntroductionView extends View{
                     + "\n* most presents that you can...don't leave  *"
                     + "\n* any contininents out.                     *"
                     + "\n*                                           *"
-                    + "\n*********************************************");
+                    + "\n*********************************************"
+                    + "\n"
+                    + "\nC - Continue with the game"
+                    + "\nE - Exit the game"
+                    + "\n");
     }            
    @Override
     public boolean doAction(Object obj) {
@@ -39,18 +43,18 @@ public class GameIntroductionView extends View{
         String value = (String) obj;
         //// value = value.toUpperCase();
         
-        if (value != "C"){
-            System.out.println("\n*** Invalid selection *** Try again!");            
+        if ("C".equals(value)){
+            this.gameMenuView();            
         } 
         
         
-        else if (value =="E") {
+        else if ("E".equals(value)){
           System.out.println("\n*** Are you sure you want to exit the game?");
+          this.returnToMainMenu();
         }
         
-        
-        else {        
-            this.gameMenuView();
+        else {
+            System.out.println("\n*** Invalid menu selection!");
         }
         
         return false;
@@ -61,8 +65,8 @@ public class GameIntroductionView extends View{
         gameMenu.display();
     }
 
-    /*private GameMenuView GameMenuView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void returnToMainMenu() {
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.display();
     }
-    */
 }
