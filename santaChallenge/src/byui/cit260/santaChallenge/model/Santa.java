@@ -5,80 +5,49 @@
  */
 package byui.cit260.santaChallenge.model;
 
+import java.awt.Point;
 import java.io.Serializable;
-import java.util.Objects;
 /**
  *
  * @author Wendy
  */
-public class Santa implements Serializable{
+public enum Santa implements Serializable{
+       
+    Santa("The big man himself"),
+    Mrs_Claus("She is Santa's wife and the true brains behind the operation"),
+    Frosty("One of Santa's oldest friends"),
+    Rudolph("Santa's lead reindeer"),
+    Jingle("Santa's head elf"),
+    Grinch("Santa's nemesis");
     
-    //class instance variables
-    private String name;
-    private double energyPoints;
-    private double time;
+//class instance variables
+    //private final double energyPoints;
+    //private final double time;
+    private final String description;
+    private final Point coordinates;
 
-    public Santa() {
+    Santa(String description) {
+        this.description = description;
+        coordinates = new Point(1,1);
     }
     
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getEnergyPoints() {
+    /*public double getEnergyPoints() {
         return energyPoints;
-    }
-
-    public void setEnergyPoints(double energyPoints) {
-        this.energyPoints = energyPoints;
     }
 
     public double getTime() {
         return time;
+    }*/
+
+    public String getDescription() {
+        return description;
     }
 
-    public void setTime(double time) {
-        this.time = time;
+     public Point getCoordinates() {
+        return coordinates;
     }
-
-    @Override
+}
+    /*@Override
     public String toString() {
         return "Santa{" + "name=" + name + ", energyPoints=" + energyPoints + ", time=" + time + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 37 * hash + Objects.hashCode(this.name);
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.energyPoints) ^ (Double.doubleToLongBits(this.energyPoints) >>> 32));
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.time) ^ (Double.doubleToLongBits(this.time) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Santa other = (Santa) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.energyPoints) != Double.doubleToLongBits(other.energyPoints)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.time) != Double.doubleToLongBits(other.time)) {
-            return false;
-        }
-        return true;
-    }
-    
-    
-}
+    }*/

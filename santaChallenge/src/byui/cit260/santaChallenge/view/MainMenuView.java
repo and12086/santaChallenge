@@ -60,16 +60,16 @@ public class MainMenuView extends View {
         GameControl.createNewGame(SantaChallenge.getPlayer());
         
         //Display the game introduction view
-        GameIntroductionView gameIntroduction = new GameIntroductionView();
-        gameIntroduction.display();
+        //GameIntroductionView gameIntroduction = new GameIntroductionView();
+        //gameIntroduction.display();
         
         //Display game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
-        
-        
+        gameMenu.display();   
     }
 
+        
+    
     private void continueGame() {
         System.out.println("*** continueGame function called");
     }

@@ -5,11 +5,30 @@
  */
 package byui.cit260.santaChallenge.control;
 
+import byui.cit260.santaChallenge.model.Map;
+
 /**
  *
  * @author Lisa Lou
  */
 public class MapControl {
+
+    public static Map createMap() {
+        //create the map
+        Map map = new Map(20,20);
+        
+        //create a list of the different scenes in the game
+        Scene[] scenes = createScenes();
+        
+        //assign the different scenes to locations in the map
+        assignScenesToLocations(map, scenes);
+        
+        return map;
+    }
+
+    static void moveActorsToStartingLocation(Map map) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public double calcTimeTraveled(double flyingSpeed, double presetTimeLimit, double miles) {
         
