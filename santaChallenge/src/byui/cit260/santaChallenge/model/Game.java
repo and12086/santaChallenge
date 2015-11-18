@@ -6,7 +6,6 @@
 package byui.cit260.santaChallenge.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
@@ -15,8 +14,15 @@ import java.util.Objects;
  */
 public class Game implements Serializable {
     private double timeLimit;
-    private String companion;
-
+    
+    private Map map;
+    private Player player;
+    private Sleigh sleigh;
+    
+    private InventoryView[] inventory;
+    private String[] santa;
+    private BreakfastFood[] breakfastFood;
+    
     public Game() {
     }
 
@@ -28,15 +34,55 @@ public class Game implements Serializable {
         this.timeLimit = timeLimit;
     }
 
-    public String getCompanion() {
-        return companion;
+    public Sleigh getSleigh() {
+        return sleigh;
     }
 
-    public void setCompanion(String companion) {
-        this.companion = companion;
+    public void setSleigh(Sleigh sleigh) {
+        this.sleigh = sleigh;
     }
 
-    @Override
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public InventoryView[] getInventory() {
+        return inventory;
+    }
+
+    public void setInventoryVIew(InventoryView[] inventory) {
+        this.inventory = inventory;
+    }
+
+    public String[] getSanta() {
+        return santa;
+    }
+
+    public void setSanta(String[] santa) {
+        this.santa = santa;
+    }
+
+     public BreakfastFood[] getBreakfastFood() {
+        return breakfastFood;
+    }
+
+    public void setBreakfastFood(BreakfastFood[] breakfastFood) {
+        this.breakfastFood = breakfastFood;
+    }
+    
+    /*@Override
     public String toString() {
         return "Game{" + "timeLimit=" + timeLimit + ", companion=" + companion + '}';
     }
@@ -65,7 +111,10 @@ public class Game implements Serializable {
             return false;
         }
         return true;
+    }*/
+
+    public void setInventory(InventoryView[] inventoryList) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
     
 }

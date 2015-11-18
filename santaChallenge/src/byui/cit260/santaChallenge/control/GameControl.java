@@ -5,7 +5,13 @@
  */
 package byui.cit260.santaChallenge.control;
 
+import byui.cit260.santaChallenge.model.BreakfastFood;
+import byui.cit260.santaChallenge.model.Game;
+import byui.cit260.santaChallenge.model.InventoryView;
+import byui.cit260.santaChallenge.model.Map;
 import byui.cit260.santaChallenge.model.Player;
+import byui.cit260.santaChallenge.model.Sleigh;
+import santachallenge.SantaChallenge;
 
 /**
  *
@@ -14,7 +20,35 @@ import byui.cit260.santaChallenge.model.Player;
 public class GameControl {
 
     public static void createNewGame(Player player) {
-        System.out.println("\n*** creatNewGame stub function called***");
+        Game game = new Game(); // create new game
+        SantaChallenge.setCurrentGame(game); //save in Santa Challenge
+        
+        game.setPlayer(player); //save player in game
+        
+        // create the inventory list and save in the game
+        InventoryView[] inventoryList = GameControl.createInventoryList();
+        game.setInventory(inventoryList);
+        
+        Sleigh sleigh = new Sleigh(); //create new sleigh
+        game.setSleigh(sleigh); //save sleigh in game
+        
+        BreakfastFood[] calories = GameControl.createCalories();
+        game.setBreakfastFood(calories);
+        
+        Map map = MapControl.createMap();//create and initialize new map
+        game.setMap(map);//save map in game
+        
+        //move actors to starting position in the map
+        MapControl.moveActorsToStartingLocation(map);
     }
-    
+
+    private static InventoryView[] createInventoryList() {
+        System.out.println("*** called createInventoryList() in GameControl ***");
+        return null;      
+    }
+
+    private static BreakfastFood[] createCalories() {
+        System.out.println("*** called createCalories() in GameControl ***");
+        return null;
+    }   
 }
