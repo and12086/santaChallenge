@@ -12,11 +12,20 @@ import java.io.Serializable;
  */
 public class Sleigh implements Serializable{
     //class instance variables
+    private String description;
     private double pullCapacity;
     private double numberOfPresents;
     private double flyingSpeed;
 
     public Sleigh() {
+        this.description = "/n Santa's sleigh is a valuable tool.  Without it "
+                + "Santa would not be able to deliever all the presents to children"
+                + " throughout the world. Be careful how you load it.  Too many presents "
+                + "and/or not enough reindeer will slow down your flying speed and "
+                + "you won't make it to all the continents.";
+        this.pullCapacity = 0;
+        this.numberOfPresents = 0;
+        this.flyingSpeed = 0;
     }
     
     public double getPullCapacity() {

@@ -6,6 +6,7 @@
 package byui.cit260.santaChallenge.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -14,16 +15,84 @@ import java.util.Objects;
  */
 public class Location implements Serializable{
     
+    
+    private int row;
+    private int column;
+    private boolean visited;
+    private DeliveryScene deliveryScene;
+    private DeliveryScene northPoleScene;
+    private ArrayList<Santa> santa;
+    
     //class instance variables
+    /*
     private String placeName;
     private String visited;
     private double timeRemaining;
     private double energyPoints;
     private double milesTraveled;
-
+   */
     public Location() {
     }
 
+    
+    
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+    
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+    public DeliveryScene getDeliveryScene() {
+        return deliveryScene;
+    }
+
+    public void setDeliveryScene(DeliveryScene deliveryScene) {
+        this.deliveryScene = deliveryScene;
+    }
+
+    public DeliveryScene getNorthPoleScene() {
+        return northPoleScene;
+    }
+
+    public void setNorthPoleScene(DeliveryScene northPoleScene) {
+        this.northPoleScene = northPoleScene;
+    }
+
+    public ArrayList<Santa> getSanta() {
+        return santa;
+    }
+
+    public void setSanta(ArrayList<Santa> santa) {
+        this.santa = santa;
+    }
+
+
+   
+
+}
+
+    
+    
+    
+    /*
     public String getPlaceName() {
         return placeName;
     }
@@ -110,3 +179,4 @@ public class Location implements Serializable{
     
     
 }
+ */

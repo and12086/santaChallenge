@@ -11,22 +11,28 @@ import java.io.Serializable;
  *
  * @author Wendy
  */
+
+
 public class InventoryView implements Serializable{
     
     //class instance variables
-    private double energyPoints;
+    private double energyLevel;
     private double timeRemaining;
     private double currentFlyingSpeed;
-
+    private String description;
+    private double requiredCalories;
+    private double timeAvailable;
+    
+    
     public InventoryView() {
     }
 
-    public double getEnergyPoints() {
-        return energyPoints;
+    public double getEnergyLevel() {
+        return energyLevel;
     }
 
-    public void setEnergyPoints(double energyPoints) {
-        this.energyPoints = energyPoints;
+    public void setEnergyLevel(double energyLevel) {
+        this.energyLevel = energyLevel;
     }
 
     public double getTimeRemaining() {
@@ -44,7 +50,34 @@ public class InventoryView implements Serializable{
     public void setCurrentFlyingSpeed(double currentFlyingSpeed) {
         this.currentFlyingSpeed = currentFlyingSpeed;
     }
+    
+    public String getDescription(){
+        return description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    public double getTimeAvailable() {
+        return timeAvailable;
+    }
+    public void setTimeAvailable(double timeAvailable) {
+        this.timeAvailable = timeAvailable;
+    }
+    
+    public double getRequiredCalories() {
+        return requiredCalories;
+    }
+    
+    public void setRequiredCalories(double requiredCalories) {
+        this.requiredCalories = requiredCalories;
+    }
+  
+}
 
+
+/*
     @Override
     public String toString() {
         return "InventoryView{" + "energyPoints=" + energyPoints + ", timeRemaining=" + timeRemaining + ", currentFlyingSpeed=" + currentFlyingSpeed + '}';
@@ -79,7 +112,5 @@ public class InventoryView implements Serializable{
         }
         return true;
     }
-    
-    
-    
-}
+
+  */  

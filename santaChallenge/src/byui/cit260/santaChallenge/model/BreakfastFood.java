@@ -25,6 +25,15 @@ public class BreakfastFood implements Serializable{
     private double healthBenefit4;
     
     public BreakfastFood() {
+        this.foodName = "/n Santa has many options for breakfast. Choose wisely!";
+        this.calorieCount1 = 0;
+        this.calorieCount2 = 0;
+        this.calorieCount3 = 0;
+        this.calorieCount4 = 0;
+        this.healthBenefit1 = 0;
+        this.healthBenefit2 = 0;
+        this.healthBenefit3 = 0;
+        this.healthBenefit4 = 0;
     }
 
     public String getFoodName() {

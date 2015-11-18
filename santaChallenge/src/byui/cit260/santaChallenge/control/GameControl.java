@@ -42,9 +42,31 @@ public class GameControl {
         MapControl.moveActorsToStartingLocation(map);
     }
 
-    private static InventoryView[] createInventoryList() {
-        System.out.println("*** called createInventoryList() in GameControl ***");
-        return null;      
+    public enum Item {
+        energyPoints,
+        time;
+}
+    
+    
+    public static InventoryView[] createInventoryList() {
+        
+        //created array(list) of inventory items
+        InventoryView[] inventory = new InventoryView[Constants.NUMBER_OF_INVENTORY_ITEMS];
+        
+        InventoryView energyPoints = new InventoryView();
+        energyPoints.setDescription("Energy Points");
+        energyPoints.setEnergyLevel(0);
+        energyPoints.setRequiredCalories(500);
+        inventory[Item.energyPoints.ordinal()] = energyPoints;
+        
+        
+        InventoryView time = new InventoryView();
+        time.setDescription ("The time that you have left to deliver all the presents.");
+        time.setTimeRemaining(0);
+        time.setTimeAvailable(24);
+        inventory[Item.time.ordinal()] = time;
+        
+        return inventory;
     }
 
     private static BreakfastFood[] createCalories() {
