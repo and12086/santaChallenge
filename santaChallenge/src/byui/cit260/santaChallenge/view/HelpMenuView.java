@@ -75,7 +75,8 @@ public class HelpMenuView extends View {
 
     
     private void displayWin() {
-        System.out.println("*** Santa needs to deliver his presents in a timely fashion.");
+        HowToWinView howToWin = new HowToWinView();
+        howToWin.display();
     }
 
     private void displayMove() {
