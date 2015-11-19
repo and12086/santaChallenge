@@ -6,6 +6,8 @@
 package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.GameControl;
+import byui.cit260.santaChallenge.model.InventoryView;
+import byui.cit260.santaChallenge.model.Location;
 import java.util.Scanner;
 import santachallenge.SantaChallenge;
 
@@ -65,8 +67,8 @@ public class GameMenuView extends View {
         System.out.println("*** continueGame function called");
     }
 
-    private void mapView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void mapView(locations) {
+        Location[] inventory = GameControl.getSortedInventoryList();
     }
 
     private void feedSanta() {
@@ -79,8 +81,21 @@ public class GameMenuView extends View {
     }
 
     private void inventory() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //get the sorted list of inventory items for the current game
+        InventoryView[] inventory = GameControl.getSortedInventoryList();
+        
+        System.out.println("\nList of Inventory Items");
+        System.out.println("Description" + "\t" +
+                            "Required" + "\t" +
+                            "You have");
+        
+        //for each inventory item
+        for (InventoryView inventoryItem : inventory) {
+            //DISPLAY the description, the required amount, and the amount the user has)
+            System.out.println(inventoryItem.getDescription() + "\t  " +
+                               inventoryItem.getRequired() + "\t  " +
+                               inventoryItem.getUserTime());
+ 
+        }
     }
 }
-    
-

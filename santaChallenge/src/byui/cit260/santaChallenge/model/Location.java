@@ -5,6 +5,7 @@
  */
 package byui.cit260.santaChallenge.model;
 
+import byui.cit260.santaChallenge.control.Scene;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -32,6 +33,7 @@ public class Location implements Serializable{
     private double milesTraveled;
    */
     public Location() {
+        
     }
 
     
@@ -82,6 +84,10 @@ public class Location implements Serializable{
 
     public void setSanta(ArrayList<Santa> santa) {
         this.santa = santa;
+    }
+
+    public void setScene(Scene scene) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

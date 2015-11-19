@@ -42,6 +42,30 @@ public class GameControl {
         MapControl.moveActorsToStartingLocation(map);
     }
 
+    public static InventoryView[] getSortedInventoryList() {
+       
+        //get inventory list for the current game
+        InventoryView[] originalInventoryList = 
+                SantaChallenge.getCurrentGame().getInventory();
+        
+        //clone originalList
+        InventoryView[] inventoryList = originalInventoryList.clone();
+        
+        //using a BubbleSort to sort the list of inventoryList by name
+        InventoryView tempInventoryView;
+        for (int i = 0; i<inventoryList.length-1; i++) {
+            for (int j = 0; j < inventoryList.length-1-i; j++) {
+                if (inventoryList[j].getDescription().
+                        compareToIgnoreCase(inventoryList[j + 1].getDescription()) > 0) {
+                    tempInventoryView = inventoryList[j];
+                    inventoryList[j] = inventoryList[j+1];
+                    inventoryList[j+1] = tempInventoryView;
+                }
+            }
+        }
+        return  inventoryList;
+    }
+
     public enum Item {
         energyPoints,
         time;
@@ -58,8 +82,7 @@ public class GameControl {
         energyPoints.setEnergyLevel(0);
         energyPoints.setRequiredCalories(500);
         inventory[Item.energyPoints.ordinal()] = energyPoints;
-        
-        
+       
         InventoryView time = new InventoryView();
         time.setDescription ("The time that you have left to deliver all the presents.");
         time.setTimeRemaining(0);

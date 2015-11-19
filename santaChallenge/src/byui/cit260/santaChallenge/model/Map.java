@@ -45,58 +45,8 @@ public class Map implements Serializable{
             }
         }
     } 
+
+    public Location[][] getLocations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
-
-
-    
-    /* public String getPlaceNameFind() {
-        return placeNameFind;
-    }
-
-    public void setPlaceNameFind(String placeNameFind) {
-        this.placeNameFind = placeNameFind;
-    }
-
-    public double getMilesFind() {
-        return milesFind;
-    }
-
-    public void setMilesFind(double milesFind) {
-        this.milesFind = milesFind;
-    }
-    */
-    
-    /*
-    @Override
-    public String toString() {
-        return "Map{" + "placeNameFind=" + placeNameFind + ", milesFind=" + milesFind + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.placeNameFind);
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.milesFind) ^ (Double.doubleToLongBits(this.milesFind) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Map other = (Map) obj;
-        if (!Objects.equals(this.placeNameFind, other.placeNameFind)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.milesFind) != Double.doubleToLongBits(other.milesFind)) {
-            return false;
-        }
-        return true;
-    }
-    */
-
-
