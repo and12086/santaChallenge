@@ -9,8 +9,6 @@ package byui.cit260.santaChallenge.control;
  *
  * @author Lisa Lou
  */
-public class InventoryControl {
-   
-    
+public class Constants {    
+    final static int NUMBER_OF_INVENTORY_ITEMS = 2;  
 }
-
