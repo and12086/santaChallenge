@@ -1,4 +1,4 @@
-   /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -10,17 +10,19 @@ import java.io.Serializable;
 /**
  *
  * @author Wendy
- * @author Lisa
  */
-public class BreakfastFood implements Serializable{
+
+
+public class InventoryItem implements Serializable{
     
+    //class instance variables
     private String description;
-    private double calorieCount;
-    private double healthBenefit;
+    private double requiredAmount;
+    private double actualAmount;   
     
-    public BreakfastFood(){
+    public InventoryItem() {
     }
-    
+
     public String getDescription() {
         return description;
     }
@@ -29,19 +31,21 @@ public class BreakfastFood implements Serializable{
         this.description = description;
     }
 
-    public double getCalorieCount() {
-        return calorieCount;
+    public double getRequiredAmount() {
+        return requiredAmount;
     }
 
-    public void setCalorieCount(double calorieCount) {
-        this.calorieCount = calorieCount;
+    public void setRequiredAmount(double requiredAmount) {
+        this.requiredAmount = requiredAmount;
     }
 
-    public double getHealthBenefit() {
-        return healthBenefit;
+    public double getActualAmount() {
+        return actualAmount;
     }
 
-    public void setHealthBenefit(double healthBenefit) {
-        this.healthBenefit = healthBenefit;
+    public void setActualAmount(double actualAmount) {
+        this.actualAmount = actualAmount;
     }
+
+   
 }

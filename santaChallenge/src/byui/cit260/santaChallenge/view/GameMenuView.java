@@ -6,10 +6,10 @@
 package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.GameControl;
-import byui.cit260.santaChallenge.model.InventoryView;
+import byui.cit260.santaChallenge.control.MapControl;
+import byui.cit260.santaChallenge.model.InventoryItem;
 import byui.cit260.santaChallenge.model.Location;
-import java.util.Scanner;
-import santachallenge.SantaChallenge;
+import byui.cit260.santaChallenge.model.Scene;
 
 /**
  *
@@ -41,7 +41,7 @@ public class GameMenuView extends View {
         
         switch (value){
             case "M"://View Map/Choose Location
-                this.mapView();
+                this.map();
                 break;
             case "F"://Feed Santa
                 this.feedSanta();
@@ -53,7 +53,7 @@ public class GameMenuView extends View {
                 this.inventory();
                 break; 
             case "C"://return to your game
-                return true;    
+                this.continueGame();    
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;        
@@ -67,10 +67,6 @@ public class GameMenuView extends View {
         System.out.println("*** continueGame function called");
     }
 
-    private void mapView(locations) {
-        Location[] inventory = GameControl.getSortedInventoryList();
-    }
-
     private void feedSanta() {
         FeedSantaView feedSanta = new FeedSantaView();
         feedSanta.display();
@@ -82,20 +78,24 @@ public class GameMenuView extends View {
 
     private void inventory() {
         //get the sorted list of inventory items for the current game
-        InventoryView[] inventory = GameControl.getSortedInventoryList();
+        InventoryItem[] inventory = GameControl.getSortedInventoryList();
         
         System.out.println("\nList of Inventory Items");
         System.out.println("Description" + "\t" +
                             "Required" + "\t" +
-                            "You have");
+                            "Acquired");
         
         //for each inventory item
-        for (InventoryView inventoryItem : inventory) {
+        for (InventoryItem inventoryItem : inventory) {
             //DISPLAY the description, the required amount, and the amount the user has)
             System.out.println(inventoryItem.getDescription() + "\t  " +
-                               inventoryItem.getRequired() + "\t  " +
-                               inventoryItem.getUserTime());
+                               inventoryItem.getRequiredAmount() + "\t  " +
+                               inventoryItem.getActualAmount());
  
         }
     }
-}
+
+    private void map() {
+        }
+        
+    }

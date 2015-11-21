@@ -7,7 +7,7 @@ package byui.cit260.santaChallenge.control;
 
 import byui.cit260.santaChallenge.model.BreakfastFood;
 import byui.cit260.santaChallenge.model.Game;
-import byui.cit260.santaChallenge.model.InventoryView;
+import byui.cit260.santaChallenge.model.InventoryItem;
 import byui.cit260.santaChallenge.model.Map;
 import byui.cit260.santaChallenge.model.Player;
 import byui.cit260.santaChallenge.model.Sleigh;
@@ -26,14 +26,14 @@ public class GameControl {
         game.setPlayer(player); //save player in game
         
         // create the inventory list and save in the game
-        InventoryView[] inventoryList = GameControl.createInventoryList();
-        game.setInventory(inventoryList);
+        InventoryItem[] inventory = GameControl.createInventoryList();
+        game.setInventoryItem(inventory);
         
         Sleigh sleigh = new Sleigh(); //create new sleigh
         game.setSleigh(sleigh); //save sleigh in game
         
-        BreakfastFood[] calories = GameControl.createCalories();
-        game.setBreakfastFood(calories);
+        BreakfastFood[] breakfastFood = GameControl.createBreakfastFood();
+        game.setBreakfastFood(breakfastFood);
         
         Map map = MapControl.createMap();//create and initialize new map
         game.setMap(map);//save map in game
@@ -42,24 +42,24 @@ public class GameControl {
         MapControl.moveActorsToStartingLocation(map);
     }
 
-    public static InventoryView[] getSortedInventoryList() {
+    public static InventoryItem[] getSortedInventoryList() {
        
         //get inventory list for the current game
-        InventoryView[] originalInventoryList = 
+        InventoryItem[] originalInventoryList = 
                 SantaChallenge.getCurrentGame().getInventory();
         
         //clone originalList
-        InventoryView[] inventoryList = originalInventoryList.clone();
+        InventoryItem[] inventoryList = originalInventoryList.clone();
         
         //using a BubbleSort to sort the list of inventoryList by name
-        InventoryView tempInventoryView;
+        InventoryItem tempInventoryList;
         for (int i = 0; i<inventoryList.length-1; i++) {
             for (int j = 0; j < inventoryList.length-1-i; j++) {
                 if (inventoryList[j].getDescription().
                         compareToIgnoreCase(inventoryList[j + 1].getDescription()) > 0) {
-                    tempInventoryView = inventoryList[j];
+                    tempInventoryList = inventoryList[j];
                     inventoryList[j] = inventoryList[j+1];
-                    inventoryList[j+1] = tempInventoryView;
+                    inventoryList[j+1] = tempInventoryList;
                 }
             }
         }
@@ -69,31 +69,105 @@ public class GameControl {
     public enum Item {
         energyPoints,
         time;
-}
+    }
     
-    
-    public static InventoryView[] createInventoryList() {
+    public static InventoryItem[] createInventoryList() {
         
         //created array(list) of inventory items
-        InventoryView[] inventory = new InventoryView[Constants.NUMBER_OF_INVENTORY_ITEMS];
+        InventoryItem[] inventory = new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
         
-        InventoryView energyPoints = new InventoryView();
-        energyPoints.setDescription("Energy Points");
-        energyPoints.setEnergyLevel(0);
-        energyPoints.setRequiredCalories(500);
+        InventoryItem energyPoints = new InventoryItem();
+        energyPoints.setDescription("Energy Points: Did you feed Santa enough healthy foods at breakfast to get him through his deliveries?");
+        energyPoints.setRequiredAmount(0);
+        energyPoints.setActualAmount(0);
         inventory[Item.energyPoints.ordinal()] = energyPoints;
        
-        InventoryView time = new InventoryView();
-        time.setDescription ("The time that you have left to deliver all the presents.");
-        time.setTimeRemaining(0);
-        time.setTimeAvailable(24);
+        InventoryItem time = new InventoryItem();
+        energyPoints.setDescription("Time:  How much time do you have left to help Santa finish his deliveries?");
+        energyPoints.setRequiredAmount(0);
+        energyPoints.setActualAmount(0);
         inventory[Item.time.ordinal()] = time;
         
         return inventory;
     }
-
-    private static BreakfastFood[] createCalories() {
-        System.out.println("*** called createCalories() in GameControl ***");
-        return null;
-    }   
+    public enum Food {
+    poptarts,
+    banana,
+    ham_Cheese_Omelet,
+    toast_with_PeanutButter,
+    lucky_Charms,
+    oatmeal,
+    yogurt,
+    nothing,
+    bacon,
+    sausage;
+    }
+    
+    public static BreakfastFood[] createBreakfastFood() {
+         //created array(list) of inventory items
+        BreakfastFood[] breakfastFood = new BreakfastFood[Constants.NUMBER_OF_BREAKFAST_FOODS];
+        
+        BreakfastFood poptarts = new BreakfastFood();
+        poptarts.setDescription("Poptarts");
+        poptarts.setCalorieCount(200);
+        poptarts.setHealthBenefit(50);
+        breakfastFood[Food.poptarts.ordinal()] = poptarts;
+        
+        BreakfastFood banana = new BreakfastFood();
+        banana.setDescription("Banana");
+        banana.setCalorieCount(105);
+        banana.setHealthBenefit(0);
+        breakfastFood[Food.banana.ordinal()] = banana;
+        
+        BreakfastFood ham_Cheese_Omelet = new BreakfastFood();
+        ham_Cheese_Omelet.setDescription("Ham & Cheese Omelet");
+        ham_Cheese_Omelet.setCalorieCount(250);
+        ham_Cheese_Omelet.setHealthBenefit(0);
+        breakfastFood[Food.ham_Cheese_Omelet.ordinal()] = ham_Cheese_Omelet;
+        
+        BreakfastFood toast_with_PeanutButter = new BreakfastFood();
+        toast_with_PeanutButter.setDescription("Toast with Peanut Butter");
+        toast_with_PeanutButter.setCalorieCount(267);
+        toast_with_PeanutButter.setHealthBenefit(0);
+        breakfastFood[Food.toast_with_PeanutButter.ordinal()] = toast_with_PeanutButter;
+        
+        BreakfastFood lucky_Charms = new BreakfastFood();
+        lucky_Charms.setDescription("Lucky Charms with Milk");
+        lucky_Charms.setCalorieCount(220);
+        lucky_Charms.setHealthBenefit(50);
+        breakfastFood[Food.lucky_Charms.ordinal()] = lucky_Charms;
+        
+        BreakfastFood oatmeal = new BreakfastFood();
+        oatmeal.setDescription("Oatmeal");
+        oatmeal.setCalorieCount(160);
+        oatmeal.setHealthBenefit(0);
+        breakfastFood[Food.oatmeal.ordinal()] = oatmeal;
+        
+        BreakfastFood yogurt = new BreakfastFood();
+        yogurt.setDescription("Yogurt");
+        yogurt.setCalorieCount(100);
+        yogurt.setHealthBenefit(0);
+        breakfastFood[Food.yogurt.ordinal()] = yogurt;
+        
+        BreakfastFood nothing = new BreakfastFood();
+        nothing.setDescription("Nothing - Too Busy!");
+        nothing.setCalorieCount(0);
+        nothing.setHealthBenefit(50);
+        breakfastFood[Food.nothing.ordinal()] = nothing;
+        
+        BreakfastFood bacon = new BreakfastFood();
+        bacon.setDescription("Bacon - 2 slices");
+        bacon.setCalorieCount(80);
+        bacon.setHealthBenefit(0);
+        breakfastFood[Food.bacon.ordinal()] = bacon;
+        
+        BreakfastFood sausage = new BreakfastFood();
+        sausage.setDescription("Sausage - 2 links");
+        sausage.setCalorieCount(210);
+        sausage.setHealthBenefit(0);
+        breakfastFood[Food.sausage.ordinal()] = sausage;
+        
+        return breakfastFood;
+    }
 }
+

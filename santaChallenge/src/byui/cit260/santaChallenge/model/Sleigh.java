@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class Sleigh implements Serializable{
     //class instance variables
-    private String description;
+    private final String description;
     private double pullCapacity;
     private double numberOfPresents;
     private double flyingSpeed;
@@ -26,6 +26,10 @@ public class Sleigh implements Serializable{
         this.pullCapacity = 0;
         this.numberOfPresents = 0;
         this.flyingSpeed = 0;
+    }
+
+    public String getDescription() {
+        return description;
     }
     
     public double getPullCapacity() {

@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Wendy
  */
-public enum Santa implements Serializable{
+public enum Actor implements Serializable{
        
     Santa("The big man himself"),
     Mrs_Claus("She is Santa's wife and the true brains behind the operation"),
@@ -20,24 +20,13 @@ public enum Santa implements Serializable{
     Jingle("Santa's head elf"),
     Grinch("Santa's nemesis");
     
-//class instance variables
-    //private final double energyPoints;
-    //private final double time;
     private final String description;
     private final Point coordinates;
 
-    Santa(String description) {
+    Actor(String description) {
         this.description = description;
-        coordinates = new Point(1,1);
+        coordinates = new Point(0,0);
     }
-    
-    /*public double getEnergyPoints() {
-        return energyPoints;
-    }
-
-    public double getTime() {
-        return time;
-    }*/
 
     public String getDescription() {
         return description;
@@ -49,5 +38,5 @@ public enum Santa implements Serializable{
 }
     /*@Override
     public String toString() {
-        return "Santa{" + "name=" + name + ", energyPoints=" + energyPoints + ", time=" + time + '}';
+        return "Actor{" + "name=" + name + ", energyPoints=" + energyPoints + ", time=" + time + '}';
     }*/

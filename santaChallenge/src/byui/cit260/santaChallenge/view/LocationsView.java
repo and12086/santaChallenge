@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.santaChallenge.control;
+package byui.cit260.santaChallenge.view;
+
+import java.io.Serializable;
 
 /**
  *
- * @author Lisa Lou
+ * @author Wendy
  */
-class Scene {
+public class LocationsView implements Serializable {
     
 }

@@ -5,18 +5,8 @@
  */
 package santachallenge;
 
-import byui.cit260.santaChallenge.model.BreakfastFood;
-import byui.cit260.santaChallenge.model.DeliveryScene;
 import byui.cit260.santaChallenge.model.Game;
-import byui.cit260.santaChallenge.model.InventoryView;
-import byui.cit260.santaChallenge.model.Location;
-import byui.cit260.santaChallenge.model.Map;
-import byui.cit260.santaChallenge.model.NorthPoleScene;
 import byui.cit260.santaChallenge.model.Player;
-import byui.cit260.santaChallenge.model.Present;
-import byui.cit260.santaChallenge.model.Reindeer;
-import byui.cit260.santaChallenge.model.Santa;
-import byui.cit260.santaChallenge.model.Sleigh;
 import byui.cit260.santaChallenge.view.StartProgramView;
 
 /**

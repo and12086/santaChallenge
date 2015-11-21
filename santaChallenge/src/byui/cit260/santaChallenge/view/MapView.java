@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.santaChallenge.control;
+package byui.cit260.santaChallenge.view;
+
+import java.io.Serializable;
 
 /**
  *
- * @author Lisa Lou
+ * @author Wendy
  */
-public class Constants {    
-    final static int NUMBER_OF_INVENTORY_ITEMS = 2;
-    final static int NUMBER_OF_BREAKFAST_FOODS = 10;
+public class MapView implements Serializable{
+    
 }

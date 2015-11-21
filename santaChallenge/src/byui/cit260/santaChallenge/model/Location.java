@@ -5,7 +5,7 @@
  */
 package byui.cit260.santaChallenge.model;
 
-import byui.cit260.santaChallenge.control.Scene;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -20,24 +20,13 @@ public class Location implements Serializable{
     private int row;
     private int column;
     private boolean visited;
-    private DeliveryScene deliveryScene;
-    private DeliveryScene northPoleScene;
-    private ArrayList<Santa> santa;
+    private Scene scenes;
+    private ArrayList<Actor> actor;
     
-    //class instance variables
-    /*
-    private String placeName;
-    private String visited;
-    private double timeRemaining;
-    private double energyPoints;
-    private double milesTraveled;
-   */
     public Location() {
         
     }
 
-    
-    
     public int getRow() {
         return row;
     }
@@ -62,96 +51,30 @@ public class Location implements Serializable{
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
-    public DeliveryScene getDeliveryScene() {
-        return deliveryScene;
+    public Scene getScenes() {
+        return scenes;
     }
 
-    public void setDeliveryScene(DeliveryScene deliveryScene) {
-        this.deliveryScene = deliveryScene;
+    public void setScene(Scene scenes) {
+        this.scenes = scenes;
     }
 
-    public DeliveryScene getNorthPoleScene() {
-        return northPoleScene;
+    public ArrayList<Actor> getActor() {
+        return actor;
     }
 
-    public void setNorthPoleScene(DeliveryScene northPoleScene) {
-        this.northPoleScene = northPoleScene;
-    }
-
-    public ArrayList<Santa> getSanta() {
-        return santa;
-    }
-
-    public void setSanta(ArrayList<Santa> santa) {
-        this.santa = santa;
-    }
-
-    public void setScene(Scene scene) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-   
-
-}
-
-    
-    
-    
-    /*
-    public String getPlaceName() {
-        return placeName;
-    }
-
-    public void setPlaceName(String placeName) {
-        this.placeName = placeName;
-    }
-
-    public String getVisited() {
-        return visited;
-    }
-
-    public void setVisited(String visited) {
-        this.visited = visited;
-    }
-
-    public double getTimeRemaining() {
-        return timeRemaining;
-    }
-
-    public void setTimeRemaining(double timeRemaining) {
-        this.timeRemaining = timeRemaining;
-    }
-
-    public double getEnergyPoints() {
-        return energyPoints;
-    }
-
-    public void setEnergyPoints(double energyPoints) {
-        this.energyPoints = energyPoints;
-    }
-
-    public double getMilesTraveled() {
-        return milesTraveled;
-    }
-
-    public void setMilesTraveled(double milesTraveled) {
-        this.milesTraveled = milesTraveled;
-    }
-
-    @Override
-    public String toString() {
-        return "Location{" + "placeName=" + placeName + ", visited=" + visited + ", timeRemaining=" + timeRemaining + ", energyPoints=" + energyPoints + ", milesTraveled=" + milesTraveled + '}';
+    public void setActor(ArrayList<Actor> actor) {
+        this.actor = actor;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 47 * hash + Objects.hashCode(this.placeName);
-        hash = 47 * hash + Objects.hashCode(this.visited);
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.timeRemaining) ^ (Double.doubleToLongBits(this.timeRemaining) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.energyPoints) ^ (Double.doubleToLongBits(this.energyPoints) >>> 32));
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.milesTraveled) ^ (Double.doubleToLongBits(this.milesTraveled) >>> 32));
+        hash = 53 * hash + this.row;
+        hash = 53 * hash + this.column;
+        hash = 53 * hash + (this.visited ? 1 : 0);
+        hash = 53 * hash + Objects.hashCode(this.scenes);
+        hash = 53 * hash + Objects.hashCode(this.actor);
         return hash;
     }
 
@@ -164,25 +87,27 @@ public class Location implements Serializable{
             return false;
         }
         final Location other = (Location) obj;
-        if (!Objects.equals(this.placeName, other.placeName)) {
+        if (this.row != other.row) {
             return false;
         }
-        if (!Objects.equals(this.visited, other.visited)) {
+        if (this.column != other.column) {
             return false;
         }
-        if (Double.doubleToLongBits(this.timeRemaining) != Double.doubleToLongBits(other.timeRemaining)) {
+        if (this.visited != other.visited) {
             return false;
         }
-        if (Double.doubleToLongBits(this.energyPoints) != Double.doubleToLongBits(other.energyPoints)) {
+        if (!Objects.equals(this.scenes, other.scenes)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.milesTraveled) != Double.doubleToLongBits(other.milesTraveled)) {
+        if (!Objects.equals(this.actor, other.actor)) {
             return false;
         }
         return true;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Location{" + "row=" + row + ", column=" + column + ", visited=" + visited + ", scene=" + scenes + ", actor=" + actor + '}';
+    }
 }
- */
+

@@ -6,6 +6,8 @@
 package byui.cit260.santaChallenge.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -13,27 +15,28 @@ import java.io.Serializable;
  * @author Lisa
  */
 public class Game implements Serializable {
-    private double timeLimit;
     
+    public double time;
     private Map map;
     private Player player;
     private Sleigh sleigh;
     
-    private InventoryView[] inventory;
-    private String[] santa;
+    private InventoryItem[] inventory;
+    private String[] actor;
     private BreakfastFood[] breakfastFood;
     
     public Game() {
     }
 
-    public double getTimeLimit() {
-        return timeLimit;
+    public double getTime() {
+        return time;
     }
 
-    public void setTimeLimit(double timeLimit) {
-        this.timeLimit = timeLimit;
+    public void setTime(double time) {
+        this.time = time;
     }
 
+    
     public Sleigh getSleigh() {
         return sleigh;
     }
@@ -58,20 +61,20 @@ public class Game implements Serializable {
         this.player = player;
     }
 
-    public InventoryView[] getInventory() {
+    public InventoryItem[] getInventory() {
         return inventory;
     }
 
-    public void setInventoryVIew(InventoryView[] inventory) {
+    public void setInventoryItem(InventoryItem[] inventory) {
         this.inventory = inventory;
     }
 
-    public String[] getSanta() {
-        return santa;
+    public String[] getActor() {
+        return actor;
     }
 
-    public void setSanta(String[] santa) {
-        this.santa = santa;
+    public void setActor(String[] actor) {
+        this.actor = actor;
     }
 
      public BreakfastFood[] getBreakfastFood() {
@@ -81,17 +84,17 @@ public class Game implements Serializable {
     public void setBreakfastFood(BreakfastFood[] breakfastFood) {
         this.breakfastFood = breakfastFood;
     }
-    
-    /*@Override
-    public String toString() {
-        return "Game{" + "timeLimit=" + timeLimit + ", companion=" + companion + '}';
-    }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + (int) (Double.doubleToLongBits(this.timeLimit) ^ (Double.doubleToLongBits(this.timeLimit) >>> 32));
-        hash = 37 * hash + Objects.hashCode(this.companion);
+        int hash = 7;
+        hash = 29 * hash + (int) (Double.doubleToLongBits(this.time) ^ (Double.doubleToLongBits(this.time) >>> 32));
+        hash = 29 * hash + Objects.hashCode(this.map);
+        hash = 29 * hash + Objects.hashCode(this.player);
+        hash = 29 * hash + Objects.hashCode(this.sleigh);
+        hash = 29 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 29 * hash + Arrays.deepHashCode(this.actor);
+        hash = 29 * hash + Arrays.deepHashCode(this.breakfastFood);
         return hash;
     }
 
@@ -104,16 +107,40 @@ public class Game implements Serializable {
             return false;
         }
         final Game other = (Game) obj;
-        if (Double.doubleToLongBits(this.timeLimit) != Double.doubleToLongBits(other.timeLimit)) {
+        if (Double.doubleToLongBits(this.time) != Double.doubleToLongBits(other.time)) {
             return false;
         }
-        if (!Objects.equals(this.companion, other.companion)) {
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (!Objects.equals(this.sleigh, other.sleigh)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.inventory, other.inventory)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.actor, other.actor)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.breakfastFood, other.breakfastFood)) {
             return false;
         }
         return true;
-    }*/
+    }
 
-    public void setInventory(InventoryView[] inventoryList) {
+    @Override
+    public String toString() {
+        return "Game{" + "timeLimit=" + time + ", map=" + map + ", player=" + player + ", sleigh=" + sleigh + ", inventory=" + inventory + ", actor=" + actor + ", breakfastFood=" + breakfastFood + '}';
+    }
+    
+    //public void setInventory(InventoryItem[] inventoryList) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
+
+    public Scene[] getScene() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

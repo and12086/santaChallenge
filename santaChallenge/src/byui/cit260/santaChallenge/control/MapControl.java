@@ -5,8 +5,11 @@
  */
 package byui.cit260.santaChallenge.control;
 
+import byui.cit260.santaChallenge.model.Game;
+import byui.cit260.santaChallenge.model.Scene;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
+import santachallenge.SantaChallenge;
 
 /**
  *
@@ -16,7 +19,7 @@ public class MapControl {
 
     public static Map createMap() {
         //create the map
-        Map map = new Map(20,20);
+        Map map = new Map(5, 5);
         
         //create a list of the different scenes in the game
         Scene[] scenes = createScenes();
@@ -28,7 +31,7 @@ public class MapControl {
     }
 
     static void moveActorsToStartingLocation(Map map) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       System.out.println("call the moveActorsToStartingLocation function");
     }
 
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
@@ -37,7 +40,7 @@ public class MapControl {
         //start point
         locations[0][0].setScene(scenes[SceneType.mexicoCity.ordinal()]);
         locations[0][1].setScene(scenes[SceneType.santasKitchen.ordinal()]);
-        locations[0][2].setScene(scenes[SceneType.start.ordinal()]);
+        locations[0][2].setScene(scenes[SceneType.northPole.ordinal()]);
         locations[0][3].setScene(scenes[SceneType.santasWorkshop.ordinal()]);
         locations[0][4].setScene(scenes[SceneType.stables.ordinal()]);
         locations[1][0].setScene(scenes[SceneType.ottawa.ordinal()]);
@@ -62,8 +65,54 @@ public class MapControl {
         locations[4][4].setScene(scenes[SceneType.finish.ordinal()]);
     }
 
+    public static Scene[] getSortedScenes() {
+       
+        //get inventory list for the current game
+        Scene[] originalScenes = 
+                SantaChallenge.getCurrentGame().getScene();
+        
+        //clone originalList
+        Scene[] scenes = originalScenes.clone();
+        
+        //using a BubbleSort to sort the list of inventoryList by name
+        Scene tempScenes;
+        for (int i = 0; i<scenes.length-1; i++) {
+            for (int j = 0; j < scenes.length-1-i; j++) {
+                if (scenes[j].getDescription().
+                        compareToIgnoreCase(scenes[j + 1].getDescription()) > 0) {
+                    tempScenes = scenes[j];
+                    scenes[j] = scenes[j+1];
+                    scenes[j+1] = tempScenes;
+                }
+            }
+        }
+        return  scenes;
+    }
+ 
+   /* public static Scene[] doInsertionSort() {
+        
+        Scene[] originalScenes = 
+                SantaChallenge.getCurrentGame().getScene();
+        
+        Scene[] scenes = originalScene.clone();
+        
+        Scene temp;
+        for (int i = 0; i < Scene.length; i++) {
+        for(int j = i ; j > 0 ; j--){
+        if(scenes[j] < scenes[j-1]){
+            temp = scenes[j];
+            scenes[j] = scenes[j-1];
+            scenes[j-1] = temp;
+        }
+        }
+        }
+            return scenes;
+    }
+}
+   */  
+    
     public enum SceneType {
-        start,
+        northPole,
         santasKitchen,
         santasWorkshop,
         stables,
@@ -91,34 +140,197 @@ public class MapControl {
     }
     
     private static Scene[] createScenes() {
-        Game game = new SantaChallenge.getCurrentGame();
+        Game currentGame = SantaChallenge.getCurrentGame();  //this may need to read Game game = SantaChallenge.getCurrentGame();  I'm not sure.
         
         Scene[] scenes = new Scene[SceneType.values().length];
         
-        Scene startingScene = new scene();
-        startingScene.setDescription(
+        Scene northPole = new Scene();
+        northPole.setDescription(
                     "\n Twas the night before Christmas and at the North Pole nothing"
                         + "was quiet, not even the mouse. Santa and the elves "
                         + "are busy getting ready to deliver Christmas magic to "
                         + "the world.");
-        startingScene.setMapSymbol(" ST ");
-        startingScene.setBlocked(false);
-        startingScene.setTravelTime(24);
-        scenes[SceneType.start.ordinal()] = startingScene;
+        northPole.setMapSymbol(" NP ");
+        northPole.setBlocked(false);
+        northPole.setMilesFromNorthPole(0);
+        scenes[SceneType.northPole.ordinal()] = northPole;
         
-        Scene finishScene = new Scene();
-        finishScene.setDescription(
+        Scene santasKitchen = new Scene();
+        santasKitchen.setDescription("Sant's Kitchen");
+        santasKitchen.setMapSymbol(" SK ");
+        santasKitchen.setBlocked(false);
+        santasKitchen.setMilesFromNorthPole(0);
+        scenes[SceneType.santasKitchen.ordinal()] = santasKitchen;
+        
+        Scene santasWorkshop = new Scene();
+        santasWorkshop.setDescription("Santa's Workshop");
+        santasWorkshop.setMapSymbol(" SW ");
+        santasWorkshop.setBlocked(false);
+        santasWorkshop.setMilesFromNorthPole(0);
+        scenes[SceneType.santasWorkshop.ordinal()] = santasWorkshop;
+        
+        Scene stables = new Scene();
+        stables.setDescription("Santa's stables");
+        stables.setMapSymbol(" RD ");
+        stables.setBlocked(false);
+        stables.setMilesFromNorthPole(0);
+        scenes[SceneType.stables.ordinal()] = stables;
+        
+        Scene seattle = new Scene();
+        seattle.setDescription("Seattle, Washington, USA");
+        seattle.setMapSymbol(" SU ");
+        seattle.setBlocked(false);
+        seattle.setMilesFromNorthPole(0);
+        scenes[SceneType.seattle.ordinal()] = seattle;
+        
+        Scene ottawa = new Scene();
+        ottawa.setDescription("Ottawa, Canada");
+        ottawa.setMapSymbol(" OC ");
+        ottawa.setBlocked(false);
+        ottawa.setMilesFromNorthPole(0);
+        scenes[SceneType.ottawa.ordinal()] = ottawa;
+        
+        Scene anchorage = new Scene();
+        anchorage.setDescription("Anchorage, Alaska, USA");
+        anchorage.setMapSymbol(" AU ");
+        anchorage.setBlocked(false);
+        anchorage.setMilesFromNorthPole(0);
+        scenes[SceneType.anchorage.ordinal()] = anchorage;
+        
+        Scene mexicoCity = new Scene();
+        mexicoCity.setDescription("Mexico City, Mexico");
+        mexicoCity.setMapSymbol(" MC ");
+        mexicoCity.setBlocked(false);
+        mexicoCity.setMilesFromNorthPole(0);
+        scenes[SceneType.mexicoCity.ordinal()] = mexicoCity;
+        
+        Scene saoPaulo = new Scene();
+        saoPaulo.setDescription("Sao Paulo, Brazil");
+        saoPaulo.setMapSymbol(" SP ");
+        saoPaulo.setBlocked(false);
+        saoPaulo.setMilesFromNorthPole(0);
+        scenes[SceneType.saoPaulo.ordinal()] = saoPaulo;
+        
+        Scene buenasAires = new Scene();
+        buenasAires.setDescription("Buenos Aires, Argentina");
+        buenasAires.setMapSymbol(" BA ");
+        buenasAires.setBlocked(false);
+        buenasAires.setMilesFromNorthPole(0);
+        scenes[SceneType.buenasAires.ordinal()] = buenasAires;
+        
+        Scene bogota = new Scene();
+        bogota.setDescription("Bogota, Columbia");
+        bogota.setMapSymbol(" BC ");
+        bogota.setBlocked(false);
+        bogota.setMilesFromNorthPole(0);
+        scenes[SceneType.bogota.ordinal()] = bogota;
+        
+         Scene capeTown = new Scene();
+        capeTown.setDescription("Capetown, South Africa");
+        capeTown.setMapSymbol(" CT ");
+        capeTown.setBlocked(false);
+        capeTown.setMilesFromNorthPole(0);
+        scenes[SceneType.capeTown.ordinal()] = capeTown;
+        
+        Scene nairobi = new Scene();
+        nairobi.setDescription("Nairobi, Kenya");
+        nairobi.setMapSymbol(" NK ");
+        nairobi.setBlocked(false);
+        nairobi.setMilesFromNorthPole(0);
+        scenes[SceneType.nairobi.ordinal()] = nairobi;
+        
+        Scene casaBlanca = new Scene();
+        casaBlanca.setDescription("Casablanca, Morocco");
+        casaBlanca.setMapSymbol(" CM ");
+        casaBlanca.setBlocked(false);
+        casaBlanca.setMilesFromNorthPole(0);
+        scenes[SceneType.casaBlanca.ordinal()] = casaBlanca;
+        
+        Scene moscow = new Scene();
+        moscow.setDescription("Moscow, Russia");
+        moscow.setMapSymbol(" MR ");
+        moscow.setBlocked(false);
+        moscow.setMilesFromNorthPole(0);
+        scenes[SceneType.moscow.ordinal()] = moscow;
+        
+        Scene london = new Scene();
+        london.setDescription("London, England");
+        london.setMapSymbol(" LE ");
+        london.setBlocked(false);
+        london.setMilesFromNorthPole(0);
+        scenes[SceneType.london.ordinal()] = london;
+        
+        Scene madrid = new Scene();
+        madrid.setDescription("Madrid, Spain");
+        madrid.setMapSymbol(" MS ");
+        madrid.setBlocked(false);
+        madrid.setMilesFromNorthPole(0);
+        scenes[SceneType.madrid.ordinal()] = madrid;
+        
+        Scene prague = new Scene();
+        prague.setDescription("Prague, Czech Republic");
+        prague.setMapSymbol(" PC ");
+        prague.setBlocked(false);
+        prague.setMilesFromNorthPole(0);
+        scenes[SceneType.prague.ordinal()] = prague;
+        
+        Scene mumbai = new Scene();
+        mumbai.setDescription("Mumbai, India");
+        mumbai.setMapSymbol(" MI ");
+        mumbai.setBlocked(false);
+        mumbai.setMilesFromNorthPole(0);
+        scenes[SceneType.mumbai.ordinal()] = mumbai;
+        
+        Scene hongKong = new Scene();
+        hongKong.setDescription("Hong Kong, China");
+        hongKong.setMapSymbol(" HK ");
+        hongKong.setBlocked(false);
+        hongKong.setMilesFromNorthPole(0);
+        scenes[SceneType.hongKong.ordinal()] = hongKong;
+        
+        Scene ulaanbaatar = new Scene();
+        ulaanbaatar.setDescription("Ulaanbaatar, Mongolia");
+        ulaanbaatar.setMapSymbol(" UM ");
+        ulaanbaatar.setBlocked(false);
+        ulaanbaatar.setMilesFromNorthPole(0);
+        scenes[SceneType.ulaanbaatar.ordinal()] = ulaanbaatar;
+        
+        Scene bangkok = new Scene();
+        bangkok.setDescription("Bangkok, Thailand");
+        bangkok.setMapSymbol(" BT ");
+        bangkok.setBlocked(false);
+        bangkok.setMilesFromNorthPole(0);
+        scenes[SceneType.bangkok.ordinal()] = bangkok;
+        
+        Scene perth = new Scene();
+        perth.setDescription("Perth, Austrailia");
+        perth.setMapSymbol(" PA ");
+        perth.setBlocked(false);
+        perth.setMilesFromNorthPole(0);
+        scenes[SceneType.perth.ordinal()] = perth;
+        
+        Scene auckland = new Scene();
+        auckland.setDescription("Auckland, New Zealand");
+        auckland.setMapSymbol(" ANZ ");
+        auckland.setBlocked(false);
+        auckland.setMilesFromNorthPole(0);
+        scenes[SceneType.auckland.ordinal()] = auckland;
+        
+        Scene finish = new Scene();
+        finish.setDescription(
                         "\n You did it.  You were able to deliver presents throughout the"
                         + "world, and none of the children saw you. As you head "
                         + "back home to the North Pole you exclaim, 'Merry Christmas"
                         + "to all and to all a good night!'");
-        finishScene.setMapSymbol(" FN ");
-        finishScene.setBlocked(false);
-        finishScene.setTravelTime(Double.POSITIVE_INFINITY);
-        scenes[SceneType.finish.ordinal()] = finishScene;
+        finish.setMapSymbol(" FN ");
+        finish.setBlocked(false);
+        finish.setMilesFromNorthPole(0);
+        scenes[SceneType.finish.ordinal()] = finish;
+        
+        return scenes;
     }
     
-    public double calcTimeTraveled(double flyingSpeed, double presetTimeLimit, double miles) {
+    /*public double calcTimeTraveled(double flyingSpeed, double presetTimeLimit, double miles) {
         
         if (miles <= 0 || miles > 19200){
             return -1;
@@ -131,5 +343,5 @@ public class MapControl {
         
         double timeTraveled = presetTimeLimit - (miles / flyingSpeed);
         return timeTraveled;
-    }
+    }*/
 }

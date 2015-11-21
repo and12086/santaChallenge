@@ -6,7 +6,7 @@
 package byui.cit260.santaChallenge.model;
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.Arrays;
 /**
  *
  * @author Wendy
@@ -46,7 +46,65 @@ public class Map implements Serializable{
         }
     } 
 
-    public Location[][] getLocations() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getNoOfRows() {
+        return noOfRows;
     }
+
+    public void setNoOfRows(int noOfRows) {
+        this.noOfRows = noOfRows;
+    }
+
+    public int getNoOfColumns() {
+        return noOfColumns;
+    }
+
+    public void setNoOfColumns(int noOfColumns) {
+        this.noOfColumns = noOfColumns;
+    }
+
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.noOfRows;
+        hash = 89 * hash + this.noOfColumns;
+        hash = 89 * hash + Arrays.deepHashCode(this.locations);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Map other = (Map) obj;
+        if (this.noOfRows != other.noOfRows) {
+            return false;
+        }
+        if (this.noOfColumns != other.noOfColumns) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.locations, other.locations)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Map{" + "noOfRows=" + noOfRows + ", noOfColumns=" + noOfColumns + ", locations=" + locations + '}';
+    }
+
+    
+
 }
