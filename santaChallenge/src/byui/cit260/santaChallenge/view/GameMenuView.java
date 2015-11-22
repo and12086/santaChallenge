@@ -6,9 +6,9 @@
 package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.GameControl;
-import byui.cit260.santaChallenge.control.MapControl;
 import byui.cit260.santaChallenge.model.InventoryItem;
 import byui.cit260.santaChallenge.model.Location;
+import byui.cit260.santaChallenge.model.Map;
 import byui.cit260.santaChallenge.model.Scene;
 
 /**
@@ -41,7 +41,7 @@ public class GameMenuView extends View {
         
         switch (value){
             case "M"://View Map/Choose Location
-                this.displaymap();
+                this.displayMap();
                 break;
             case "F"://Feed Santa
                 this.feedSanta();
@@ -95,9 +95,35 @@ public class GameMenuView extends View {
         }
     }
 
-    private void displaymap() {
+  
+
+    private void displayMap(Map map, Location[][] locations, Location location, Scene scene) {
+        
+        System.out.println("Map Locations");
+        System.out.println(0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
+        
+        int noOfRows = 5;
+        for (int row=0; row < noOfRows; row++){
+            System.out.println("*****" + "\n" + row); 
+                    
+        }
+        int noOfColumns = 5;
+        for (int column=0; column < noOfColumns; column++){
+            System.out.println("|");
+            
+            int row = 0;
+            location = locations[row][column];
+            
+            if (location.getIsVisited == true){
+                System.out.println(Scene.getMapSymbol);
+            }
+                else{
+                System.out.println("??");//print to indicate location has not been visited yet
+            }
+            }
+            System.out.println("*****");//print final row divider
+        }
+        
         
     }
 
-   
-    }

@@ -88,18 +88,18 @@ public class MapControl {
         }
         return  scenes;
     }
- 
-   /* public static Scene[] doInsertionSort() {
+ /*
+    public static Scene[] doInsertionSort() {
         
         Scene[] originalScenes = 
                 SantaChallenge.getCurrentGame().getScenes();
         
-        Scene[] scenes = originalScene.clone();
+        Scene[] scenes = originalScenes.clone();
         
         Scene temp;
-        for (int i = 0; i < Scene.length; i++) {
+        for (int i = 0; i < scenes.length; i++) {
         for(int j = i ; j > 0 ; j--){
-        if(scenes[j] < scenes[j-1]){
+        if(scenes[j].getDescription(). < scenes[j-1].getDescription()){
             temp = scenes[j];
             scenes[j] = scenes[j-1];
             scenes[j-1] = temp;
