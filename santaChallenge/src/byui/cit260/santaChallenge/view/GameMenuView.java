@@ -41,7 +41,7 @@ public class GameMenuView extends View {
         
         switch (value){
             case "M"://View Map/Choose Location
-                this.map();
+                this.displaymap();
                 break;
             case "F"://Feed Santa
                 this.feedSanta();
@@ -95,7 +95,9 @@ public class GameMenuView extends View {
         }
     }
 
-    private void map() {
-        }
+    private void displaymap() {
         
+    }
+
+   
     }

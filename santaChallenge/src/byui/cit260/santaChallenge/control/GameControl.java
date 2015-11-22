@@ -32,7 +32,7 @@ public class GameControl {
         Sleigh sleigh = new Sleigh(); //create new sleigh
         game.setSleigh(sleigh); //save sleigh in game
         
-        BreakfastFood[] breakfastFood = GameControl.createBreakfastFood();
+        BreakfastFood[] breakfastFood = GameControl.createBreakfastList();
         game.setBreakfastFood(breakfastFood);
         
         Map map = MapControl.createMap();//create and initialize new map
@@ -103,7 +103,7 @@ public class GameControl {
     sausage;
     }
     
-    public static BreakfastFood[] createBreakfastFood() {
+    public static BreakfastFood[] createBreakfastList() {
          //created array(list) of inventory items
         BreakfastFood[] breakfastFood = new BreakfastFood[Constants.NUMBER_OF_BREAKFAST_FOODS];
         
