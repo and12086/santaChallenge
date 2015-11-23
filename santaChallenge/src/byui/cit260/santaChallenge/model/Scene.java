@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Scene implements Serializable {   
     
     private String description;
-    private String mapSymbol;
+    public String mapSymbol;
     private boolean blocked;
     private double milesFromNorthPole;
 

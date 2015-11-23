@@ -16,9 +16,7 @@ public class Map implements Serializable{
     private int noOfRows;
     private int noOfColumns;
     private Location[][] locations;
-    //class instance variables
-    //private String placeNameFind;
-    //private double milesFind;
+    
 
     public Map(int noOfRows, int noOfColumns) {
         

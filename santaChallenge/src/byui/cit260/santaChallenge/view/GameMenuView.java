@@ -6,6 +6,8 @@
 package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.GameControl;
+import byui.cit260.santaChallenge.control.MapControl;
+import byui.cit260.santaChallenge.model.BreakfastFood;
 import byui.cit260.santaChallenge.model.InventoryItem;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
@@ -68,6 +70,7 @@ public class GameMenuView extends View {
     }
 
     private void feedSanta() {
+        
         FeedSantaView feedSanta = new FeedSantaView();
         feedSanta.display();
     }
@@ -97,7 +100,9 @@ public class GameMenuView extends View {
 
   
 
-    private void displayMap(Map map, Location[][] locations, Location location, Scene scene) {
+    private void displayMap() {
+        
+        //Location[][] locations = MapControl.getAssignScenesToLocation();
         
         System.out.println("Map Locations");
         System.out.println(0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
@@ -109,13 +114,13 @@ public class GameMenuView extends View {
         }
         int noOfColumns = 5;
         for (int column=0; column < noOfColumns; column++){
-            System.out.println("|");
+            System.out.println("|");          
+            locations = locations[row][column];
+        }
+          
             
-            int row = 0;
-            location = locations[row][column];
-            
-            if (location.getIsVisited == true){
-                System.out.println(Scene.getMapSymbol);
+            if (location.isVisited() = true){
+                System.out.println(scenes.getMapSymbol());
             }
                 else{
                 System.out.println("??");//print to indicate location has not been visited yet
@@ -125,5 +130,5 @@ public class GameMenuView extends View {
         }
         
         
-    }
+    
 
