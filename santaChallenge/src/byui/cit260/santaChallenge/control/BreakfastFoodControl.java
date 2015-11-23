@@ -13,21 +13,6 @@ import santachallenge.SantaChallenge;
  * @author Lisa Lou
  */
 public class BreakfastFoodControl {
-   
-    public static BreakfastFood[] displayBreakfastFoodCalories()
-            
-    BreakfastFood[] breakfastFood = GameControl.getSortedFoodList();
-        
-        System.out.println("\nList of Breakfast Foods for Santa");
-        System.out.println("Description" + "\t" +
-                            "Calories" + "\t" +
-                            "Calorie Deduction");
-        
-        for (BreakfastFood breakfastFood : breakfastFood)
-            
-            System.out.println(breakfastFood.getDescription() + "\t" +
-                               breakfastFood.getCalorieCount() + "\t" +
-                               breakfastFood.getHealthBenefit());
             
             
     public double calcCaloriesConsumed(double input1, double input2, double input3, double input5, 

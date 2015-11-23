@@ -5,6 +5,9 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.GameControl;
+import byui.cit260.santaChallenge.model.BreakfastFood;
+
 /**
  *
  * @author Wendy
@@ -34,6 +37,23 @@ public class FeedSantaView extends View {
                     + "\n**********************************************"
                     + "\n               Type C to continue             "
                     + "\n**********************************************");
+    }
+    
+     public static BreakfastFood[] displayBreakfastFoodCalories(){
+            
+    BreakfastFood[] breakfastFood = GameControl.getSortedFoodList();
+        
+        System.out.println("\nList of Breakfast Foods for Santa");
+        System.out.println("Description" + "\t" +
+                            "Calories" + "\t" +
+                            "Calorie Deduction");
+        
+        for (BreakfastFood breakfastFood : breakfastFood){
+            
+            System.out.println(breakfastFood.getDescription() + "\t" +
+                               breakfastFood.getCalorieCount() + "\t" +
+                               breakfastFood.getHealthBenefit());
+        }
     }
     
     @Override

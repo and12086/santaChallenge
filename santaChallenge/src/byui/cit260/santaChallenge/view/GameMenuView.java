@@ -13,6 +13,7 @@ import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
 import byui.cit260.santaChallenge.model.Scene;
 
+
 /**
  *
  * @author Lisa Lou
@@ -102,7 +103,7 @@ public class GameMenuView extends View {
 
     private void displayMap() {
         
-        //Location[][] locations = MapControl.getAssignScenesToLocation();
+        Location[][] locations = map.getLocations();
         
         System.out.println("Map Locations");
         System.out.println(0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
@@ -113,9 +114,10 @@ public class GameMenuView extends View {
                     
         }
         int noOfColumns = 5;
+        
         for (int column=0; column < noOfColumns; column++){
             System.out.println("|");          
-            locations = locations[row][column];
+            System.out.println(locations = locations[row][column]);
         }
           
             
@@ -125,9 +127,25 @@ public class GameMenuView extends View {
                 else{
                 System.out.println("??");//print to indicate location has not been visited yet
             }
-            }
             System.out.println("*****");//print final row divider
-        }
+}
+        //call the MaxValue function
+        Scene[] scenes = MapControl.getMaxValue();
+        //display a header
+        System.out.println("\nThe furthest location Santa must deliver to:");
+        //return the maxValue
+        return MaxValue;
+        
+        //call the minValue function
+         Scene[] scenes = MapControl.getMinValue();
+        //display a header
+        System.out.println("\nThe clostest location Santa must deliver to:");
+        //return the minValue
+        return MinValue;
+        
+  
+
+}
         
         
     
