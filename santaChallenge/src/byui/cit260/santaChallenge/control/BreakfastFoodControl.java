@@ -72,22 +72,22 @@ public class BreakfastFoodControl {
                 SantaChallenge.getCurrentGame().getBreakfastFood();
 
         //clone the originalList
-        BreakfastFood[] BreakfastList = originalBreakfastList.clone();
+        BreakfastFood[] breakfastList = originalBreakfastList.clone();
 
         //using a selection sort to sort the list of breakfast items by name
         BreakfastFood tempBreakfastList;
         //int[] BreakfastFood = null;
-        for (int i = 0;i < BreakfastList.length -1; i++) // advance the position through the entire array
+        for (int i = 0;i < breakfastList.length -1; i++) // advance the position through the entire array
         {
             int index = i; // assume the min is the first element 
-            for (int j = i +1; j < BreakfastList.length; j++) //if this element is less, then it is the new minimum 
-                if ( BreakfastList[j] < BreakfastList[index])
+            for (int j = i +1; j < breakfastList.length; j++) //if this element is less, then it is the new minimum 
+                if ( breakfastList[j].getDescription().compareTo(breakfastList[index].getDescription()) < 0) 
                     index = j; //found new minimum; remember its index 
             
-            tempBreakfastList = BreakfastList[index];
-            BreakfastList[index] = BreakfastList[i];
-            BreakfastList[i] = tempBreakfastList;
+            tempBreakfastList = breakfastList[index];
+            breakfastList[index] = breakfastList[i];
+            breakfastList[i] = tempBreakfastList;
         }
-        return BreakfastList;
+        return breakfastList;
     }
 }

@@ -23,6 +23,7 @@ public class MapControl {
         
         //create a list of the different scenes in the game
         Scene[] scenes = createScenes();
+        map.setScenes(scenes);//save the scene to the map
         
         //assign the different scenes to locations in the map
         assignScenesToLocations(map, scenes);
@@ -38,38 +39,34 @@ public class MapControl {
         Location[][] locations = map.getLocations();
         
         //start point
-        locations[0][0].setScenes(scenes[SceneType.mexicoCity.ordinal()]);
-        locations[0][1].setScenes(scenes[SceneType.santasKitchen.ordinal()]);
-        locations[0][2].setScenes(scenes[SceneType.northPole.ordinal()]);
-        locations[0][3].setScenes(scenes[SceneType.santasWorkshop.ordinal()]);
-        locations[0][4].setScenes(scenes[SceneType.stables.ordinal()]);
-        locations[1][0].setScenes(scenes[SceneType.ottawa.ordinal()]);
-        locations[1][1].setScenes(scenes[SceneType.anchorage.ordinal()]);
-        locations[1][2].setScenes(scenes[SceneType.madrid.ordinal()]);
-        locations[1][3].setScenes(scenes[SceneType.prague.ordinal()]);
-        locations[1][4].setScenes(scenes[SceneType.bangkok.ordinal()]);
-        locations[2][0].setScenes(scenes[SceneType.seattle.ordinal()]);
-        locations[2][1].setScenes(scenes[SceneType.capeTown.ordinal()]);
-        locations[2][2].setScenes(scenes[SceneType.london.ordinal()]);
-        locations[2][3].setScenes(scenes[SceneType.mumbai.ordinal()]);
-        locations[2][4].setScenes(scenes[SceneType.perth.ordinal()]);
-        locations[3][0].setScenes(scenes[SceneType.saoPaulo.ordinal()]);
-        locations[3][1].setScenes(scenes[SceneType.bogota.ordinal()]);
-        locations[3][2].setScenes(scenes[SceneType.moscow.ordinal()]);
-        locations[3][3].setScenes(scenes[SceneType.hongKong.ordinal()]);
-        locations[3][4].setScenes(scenes[SceneType.auckland.ordinal()]);
-        locations[4][0].setScenes(scenes[SceneType.buenasAires.ordinal()]);
-        locations[4][1].setScenes(scenes[SceneType.nairobi.ordinal()]);
-        locations[4][2].setScenes(scenes[SceneType.casaBlanca.ordinal()]);
-        locations[4][3].setScenes(scenes[SceneType.ulaanbaatar.ordinal()]);
-        locations[4][4].setScenes(scenes[SceneType.finish.ordinal()]);
+        locations[0][0].setScene(scenes[SceneType.mexicoCity.ordinal()]);
+        locations[0][1].setScene(scenes[SceneType.santasKitchen.ordinal()]);
+        locations[0][2].setScene(scenes[SceneType.northPole.ordinal()]);
+        locations[0][3].setScene(scenes[SceneType.santasWorkshop.ordinal()]);
+        locations[0][4].setScene(scenes[SceneType.stables.ordinal()]);
+        locations[1][0].setScene(scenes[SceneType.ottawa.ordinal()]);
+        locations[1][1].setScene(scenes[SceneType.anchorage.ordinal()]);
+        locations[1][2].setScene(scenes[SceneType.madrid.ordinal()]);
+        locations[1][3].setScene(scenes[SceneType.prague.ordinal()]);
+        locations[1][4].setScene(scenes[SceneType.bangkok.ordinal()]);
+        locations[2][0].setScene(scenes[SceneType.seattle.ordinal()]);
+        locations[2][1].setScene(scenes[SceneType.capeTown.ordinal()]);
+        locations[2][2].setScene(scenes[SceneType.london.ordinal()]);
+        locations[2][3].setScene(scenes[SceneType.mumbai.ordinal()]);
+        locations[2][4].setScene(scenes[SceneType.perth.ordinal()]);
+        locations[3][0].setScene(scenes[SceneType.saoPaulo.ordinal()]);
+        locations[3][1].setScene(scenes[SceneType.bogota.ordinal()]);
+        locations[3][2].setScene(scenes[SceneType.moscow.ordinal()]);
+        locations[3][3].setScene(scenes[SceneType.hongKong.ordinal()]);
+        locations[3][4].setScene(scenes[SceneType.auckland.ordinal()]);
+        locations[4][0].setScene(scenes[SceneType.buenasAires.ordinal()]);
+        locations[4][1].setScene(scenes[SceneType.nairobi.ordinal()]);
+        locations[4][2].setScene(scenes[SceneType.casaBlanca.ordinal()]);
+        locations[4][3].setScene(scenes[SceneType.ulaanbaatar.ordinal()]);
+        locations[4][4].setScene(scenes[SceneType.finish.ordinal()]);
     }
 
-    public static Scene[] getSortedScenes() {
-       
-        //get inventory list for the current game
-        Scene[] originalScenes = 
-                SantaChallenge.getCurrentGame().getScenes();
+    public static Scene[] getSortedScenes(Scene[] originalScenes) {
         
         //clone originalList
         Scene[] scenes = originalScenes.clone();
@@ -113,21 +110,22 @@ public class MapControl {
 
    // getting the maximum value
 public static Scene getMaxValue(Scene[] scenes){  
-      Scene maxValue = scenes[0];  
-      for(int i=1; i < scenes.length-1; i++){  
-      if(scenes[i] > maxValue){  
-      maxValue = scenes[i];  
+      Scene maxScene = scenes[0];  
+      for(int i=0; i < scenes.length-1; i++){  
+      if(scenes[i].getMilesFromNorthPole() > maxScene.getMilesFromNorthPole()){  
+      maxScene = scenes[i];  
          }  
      }  
-             return maxValue;  
+             return maxScene;  
 }  
 
 // getting the miniumum value
-public static Scene getMinValue(Scene[] scenes){  
-     Scene minValue = scenes[0];  
-     for(int i=1; i<scenes.length-1; i++){  
-     if(scenes[i] < minValue){  
-     minValue = scenes[i];  
+public static int getMinValue(Scene[] scenes){  
+        int minValue = 0;  
+     for(int i=0; i<scenes.setMilesFromNorthPole.length-1; i++){  
+        if(setMilesFromNorthPole() <= minValue){  
+            minValue = setMilesFromNorthPole()
+            setMilesFromNorthPole() = scenes[i];  
         }  
      }  
     return minValue;  
@@ -178,7 +176,7 @@ public static Scene getMinValue(Scene[] scenes){
         scenes[SceneType.northPole.ordinal()] = northPole;
         
         Scene santasKitchen = new Scene();
-        santasKitchen.setDescription("Sant's Kitchen");
+        santasKitchen.setDescription("Santa's Kitchen");
         santasKitchen.setMapSymbol(" SK ");
         santasKitchen.setBlocked(false);
         santasKitchen.setMilesFromNorthPole(0);
