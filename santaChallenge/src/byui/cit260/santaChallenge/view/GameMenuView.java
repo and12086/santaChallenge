@@ -60,6 +60,8 @@ public class GameMenuView extends View {
                 this.continueGame();
             case "S"://display the list of scenes
                 this.displaySceneList();
+            case "D":
+                this.displayMaxValue();
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;
@@ -131,42 +133,28 @@ public class GameMenuView extends View {
         }
     }
 
-    //call the MaxValue function
-    Scene[] scenes = MapControl.getMaxValue();
-
-    //display a header
-    System.out.println (
-            
-    "\nThe furthest location Santa must deliver to:");
-        //return the maxValue
-    return MaxValue ;
-
-    //call the minValue function
-    Scene[] scenes = MapControl.getMinValue();
-
-    //display a header
-    System.out.println (
-            
-    "\nThe clostest location Santa must deliver to:");
-        //return the minValue
-    return MinValue ;
-
     private void displaySceneList() {
         //get the list of scenes in the game
         Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
         //sort the list of scenes
         Scene[] sortedScenes = MapControl.getSortedScenes(scenes);
-        
+
         //print a title
         System.out.println("List of Scenes and their distance from the North Pole");
-        
+
         //for each scene in the list
         for (Scene nextScene : sortedScenes) {
             //display the description and the miles from the north pole
             System.out.println(nextScene.getDescription()
-            + " " + nextScene.getMilesFromNorthPole());
+                    + " " + nextScene.getMilesFromNorthPole());
         }
-            
+
     }
 
+    private void displayMaxValue() {
+        //get the maxValue from the current game
+        Scene maxScene = SantaChallenge.getCurrentGame().getMap.getMaxValue();
+            System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + maxScene);
+        //get the maxValue for the current game 
+    }
 }
