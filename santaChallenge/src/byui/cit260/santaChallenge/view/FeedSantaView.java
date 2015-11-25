@@ -5,8 +5,10 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.BreakfastFoodControl;
 import byui.cit260.santaChallenge.control.GameControl;
 import byui.cit260.santaChallenge.model.BreakfastFood;
+import santachallenge.SantaChallenge;
 
 /**
  *
@@ -37,6 +39,20 @@ public class FeedSantaView extends View {
                     + "\n**********************************************"
                     + "\n               Type C to continue             "
                     + "\n**********************************************");
+    }
+    
+    private void displayMinValue() {
+        //get maxValue from the current game
+        Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
+                Scene minScene = MapControl.getMinValue(scenes);
+                System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + minScene);
+    }
+    
+    
+    private void displaySortedBreakfastList() {
+        BreakfastFood[] breakfastList = BreakfastFoodControl.getSortedBreakfastList();
+            BreakfastFood[] sortedBreakfastList
+                    
     }
     
      public static BreakfastFood[] displayBreakfastFoodCalories(){

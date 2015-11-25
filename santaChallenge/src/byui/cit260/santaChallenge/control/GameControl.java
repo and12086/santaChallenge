@@ -90,33 +90,7 @@ public class GameControl {
         
         return inventory;
     }
-    
-/*    public static BreakfastFood[] getSortedFoodList() {
-       
-        //get inventory list for the current game
-        BreakfastFood[] originalBreakfastFood = 
-                SantaChallenge.getCurrentGame().getBreakfastFood();
-        
-        //clone originalList
-        BreakfastFood[] breakfastFood = originalBreakfastFood.clone();
-        
-        //using a BubbleSort to sort the list of inventoryList by name
-        BreakfastFood tempBreakfastFood;
-        for (int i = 0; i<breakfastFood.length-1; i++) {
-            for (int j = 0; j < breakfastFood.length-1-i; j++) {
-                if (breakfastFood[j].getDescription().
-                        compareToIgnoreCase(breakfastFood[j + 1].getDescription()) > 0) {
-                    tempBreakfastFood = breakfastFood[j];
-                    breakfastFood[j] = breakfastFood[j+1];
-                    breakfastFood[j+1] = tempBreakfastFood;
-                }
-            }
-        }
-        return  breakfastFood;
-    }
-*/
-
-    
+ 
 //??????    
 //??????Should we put the following code in the Breakfast Food Control Class??????    
 //??????

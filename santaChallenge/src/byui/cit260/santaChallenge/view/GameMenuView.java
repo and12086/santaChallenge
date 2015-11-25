@@ -164,6 +164,7 @@ public class GameMenuView extends View {
         Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
                 Scene maxScene = MapControl.getMaxValue(scenes);
                 System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + maxScene);
+        //get the maxValue for the current game 
     }
     
     private void displayMinValue() {
