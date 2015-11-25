@@ -91,7 +91,7 @@ public class GameControl {
         return inventory;
     }
     
-    public static BreakfastFood[] getSortedFoodList() {
+/*    public static BreakfastFood[] getSortedFoodList() {
        
         //get inventory list for the current game
         BreakfastFood[] originalBreakfastFood = 
@@ -114,6 +114,12 @@ public class GameControl {
         }
         return  breakfastFood;
     }
+*/
+
+    
+//??????    
+//??????Should we put the following code in the Breakfast Food Control Class??????    
+//??????
     
     public enum Food {
     poptarts,
