@@ -25,8 +25,7 @@ public class MapControl {
         Scene[] scenes = createScenes();
         map.setScenes(scenes);//save the scene to the map
         
-        //find the max value of the scenes in the game
-        Scene maxScene = getMaxValue();
+       
         //assign the different scenes to locations in the map
         assignScenesToLocations(map, scenes);
 
@@ -87,35 +86,16 @@ public class MapControl {
         }
         return scenes;
     }
-    /*
-     public static Scene[] doInsertionSort() {
-        
-     Scene[] originalScenes = 
-     SantaChallenge.getCurrentGame().getScenes();
-        
-     Scene[] scenes = originalScenes.clone();
-        
-        Scene temp;
-        for (int i = 0; i < scenes.length-1; i++) {
-        for(int j = i ; j > 0 ; j--){
-        if(scenes[j].getDescription().compareToIgnoreCase(scenes[j-1].getDescription())> 0) {
-            temp = scenes[j];
-            scenes[j] = scenes[j-1];
-            scenes[j-1] = temp;
-        }
-        }
-        }
-            return scenes;
-    }
-}
-   */  
+   
 
    // getting the maximum value
     public static Scene getMaxValue(Scene[] scenes) {
-        Scene maxScene = scenes[0];
+        Scene maxScene = scenes[0];//get scene list from Scene class
+        
+        //advance teh positition through the entire array
         for (int i = 0; i < scenes.length - 1; i++) {
             if (scenes[i].getMilesFromNorthPole() > maxScene.getMilesFromNorthPole()) {
-                maxScene = scenes[i];
+                maxScene = scenes[i];//
             }
         }
         return maxScene;
