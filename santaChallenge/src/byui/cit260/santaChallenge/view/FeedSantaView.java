@@ -36,6 +36,8 @@ public class FeedSantaView extends View {
                 + "\n* enough calories to complete his deliveries *"
                 + "\n* on time or whether he will run out of fuel.*"
                 + "\n**********************************************"
+                + "\n L - Preview Santa's breakfast food choices  *"
+                + "\n C - Continue on in the game                 *"
                 + "\n**********************************************");
     }
 

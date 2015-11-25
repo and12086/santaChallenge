@@ -53,19 +53,23 @@ public class GameControl {
         
         //using a BubbleSort to sort the list of inventoryList by name
         InventoryItem tempInventoryList;
-        for (int i = 0; i<inventoryList.length-1; i++) {
-            for (int j = 0; j < inventoryList.length-1-i; j++) {
-                if (inventoryList[j].getDescription().
-                        compareToIgnoreCase(inventoryList[j + 1].getDescription()) > 0) {
-                    tempInventoryList = inventoryList[j];
-                    inventoryList[j] = inventoryList[j+1];
-                    inventoryList[j+1] = tempInventoryList;
+        for (int i = 0; i < inventoryList.length-1; i++) {
+            int index = i;
+            
+            for (int j = i +1; j < inventoryList.length; j++) {
+                if (inventoryList[j].getDescription().compareTo(inventoryList[index].getDescription()) < 0)
+                index = j;
+                
+                    tempInventoryList = inventoryList[index];
+                    inventoryList[index] = inventoryList[i];
+                    inventoryList[i] = tempInventoryList;
                 }
-            }
         }
         return  inventoryList;
     }
 
+    
+    
     public enum Item {
         energyPoints,
         time;

@@ -61,6 +61,8 @@ public class GameMenuView extends View {
                 this.displaySceneList();
             case "D":
                 this.displayMaxValue();
+            case "V":
+                this.displayMinValue();
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;
@@ -83,23 +85,23 @@ public class GameMenuView extends View {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void displayInventoryList() {
-        InventoryItem[] inventoryList = SantaChallenge.getCurrentGame().getInventory();
+    public void displayInventoryList() {
+        //InventoryItem[] inventory = SantaChallenge.getCurrentGame().getInventory();
                 
         //get the sorted list of inventory items for the current game
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
-
-        System.out.println("\nList of Inventory Items");
+      
+        System.out.println("\nList of Inventory Items"); 
         System.out.println("Description" + "\t"
                 + "Required" + "\t"
                 + "Acquired");
 
         //for each inventory item
-        for (InventoryItem nextInventoryItem : inventory) {
+        for (InventoryItem inventoryItem : inventory) {
             //DISPLAY the description, the required amount, and the amount the user has)
-            System.out.println(nextInventoryItem.getDescription() + "\t  "
-                    + nextInventoryItem.getRequiredAmount() + "\t  "
-                    + nextInventoryItem.getActualAmount());
+            System.out.println(inventoryItem.getDescription() + "\t  "
+                    + inventoryItem.getRequiredAmount() + "\t  "
+                    + inventoryItem.getActualAmount());
 
         }
     }
@@ -159,6 +161,15 @@ public class GameMenuView extends View {
         Scene maxScene = MapControl.getMaxValue(scenes);
 
         System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + maxScene);
+
+    }
+    private void displayMinValue() {
+        //get the maxValue from the current game
+        Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
+        //find the maximum mileage in the list of scenes
+        Scene minScene = MapControl.getMinValue(scenes);
+
+        System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + minScene);
 
     }
 }
