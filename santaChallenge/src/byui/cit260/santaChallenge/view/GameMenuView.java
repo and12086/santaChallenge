@@ -62,6 +62,8 @@ public class GameMenuView extends View {
                 this.displaySceneList();
             case "D":
                 this.displayMaxValue();
+            case "V":
+                this.displayMinValue();    
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;
@@ -131,6 +133,12 @@ public class GameMenuView extends View {
 
             System.out.println("|");//print final column divider
         }
+        
+        
+        
+        
+        
+        
     }
 
     private void displaySceneList() {
@@ -152,9 +160,17 @@ public class GameMenuView extends View {
     }
 
     private void displayMaxValue() {
-        //get the maxValue from the current game
-        Scene maxScene = SantaChallenge.getCurrentGame().getMap.getMaxValue();
-            System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + maxScene);
-        //get the maxValue for the current game 
+        //get maxValue from the current game
+        Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
+                Scene maxScene = MapControl.getMaxValue(scenes);
+                System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + maxScene);
+    }
+    
+    private void displayMinValue() {
+        //get maxValue from the current game
+        Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
+                Scene minScene = MapControl.getMinValue(scenes);
+                System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + minScene);
     }
 }
+   
