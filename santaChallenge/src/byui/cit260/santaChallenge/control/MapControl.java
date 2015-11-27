@@ -88,10 +88,12 @@ public class MapControl {
    
    // getting the maximum value
     public static Scene getMaxValue(Scene[] scenes) {
-        Scene maxScene = scenes[0];
+        Scene maxScene = scenes[0];//get scene list from Scene class
+        
+        //advance teh positition through the entire array
         for (int i = 0; i < scenes.length - 1; i++) {
             if (scenes[i].getMilesFromNorthPole() > maxScene.getMilesFromNorthPole()) {
-                maxScene = scenes[i];
+                maxScene = scenes[i];//
             }
         }
         return maxScene;

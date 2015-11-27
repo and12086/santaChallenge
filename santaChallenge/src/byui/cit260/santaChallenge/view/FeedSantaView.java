@@ -15,30 +15,31 @@ import santachallenge.SantaChallenge;
  * @author Wendy
  */
 public class FeedSantaView extends View {
-    
-    public FeedSantaView(){
-               super ("\n"
-                    + "\n**********************************************"
-                    + "\n* Santa will be busy all day long. You must  *"
-                    + "\n* make sure Santa eats a hearty breakfast or *"
-                    + "\n* Santa will not be his jolly self.          *"
-                    + "\n*                                            *"
-                    + "\n* Examine the food choices and choose wisely.*"
-                    + "\n* You will have the opportunity to make 4    *"
-                    + "\n* breakfast food selections.                 *"
-                    + "\n*                                            *"
-                    + "\n* Each selection has a calorie count and a   *"
-                    + "\n* health benefit associated with it. The     *"
-                    + "\n* health benefit is a calorie deduction made *"
-                    + "\n* for unhealthy food choices.                *"
-                    + "\n*                                            *"
-                    + "\n* After all your selections have been made,  *"
-                    + "\n* an elf will calulate whether Santa has     *"
-                    + "\n* enough calories to complete his deliveries *"
-                    + "\n* on time or whether he will run out of fuel.*"
-                    + "\n**********************************************"
-                    + "\n               Type C to continue             "
-                    + "\n**********************************************");
+
+    public FeedSantaView() {
+        super("\n"
+                + "\n**********************************************"
+                + "\n* Santa will be busy all day long. You must  *"
+                + "\n* make sure Santa eats a hearty breakfast or *"
+                + "\n* Santa will not be his jolly self.          *"
+                + "\n*                                            *"
+                + "\n* Examine the food choices and choose wisely.*"
+                + "\n* You will have the opportunity to make 4    *"
+                + "\n* breakfast food selections.                 *"
+                + "\n*                                            *"
+                + "\n* Each selection has a calorie count and a   *"
+                + "\n* health benefit associated with it. The     *"
+                + "\n* health benefit is a calorie deduction made *"
+                + "\n* for unhealthy food choices.                *"
+                + "\n*                                            *"
+                + "\n* After all your selections have been made,  *"
+                + "\n* an elf will calulate whether Santa has     *"
+                + "\n* enough calories to complete his deliveries *"
+                + "\n* on time or whether he will run out of fuel.*"
+                + "\n**********************************************"
+                + "\n L - Preview Santa's breakfast food choices  *"
+                + "\n C - Continue on in the game                 *"
+                + "\n**********************************************");
     }
     
     private void displayMinValue() {
@@ -73,30 +74,48 @@ public class FeedSantaView extends View {
     }
     
     @Override
-     public boolean doAction(Object obj) {
-         
-         String value = (String) obj;
-        if ("C".equals(value)){
-            this.caloriesConsumed1View();
-        } 
-        
-        else {        
-            System.out.println("\n*** Invalid selection *** Try again!");
+    public boolean doAction(Object obj) {
+
+        String value = (String) obj;
+        value = value.toUpperCase();
+
+        switch (value) {
+            case "L"://View Map/Choose Location
+                FeedSantaView.displaySortedBreakfastList();
+                break;
+            case "C"://Feed Santa
+                this.caloriesConsumed1View();
+                break;
+            default:
+                System.out.println("\n*** Invalid selection *** Try again!");
+                break;
         }
         return false;
-     }
-        
+
+    }
+
+    public static BreakfastFood[] displaySortedBreakfastList() {
+
+        BreakfastFood[] breakfastFood = SantaChallenge.getCurrentGame().getBreakfastFood();
+        BreakfastFood[] breakfastList = BreakfastFoodControl.getSortedBreakfastList();
+
+        System.out.println("\nList of Breakfast Foods for Santa");
+        System.out.println("Description" + "\t"
+                + "Calories" + "\t"
+                + "Calorie Deduction");
+    
+        for (BreakfastFood nextBreakfastFood : breakfastList) {
+
+            System.out.println(nextBreakfastFood.getDescription() + "\t"
+                    + nextBreakfastFood.getCalorieCount() + "\t"
+                    + nextBreakfastFood.getHealthBenefit());
+        }
+        return null;
+    }
+
     public void caloriesConsumed1View() {
         CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();
         caloriesConsumed1.display();
     }
 
-    /*private GameMenuView GameMenuView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    */
-
-   
 }
-
-
