@@ -42,14 +42,7 @@ public class FeedSantaView extends View {
                 + "\n**********************************************");
     }
  
-    private void displayMinValue() {
-        //get maxValue from the current game
-        Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
-                Scene minScene = MapControl.getMinValue(scenes);
-                System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + minScene);
-    }
-    
-    
+      
     private void displaySortedBreakfastList() {
         BreakfastFood[] breakfastList = BreakfastFoodControl.getSortedBreakfastList();
             BreakfastFood[] sortedBreakfastList;
