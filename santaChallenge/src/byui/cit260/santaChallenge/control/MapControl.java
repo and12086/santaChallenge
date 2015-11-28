@@ -76,8 +76,7 @@ public class MapControl {
         Scene tempScenes;
         for (int i = 0; i < scenes.length - 1; i++) {
             for (int j = 0; j < scenes.length - 1 - i; j++) {
-                if (scenes[j].getDescription().
-                        compareToIgnoreCase(scenes[j + 1].getDescription()) > 0) {
+                if (scenes[j].getDescription().compareToIgnoreCase(scenes[j + 1].getDescription()) > 0) {
                     tempScenes = scenes[j];
                     scenes[j] = scenes[j + 1];
                     scenes[j + 1] = tempScenes;

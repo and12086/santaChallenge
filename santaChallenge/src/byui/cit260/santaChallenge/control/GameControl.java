@@ -42,30 +42,30 @@ public class GameControl {
         MapControl.moveActorsToStartingLocation(map);
     }
 
-    public static InventoryItem[] getSortedInventoryList() {
+    public static InventoryItem[] getSortedInventoryList(InventoryItem[] originalInventoryList) {
        
         //get inventory list for the current game
-        InventoryItem[] originalInventoryList = 
-                SantaChallenge.getCurrentGame().getInventory();
+        //InventoryItem[] originalInventoryList = 
+          //      SantaChallenge.getCurrentGame().getInventory();
         
         //clone originalList
-        InventoryItem[] inventoryList = originalInventoryList.clone();
+        InventoryItem[] inventory = originalInventoryList.clone();
         
         //using a BubbleSort to sort the list of inventoryList by name
         InventoryItem tempInventoryList;
-        for (int i = 0; i < inventoryList.length-1; i++) {
+        for (int i = 0; i < inventory.length-1; i++) {
             int index = i;
             
-            for (int j = i +1; j < inventoryList.length; j++) {
-                if (inventoryList[j].getDescription().compareTo(inventoryList[index].getDescription()) < 0)
+            for (int j = i +1; j < inventory.length; j++) {
+                if (inventory[j].getDescription().compareTo(inventory[index].getDescription()) < 0)
                 index = j;
                 
-                    tempInventoryList = inventoryList[index];
-                    inventoryList[index] = inventoryList[i];
-                    inventoryList[i] = tempInventoryList;
+                    tempInventoryList = inventory[index];
+                    inventory[index] = inventory[i];
+                    inventory[i] = tempInventoryList;
                 }
         }
-        return  inventoryList;
+        return  inventory;
     }
 
     
@@ -87,9 +87,9 @@ public class GameControl {
         inventory[Item.energyPoints.ordinal()] = energyPoints;
        
         InventoryItem time = new InventoryItem();
-        energyPoints.setDescription("Time:  How much time do you have left to help Santa finish his deliveries?");
-        energyPoints.setRequiredAmount(0);
-        energyPoints.setActualAmount(0);
+        time.setDescription("Time:  How much time do you have left to help Santa finish his deliveries?");
+        time.setRequiredAmount(0);
+        time.setActualAmount(0);
         inventory[Item.time.ordinal()] = time;
         
         return inventory;
