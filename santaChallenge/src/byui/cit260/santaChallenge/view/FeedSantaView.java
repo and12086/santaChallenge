@@ -41,7 +41,7 @@ public class FeedSantaView extends View {
                 + "\n C - Continue on in the game                 *"
                 + "\n**********************************************");
     }
-    
+ 
     private void displayMinValue() {
         //get maxValue from the current game
         Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
@@ -52,7 +52,7 @@ public class FeedSantaView extends View {
     
     private void displaySortedBreakfastList() {
         BreakfastFood[] breakfastList = BreakfastFoodControl.getSortedBreakfastList();
-            BreakfastFood[] sortedBreakfastList
+            BreakfastFood[] sortedBreakfastList;
                     
     }
     
@@ -65,6 +65,7 @@ public class FeedSantaView extends View {
                             "Calories" + "\t" +
                             "Calorie Deduction");
         
+      
         for (BreakfastFood breakfastFood : breakfastFood){
             
             System.out.println(breakfastFood.getDescription() + "\t" +
@@ -94,24 +95,7 @@ public class FeedSantaView extends View {
 
     }
 
-    public static BreakfastFood[] displaySortedBreakfastList() {
-
-        BreakfastFood[] breakfastFood = SantaChallenge.getCurrentGame().getBreakfastFood();
-        BreakfastFood[] breakfastList = BreakfastFoodControl.getSortedBreakfastList();
-
-        System.out.println("\nList of Breakfast Foods for Santa");
-        System.out.println("Description" + "\t"
-                + "Calories" + "\t"
-                + "Calorie Deduction");
-    
-        for (BreakfastFood nextBreakfastFood : breakfastList) {
-
-            System.out.println(nextBreakfastFood.getDescription() + "\t"
-                    + nextBreakfastFood.getCalorieCount() + "\t"
-                    + nextBreakfastFood.getHealthBenefit());
-        }
-        return null;
-    }
+   
 
     public void caloriesConsumed1View() {
         CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();

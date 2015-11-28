@@ -62,7 +62,7 @@ public class GameMenuView extends View {
             case "D":
                 this.displayMaxValue();
             case "V":
-                this.displayMinValue();    
+                this.displayMinValue();
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;
@@ -87,11 +87,11 @@ public class GameMenuView extends View {
 
     public void displayInventoryList() {
         //InventoryItem[] inventory = SantaChallenge.getCurrentGame().getInventory();
-                
+
         //get the sorted list of inventory items for the current game
         InventoryItem[] inventory = GameControl.getSortedInventoryList();
-      
-        System.out.println("\nList of Inventory Items"); 
+
+        System.out.println("\nList of Inventory Items");
         System.out.println("Description" + "\t"
                 + "Required" + "\t"
                 + "Acquired");
@@ -134,12 +134,6 @@ public class GameMenuView extends View {
 
             System.out.println("|");//print final column divider
         }
-        
-        
-        
-        
-        
-        
     }
 
     private void displaySceneList() {
@@ -169,6 +163,7 @@ public class GameMenuView extends View {
         System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + maxScene);
 
     }
+
     private void displayMinValue() {
         //get the maxValue from the current game
         Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
@@ -178,12 +173,4 @@ public class GameMenuView extends View {
         System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + minScene);
 
     }
-    
-    private void displayMinValue() {
-        //get maxValue from the current game
-        Scene[] scenes = SantaChallenge.getCurrentGame().getMap().getScenes();
-                Scene minScene = MapControl.getMinValue(scenes);
-                System.out.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + minScene);
-    }
 }
-   
