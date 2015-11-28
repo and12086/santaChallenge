@@ -5,10 +5,13 @@
  */
 package byui.cit260.santaChallenge.control;
 
+import byui.cit260.santaChallenge.model.Actor;
 import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.Scene;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
+import citbyui.cit260.santaChallenge.exceptions.MapControlException;
+import java.awt.Point;
 import santachallenge.SantaChallenge;
 
 /**
@@ -31,10 +34,35 @@ public class MapControl {
 
         return map;
     }
-
-    static void moveActorsToStartingLocation(Map map) {
-        System.out.println("call the moveActorsToStartingLocation function");
+    
+    public static void moveActorsToStartingLocation(Map map) 
+                                throws MapControlException {
+        //for every actor
+        Actor[] actors = Actor.values();
+        
+        for (Actor actor : actors) {
+            Point coordinates = actor.getCoordinates();
+            MapControl.moveActorToLocation(actor, coordinates);
+        }
+ 
     }
+    
+
+    public static void moveActorToLocation(Actor actor, Point coordinates) 
+                            throws MapControlException {
+        Map map = SantaChallenge.getCurrentGame().getMap();
+        int newRow = coordinates.x-1;
+        int newColumn = coordinates.y-1;
+        
+        if (newRow < 0 || newRow >= map.getNoOfRows() || newColumn < 0 || newColumn >= map.getNoOfColumns()) {
+            throw new MapControlException("Can not move actor to location "
+                                            + coordinates.x + ", " + coordinates.y
+                                            + " because that location is outside"
+                                            + " the bounds of the map.");
+        }
+    }
+    
+    
 
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
         Location[][] locations = map.getLocations();

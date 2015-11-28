@@ -11,6 +11,7 @@ import byui.cit260.santaChallenge.model.InventoryItem;
 import byui.cit260.santaChallenge.model.Map;
 import byui.cit260.santaChallenge.model.Player;
 import byui.cit260.santaChallenge.model.Sleigh;
+import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import santachallenge.SantaChallenge;
 
 /**
@@ -19,7 +20,7 @@ import santachallenge.SantaChallenge;
  */
 public class GameControl {
 
-    public static void createNewGame(Player player) {
+    public static void createNewGame(Player player) throws MapControlException {
         Game game = new Game(); // create new game
         SantaChallenge.setCurrentGame(game); //save in Santa Challenge
         

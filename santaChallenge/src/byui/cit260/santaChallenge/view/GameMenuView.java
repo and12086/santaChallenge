@@ -7,10 +7,13 @@ package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.GameControl;
 import byui.cit260.santaChallenge.control.MapControl;
+import byui.cit260.santaChallenge.model.Actor;
 import byui.cit260.santaChallenge.model.InventoryItem;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
 import byui.cit260.santaChallenge.model.Scene;
+import citbyui.cit260.santaChallenge.exceptions.MapControlException;
+import java.awt.Point;
 import santachallenge.SantaChallenge;
 
 /**
@@ -31,6 +34,8 @@ public class GameMenuView extends View {
                 + "\nF - Feed Santa                              *"
                 + "\nL - Load the sleigh, and choose reindeer    *"
                 + "\nI - View your inventory                     *"
+                + "\nA - View list of Actors                     *"
+                + "\nN - Move to new location                    *"
                 + "\nC - Continue your game                      *"
                 + "\nS - Display list of scenes                  *"
                 + "\n*********************************************");
@@ -41,7 +46,9 @@ public class GameMenuView extends View {
 
         String value = (String) obj;
         value = value.toUpperCase();
-
+        Actor actor;
+        Point coordinates;
+        
         switch (value) {
             case "M"://View Map/Choose Location
                 this.displayMap();
@@ -55,6 +62,10 @@ public class GameMenuView extends View {
             case "I"://View Inventory
                 this.displayInventoryList();
                 break;
+            case "A"://view actors
+                this.displayActors();
+            case "N"://move to a new location
+                this.moveLocations();
             case "C"://return to your game
                 this.continueGame();
             case "S"://display the list of scenes
@@ -172,5 +183,19 @@ public class GameMenuView extends View {
 
         System.out.println("The location closest to the North Pole that Santa has to deliver to is" + " " + minScene);
 
+    }
+
+    private void displayActors() {
+        
+    }
+
+    private void moveLocations() {
+        //move actor to specified location
+        int returnValue = MapControl.moveActorToLocation(actor, coordinates);
+        try {
+             MapControl.moveActorToLocation(actor, coordinates);
+        } catch (MapControlException me) {
+            System.out.println(me.getMessage());
+    }
     }
 }
