@@ -11,17 +11,16 @@ import java.io.Serializable;
  *
  * @author Wendy
  */
-public abstract class LocationsView implement ViewInterface {
+public class LocationsView implement ViewInterface{
 
     public LocationsView() {
-        super("\n"
+        super ("\n"
                 + "\n************************************"
                 + "\nX - pick an x coordinate"
                 + "\nY - pick a y coordinate"
                 + "\nE - Exit the game");
     }
     
-    @Override
     public boolean doAction(Object obj) {
          String value = (String) obj;
        // value = value.toUpperCase();
@@ -30,7 +29,7 @@ public abstract class LocationsView implement ViewInterface {
             case "X"://start a new game
                 this.move();
                 break;
-            case "Y"://restart and existing game
+            case "Y"://restart an existing game
                 this.move();
                 break;
             case "E"://exit the program
