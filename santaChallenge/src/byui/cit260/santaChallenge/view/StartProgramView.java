@@ -101,4 +101,8 @@ public class StartProgramView {
         System.out.println("\tWe hope you have a jolly time!");
         System.out.println("*********************************************");
     }
+
+    public void display() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

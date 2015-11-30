@@ -23,9 +23,18 @@ public class SantaChallenge {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       //creat StartProgramView and start the program
+      
         StartProgramView startProgramView = new StartProgramView();
-        startProgramView.startProgram();       
+        try{
+         //create StartProgramView and start the program    
+        startProgramView.display();       
+        } catch (Throwable te) {
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            startProgramView.display();
+        }
+        
+        
     }
     
     public static Game getCurrentGame() {

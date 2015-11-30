@@ -43,23 +43,25 @@ public class FeedSantaView extends View {
     }
  
       
-    private void displaySortedBreakfastList() {
+    /*private void displaySortedBreakfastList() {
         BreakfastFood[] breakfastList = BreakfastFoodControl.getSortedBreakfastList();
             BreakfastFood[] sortedBreakfastList;
                     
     }
+    */
     
-     public static BreakfastFood[] displayBreakfastFoodCalories(){
+    public static BreakfastFood[] displayBreakfastFoodCalories(){
             
-    BreakfastFood[] breakfastFood = GameControl.getSortedFoodList();
+    BreakfastFood[] breakfastFood =FeedSantaView.displayBreakfastFoodCalories();
+           // GameControl.createBreakfastList();
         
         System.out.println("\nList of Breakfast Foods for Santa");
         System.out.println("Description" + "\t" +
                             "Calories" + "\t" +
                             "Calorie Deduction");
-        
+
       
-        for (BreakfastFood breakfastFood : breakfastFood){
+        for (BreakfastFood breakfastFood : breakfastFood){            
             
             System.out.println(breakfastFood.getDescription() + "\t" +
                                breakfastFood.getCalorieCount() + "\t" +
@@ -71,7 +73,7 @@ public class FeedSantaView extends View {
     public boolean doAction(Object obj) {
 
         String value = (String) obj;
-        value = value.toUpperCase();
+        //value = value.toUpperCase();
 
         switch (value) {
             case "L"://View Map/Choose Location
