@@ -5,46 +5,74 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.MapControl;
+import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import java.io.Serializable;
+import java.util.Scanner;
 
 /**
  *
  * @author Wendy
  */
-public class LocationsView implement ViewInterface{
+public class LocationsView implements Serializable {
 
-    public LocationsView() {
-        super ("\n"
-                + "\n************************************"
-                + "\nX - pick an x coordinate"
-                + "\nY - pick a y coordinate"
-                + "\nE - Exit the game");
-    }
-    
-    public boolean doAction(Object obj) {
-         String value = (String) obj;
-       // value = value.toUpperCase();
+    private final String MENU = "\n"
+            + "Choose your x coordinate."
+            + "The x coordinate must be between 0 and 4."
+            + "The y coordinate must also be between 0 and 4.";
+
+    public void displayMenu() {
+        String xCoordinate;
+
+        do {
+            System.out.println(MENU);//display the main menu
+
+            xCoordinate = this.getInput(); //get the user's selection
+
         
-        switch (value){
-            case "X"://start a new game
-                this.move();
-                break;
-            case "Y"://restart an existing game
-                this.move();
-                break;
-            case "E"://exit the program
-                System.out.println("\n*** Thank you for playing the Santa Challenge!");
-            default:
-                System.out.println("\n*** Invalid selection *** Try again!");
-                break;        
-        } 
-        return false;
+            this.doAction(xCoordinate); //do action based on selection
+        } while (xCoordinate < 0 || xCoordinate > 4);    
+    }
+    
+    public String getInput() {
+        boolean valid = false; //indicates if the menu selection has been retrieved   
+        String xCoordinate = null;
+
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+
+        while (!valid) {//while a valid menu selection has not been retrieved
+            //prompt the player for a valid menu selection
+            System.out.println("Please enter your coordinates in this format: x,y");
+
+            //get the menu selection from the keyboard and trim off the blanks
+            xCoordinate = keyboard.nextLine();
+            //xCoordinate = xCoordinate.trim();
+             //if the menu selection is invalid
+            if (xCoordinate.length() < 1) {
+                System.out.println("Invalid menu selection!");
+                continue; //and repeat again
+            }
+            
+            double doubleXCoordinate = Double.parseDouble(xCoordinate);
+   
+            break; // Exit out of the repitition
+        }
+        
+        return doubleXCoordinate; //return the menu selection   
     }
 
-    private void move() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void doAction(String xCoordinate) {
+        Double number = null;
 
-    
- }
-    
+        while (number == null) {
+            number = Double.parseDouble(xCoordinate);
+            number = Double.parseDouble(yCoordinate);
+        }
+
+        try {
+            MapControl.moveActorsToStartingLocation(map);
+        } catch (MapControlException me) {
+            System.out.println(me.getMessage());
+        }
+    }
+}

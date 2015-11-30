@@ -41,6 +41,7 @@ public class GameControl {
         
         //move actors to starting position in the map
         MapControl.moveActorsToStartingLocation(map);
+                       
     }
 
     public static InventoryItem[] getSortedInventoryList(InventoryItem[] originalInventoryList) {

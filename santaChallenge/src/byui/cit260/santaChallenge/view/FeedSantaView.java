@@ -5,10 +5,7 @@
  */
 package byui.cit260.santaChallenge.view;
 
-import byui.cit260.santaChallenge.control.BreakfastFoodControl;
-import byui.cit260.santaChallenge.control.GameControl;
 import byui.cit260.santaChallenge.model.BreakfastFood;
-import santachallenge.SantaChallenge;
 
 /**
  *
@@ -61,12 +58,13 @@ public class FeedSantaView extends View {
                             "Calorie Deduction");
 
       
-        for (BreakfastFood breakfastFood : breakfastFood){            
+        for (BreakfastFood nextBreakfastFood : breakfastFood){            
             
-            System.out.println(breakfastFood.getDescription() + "\t" +
-                               breakfastFood.getCalorieCount() + "\t" +
-                               breakfastFood.getHealthBenefit());
+            System.out.println(nextBreakfastFood.getDescription() + "\t" +
+                               nextBreakfastFood.getCalorieCount() + "\t" +
+                               nextBreakfastFood.getHealthBenefit());
         }
+        return null;
     }
     
     @Override
@@ -77,7 +75,7 @@ public class FeedSantaView extends View {
 
         switch (value) {
             case "L"://View Map/Choose Location
-                FeedSantaView.displaySortedBreakfastList();
+                FeedSantaView.displayBreakfastFoodCalories();
                 break;
             case "C"://Feed Santa
                 this.caloriesConsumed1View();

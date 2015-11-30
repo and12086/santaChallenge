@@ -191,12 +191,7 @@ public class GameMenuView extends View {
     }
 
     private void moveLocations() {
-        //move actor to specified location
-        int returnValue = MapControl.moveActorToLocation(actor, coordinates);
-        try {
-             MapControl.moveActorToLocation(actor, coordinates);
-        } catch (MapControlException me) {
-            System.out.println(me.getMessage());
-    }
+        LocationsView locationsView =  new LocationsView();
+        locationsView.displayMenu();
     }
 }
