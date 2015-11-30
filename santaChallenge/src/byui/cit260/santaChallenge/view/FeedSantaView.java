@@ -79,16 +79,15 @@ public class FeedSantaView extends View {
     BreakfastFood[] sortedBreakfastFood = BreakfastFoodControl.getSortedBreakfastList();
     
         System.out.println("\nList of Breakfast Foods for Santa");
-        System.out.println("Description" + "\t" +
-                            "Calories" + "\t" +
-                            "Calorie Deduction");
-
+        System.out.println("****************************************************");
       
         for (BreakfastFood nextBreakfastFood : breakfastFood){            
             
-            System.out.println(nextBreakfastFood.getDescription() + "\t" +
-                               nextBreakfastFood.getCalorieCount() + "\t" +
-                               nextBreakfastFood.getHealthBenefit());
+            System.out.println("Description:" + "\t" + "\t" + nextBreakfastFood.getDescription());
+            System.out.println("Calories:" + "\t" + "\t" + nextBreakfastFood.getCalorieCount());
+            System.out.println("Calorie Deduction:" + "\t" + nextBreakfastFood.getHealthBenefit());
+            System.out.println("***************************************************");
+                               
         }
     }
    

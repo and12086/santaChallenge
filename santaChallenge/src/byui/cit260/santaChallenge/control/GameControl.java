@@ -83,13 +83,13 @@ public class GameControl {
         InventoryItem[] inventory = new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
         
         InventoryItem energyPoints = new InventoryItem();
-        energyPoints.setDescription("Energy Points: Did you feed Santa enough healthy foods at breakfast to get him through his deliveries?");
+        energyPoints.setDescription("Energy Points - Did you feed Santa enough healthy foods at breakfast to get him through his deliveries?");
         energyPoints.setRequiredAmount(0);
         energyPoints.setActualAmount(0);
         inventory[Item.energyPoints.ordinal()] = energyPoints;
        
         InventoryItem time = new InventoryItem();
-        time.setDescription("Time:  How much time do you have left to help Santa finish his deliveries?");
+        time.setDescription("Time - How much time do you have left to help Santa finish his deliveries?");
         time.setRequiredAmount(0);
         time.setActualAmount(0);
         inventory[Item.time.ordinal()] = time;

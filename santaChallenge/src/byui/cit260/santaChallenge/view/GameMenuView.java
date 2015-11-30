@@ -104,16 +104,15 @@ public class GameMenuView extends View {
         InventoryItem[] sortedInventoryList = GameControl.getSortedInventoryList(inventory);
         
         System.out.println("\nList of Inventory Items"); 
-        System.out.println("Description" + "\t"
-                + "Required" + "\t"
-                + "Acquired");
+        System.out.println("****************************************");
 
         //for each inventory item
         for (InventoryItem nextInventory : inventory) {
             //DISPLAY the description, the required amount, and the amount the user has)
-            System.out.println(nextInventory.getDescription() + "\t  "
-                    + nextInventory.getRequiredAmount() + "\t  "
-                    + nextInventory.getActualAmount());
+            System.out.println("Description:" + "\t" + nextInventory.getDescription());
+            System.out.println("Required:" + "\t" + "\t" + nextInventory.getRequiredAmount());
+            System.out.println("Acquired:" + "\t" + "\t" + nextInventory.getActualAmount());
+            System.out.println("*****************************************");
 
         }
     }
