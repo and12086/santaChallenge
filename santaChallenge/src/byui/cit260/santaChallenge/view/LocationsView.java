@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Wendy
  */
-public class LocationsView extends View {
+public abstract class LocationsView implement ViewInterface {
 
     public LocationsView() {
         super("\n"
