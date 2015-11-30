@@ -54,7 +54,7 @@ public class YCoordinatesView {
         return doubleYCoordinate; //return the user input for x coordinate  
     }
 
-    public void doAction(double doubleYCoordinate) {
+    public void doAction() {
         
 
 }
