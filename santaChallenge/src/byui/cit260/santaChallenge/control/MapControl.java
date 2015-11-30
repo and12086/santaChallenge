@@ -10,6 +10,10 @@ import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.Scene;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
+import byui.cit260.santaChallenge.view.XCoordinateView;
+import static byui.cit260.santaChallenge.view.XCoordinateView.doubleXCoordinate;
+import byui.cit260.santaChallenge.view.YCoordinatesView;
+import static byui.cit260.santaChallenge.view.YCoordinatesView.doubleYCoordinate;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import java.awt.Point;
 import santachallenge.SantaChallenge;
@@ -50,12 +54,12 @@ public class MapControl {
     public static void moveActorToLocation(Actor actor, Point coordinates) 
                             throws MapControlException {
         Map map = SantaChallenge.getCurrentGame().getMap();
-        int newRow = coordinates.x-1;
-        int newColumn = coordinates.y-1;
+        int newRow = XCoordinateView.doubleXCoordinate;
+        int newColumn = YCoordinatesView.doubleYCoordinate;
         
         if (newRow < 0 || newRow >= map.getNoOfRows() || newColumn < 0 || newColumn >= map.getNoOfColumns()) {
             throw new MapControlException("Can not move actor to location "
-                                            + coordinates.x + ", " + coordinates.y
+                                            + doubleXCoordinate + ", " + doubleYCoordinate
                                             + " because that location is outside"
                                             + " the bounds of the map.");
         }

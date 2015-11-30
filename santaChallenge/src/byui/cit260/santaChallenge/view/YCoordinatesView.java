@@ -5,13 +5,21 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.MapControl;
+import byui.cit260.santaChallenge.model.Actor;
+import static byui.cit260.santaChallenge.view.XCoordinateView.doubleXCoordinate;
+import citbyui.cit260.santaChallenge.exceptions.MapControlException;
+import java.awt.Point;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Wendy
  */
 public class YCoordinatesView {
+    public static int doubleYCoordinate;
      private final String MENU = "\n"
             + "Choose your y coordinate."
             + "The y coordinate must be between 0 and 4.";
@@ -55,6 +63,17 @@ public class YCoordinatesView {
     }
 
     private void doAction(double doubleYCoordinate) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Actor actor = null; 
+        Point coordinates = null;
+        
+        try {  
+            MapControl.moveActorToLocation(actor, coordinates);
+        } catch (MapControlException me) {
+            System.out.println(me.getMessage());
+        }      
+    }
+
+    private void moveAgain() {
+        System.out.println("I'm here!");
     }
 }

@@ -13,7 +13,8 @@ import java.util.Scanner;
  * @author Wendy
  */
 public class XCoordinateView implements Serializable {
-
+    public static int doubleXCoordinate;
+    
     private final String MENU = "\n"
             + "Choose your x coordinate."
             + "The x coordinate must be between 0 and 4."

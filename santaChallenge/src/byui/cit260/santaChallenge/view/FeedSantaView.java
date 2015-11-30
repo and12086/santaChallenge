@@ -5,7 +5,9 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.BreakfastFoodControl;
 import byui.cit260.santaChallenge.model.BreakfastFood;
+import santachallenge.SantaChallenge;
 
 /**
  *
@@ -47,25 +49,7 @@ public class FeedSantaView extends View {
     }
     */
     
-    public static BreakfastFood[] displayBreakfastFoodCalories(){
-            
-    BreakfastFood[] breakfastFood =FeedSantaView.displayBreakfastFoodCalories();
-           // GameControl.createBreakfastList();
-        
-        System.out.println("\nList of Breakfast Foods for Santa");
-        System.out.println("Description" + "\t" +
-                            "Calories" + "\t" +
-                            "Calorie Deduction");
-
-      
-        for (BreakfastFood nextBreakfastFood : breakfastFood){            
-            
-            System.out.println(nextBreakfastFood.getDescription() + "\t" +
-                               nextBreakfastFood.getCalorieCount() + "\t" +
-                               nextBreakfastFood.getHealthBenefit());
-        }
-        return null;
-    }
+   
     
     @Override
     public boolean doAction(Object obj) {
@@ -75,7 +59,7 @@ public class FeedSantaView extends View {
 
         switch (value) {
             case "L"://View Map/Choose Location
-                FeedSantaView.displayBreakfastFoodCalories();
+                this.displayBreakfastFoodCalories();
                 break;
             case "C"://Feed Santa
                 this.caloriesConsumed1View();
@@ -88,8 +72,27 @@ public class FeedSantaView extends View {
 
     }
 
-   
+    public void displayBreakfastFoodCalories(){
+            
+    BreakfastFood[] breakfastFood = SantaChallenge.getCurrentGame().getBreakfastFood();
+           // GameControl.createBreakfastList();
+    BreakfastFood[] sortedBreakfastFood = BreakfastFoodControl.getSortedBreakfastList();
+    
+        System.out.println("\nList of Breakfast Foods for Santa");
+        System.out.println("Description" + "\t" +
+                            "Calories" + "\t" +
+                            "Calorie Deduction");
 
+      
+        for (BreakfastFood nextBreakfastFood : breakfastFood){            
+            
+            System.out.println(nextBreakfastFood.getDescription() + "\t" +
+                               nextBreakfastFood.getCalorieCount() + "\t" +
+                               nextBreakfastFood.getHealthBenefit());
+        }
+    }
+   
+    
     public void caloriesConsumed1View() {
         CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();
         caloriesConsumed1.display();

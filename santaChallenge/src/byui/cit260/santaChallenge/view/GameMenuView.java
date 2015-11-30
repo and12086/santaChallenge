@@ -124,27 +124,27 @@ public class GameMenuView extends View {
         Location[][] locations = map.getLocations();
 
         System.out.println("Map Locations");
-        System.out.println(0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
+        System.out.println("\t" + 0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
 
         int noOfColumns = map.getNoOfColumns();
         int noOfRows = map.getNoOfRows();
 
         for (int row = 0; row < noOfRows; row++) {
-            System.out.println("*********************************************" + "\n" + row);
+            System.out.println("\n*********************************************" + "\n" + row);
 
             for (int column = 0; column < noOfColumns; column++) {
                 System.out.print("|");
                 Location location = locations[row][column];
                 Scene scene = location.getScene();
-                System.out.println(scene.getMapSymbol());
+                System.out.print(scene.getMapSymbol());
                 if (!location.isVisited()) {
-                    System.out.println(scene.getMapSymbol());
+                    System.out.print(scene.getMapSymbol());
                 } else {
-                    System.out.println("XX");//print to indicate location has not been visited yet
+                    System.out.print("XX");//print to indicate location has not been visited yet
                 }
             }
 
-            System.out.println("|");//print final column divider
+            System.out.print("|");//print final column divider
         }
     }
 
