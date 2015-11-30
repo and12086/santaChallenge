@@ -10,41 +10,42 @@ import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import santachallenge.SantaChallenge;
+
 /**
  *
  * @author Wendy
  */
 public class MainMenuView extends View {
-    
+
     public MainMenuView() {
         super("\n"
-        + "\n*********************************************"
-        + "\n| Main Menu                                 |"
-        + "\n*********************************************"
-        + "\nP - Start game"
-        + "\nC - Get and start a saved game"
-        + "\nS - Save your game"
-        + "\nH - Get help on how to play the game"
-        + "\nE - Exit menu"
-        + "\n*********************************************");           
+                + "\n*********************************************"
+                + "\n| Main Menu                                 |"
+                + "\n*********************************************"
+                + "\nP - Start game"
+                + "\nC - Get and start a saved game"
+                + "\nS - Save your game"
+                + "\nH - Get help on how to play the game"
+                + "\nE - Exit menu"
+                + "\n*********************************************");
     }
-    
+
     @Override
     public boolean doAction(Object obj) {
-        
+
         String value = (String) obj;
        // value = value.toUpperCase();
-        
-        switch (value){
-            case "P":{
-            try {
-                //start a new game
-                this.startNewGame();
-            } catch (MapControlException ex) {
-                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+
+        switch (value) {
+            case "P": {
+                try {
+                    //start a new game
+                    this.startNewGame();
+                } catch (MapControlException ex) {
+                    Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        }
-                break;
+            break;
             case "C"://restart and existing game
                 this.continueGame();
                 break;
@@ -58,27 +59,23 @@ public class MainMenuView extends View {
                 System.out.println("\n*** Thank you for playing the Santa Challenge!");
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
-                break;        
-        } 
+                break;
+        }
         return false;
     }
-
 
     private void startNewGame() throws MapControlException {
         //Create a new game
         GameControl.createNewGame(SantaChallenge.getPlayer());
-        
+
         //Display the game introduction view
         //GameIntroductionView gameIntroduction = new GameIntroductionView();
         //gameIntroduction.display();
-        
         //Display game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();   
+        gameMenu.display();
     }
 
-        
-    
     private void continueGame() {
         System.out.println("*** continueGame function called");
     }
@@ -92,6 +89,5 @@ public class MainMenuView extends View {
         //display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
-    }   
+    }
 }
-   
