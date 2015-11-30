@@ -7,6 +7,7 @@ package byui.cit260.santaChallenge.model;
 
 import java.awt.Point;
 import java.io.Serializable;
+
 /**
  *
  * @author Wendy

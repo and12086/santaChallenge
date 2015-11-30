@@ -27,11 +27,11 @@ public class SantaChallenge {
         StartProgramView startProgramView = new StartProgramView();
         try{
          //create StartProgramView and start the program    
-        startProgramView.display();       
+        startProgramView.startProgram();       
         } catch (Throwable te) {
             System.out.println(te.getMessage());
             te.printStackTrace();
-            startProgramView.display();
+            startProgramView.startProgram();
         }
     }
     
