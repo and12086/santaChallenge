@@ -33,8 +33,6 @@ public class SantaChallenge {
             te.printStackTrace();
             startProgramView.display();
         }
-        
-        
     }
     
     public static Game getCurrentGame() {
