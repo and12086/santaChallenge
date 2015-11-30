@@ -130,7 +130,7 @@ public class GameMenuView extends View {
         int noOfRows = map.getNoOfRows();
 
         for (int row = 0; row < noOfRows; row++) {
-            System.out.println("*****" + "\n" + row);
+            System.out.println("*********************************************" + "\n" + row);
 
             for (int column = 0; column < noOfColumns; column++) {
                 System.out.print("|");
