@@ -31,7 +31,7 @@ public class LocationsView implements Serializable {
 
         
             this.doAction(xCoordinate); //do action based on selection
-        } while (xCoordinate < 0 || xCoordinate > 4);    
+        } while (xCoordinate < 0 || xCoordinate > 0);    
     }
     
     public String getInput() {
