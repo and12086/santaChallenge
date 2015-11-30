@@ -54,8 +54,7 @@ public class YCoordinatesView {
         return doubleYCoordinate; //return the user input for x coordinate  
     }
 
-    public void doAction() {
-        
-
-}
+    private void doAction(double doubleYCoordinate) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
