@@ -191,7 +191,7 @@ public class GameMenuView extends View {
     }
 
     private void moveLocations() {
-        LocationsView locationsView =  new LocationsView();
-        locationsView.displayMenu();
+        XCoordinateView xCoordinateView =  new XCoordinateView();
+        xCoordinateView.displayMenu();
     }
 }
