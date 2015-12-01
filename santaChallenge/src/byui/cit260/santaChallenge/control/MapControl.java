@@ -121,7 +121,7 @@ public class MapControl {
     public static Scene getMaxValue(Scene[] scenes) {
         Scene maxScene = scenes[0];//get scene list from Scene class
         
-        //advance the position through the entire array
+        //advance the positition through the entire array
         for (int i = 0; i < scenes.length - 1; i++) {
             if (scenes[i].getMilesFromNorthPole() > maxScene.getMilesFromNorthPole()) {
                 maxScene = scenes[i];//
