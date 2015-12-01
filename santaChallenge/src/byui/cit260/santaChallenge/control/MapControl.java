@@ -10,10 +10,6 @@ import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.Scene;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
-import byui.cit260.santaChallenge.view.XCoordinateView;
-import static byui.cit260.santaChallenge.view.XCoordinateView.doubleXCoordinate;
-import byui.cit260.santaChallenge.view.YCoordinatesView;
-import static byui.cit260.santaChallenge.view.YCoordinatesView.doubleYCoordinate;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import java.awt.Point;
 import santachallenge.SantaChallenge;
@@ -30,7 +26,7 @@ public class MapControl {
 
         //create a list of the different scenes in the game
         Scene[] scenes = createScenes();
-        map.setScenes(scenes);//save the scene to the map
+       // map.setScenes(scenes);//save the scene to the map
         
         //assign the different scenes to locations in the map
         assignScenesToLocations(map, scenes);
@@ -45,21 +41,21 @@ public class MapControl {
         
         for (Actor actor : actors) {
             Point coordinates = actor.getCoordinates();
-            MapControl.moveActorToLocation(actor, coordinates);
+            MapControl.setActorToLocation(actor, coordinates);
         }
  
     }
     
-
-    public static void moveActorToLocation(Actor actor, Point coordinates) 
+    public static void setActorToLocation(Actor actor, Point coordinates) 
                             throws MapControlException {
         Map map = SantaChallenge.getCurrentGame().getMap();
-        int newRow = XCoordinateView.doubleXCoordinate;
-        int newColumn = YCoordinatesView.doubleYCoordinate;
+        
+        int newRow = coordinates.y;
+        int newColumn = coordinates.x;
         
         if (newRow < 0 || newRow >= map.getNoOfRows() || newColumn < 0 || newColumn >= map.getNoOfColumns()) {
             throw new MapControlException("Can not move actor to location "
-                                            + doubleXCoordinate + ", " + doubleYCoordinate
+                                            + coordinates.y + ", " + coordinates.x
                                             + " because that location is outside"
                                             + " the bounds of the map.");
         }
@@ -96,10 +92,14 @@ public class MapControl {
         locations[4][2].setScene(scenes[SceneType.casaBlanca.ordinal()]);
         locations[4][3].setScene(scenes[SceneType.ulaanbaatar.ordinal()]);
         locations[4][4].setScene(scenes[SceneType.finish.ordinal()]);
+        
+        map.setLocations(locations);
     }
 
+     
+    
     public static Scene[] getSortedScenes(Scene[] originalScenes) {
-
+       
         //clone originalList
         Scene[] scenes = originalScenes.clone();
 

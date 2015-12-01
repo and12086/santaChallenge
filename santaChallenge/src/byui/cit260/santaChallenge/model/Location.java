@@ -21,7 +21,7 @@ public class Location implements Serializable{
     private int column;
     public boolean visited;
     private Scene scene;
-    private ArrayList<Actor> actor;
+    private Actor actor;
     
     public Location() {
         
@@ -59,11 +59,11 @@ public class Location implements Serializable{
         this.scene = scene;
     }
 
-    public ArrayList<Actor> getActor() {
+    public Actor getActor() {
         return actor;
     }
 
-    public void setActor(ArrayList<Actor> actor) {
+    public void setActor(Actor actor) {
         this.actor = actor;
     }
 

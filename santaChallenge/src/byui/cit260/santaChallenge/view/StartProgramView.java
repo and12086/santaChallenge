@@ -101,8 +101,4 @@ public class StartProgramView {
         System.out.println("\tWe hope you have a jolly time!");
         System.out.println("*********************************************");
     }
-
-   // public void display() {
-     //   System.out.println("****calling the StartProgramView display()******");
-    //}
 }

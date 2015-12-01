@@ -66,8 +66,9 @@ public class MainMenuView extends View {
 
     private void startNewGame() throws MapControlException {
         //Create a new game
+        
         GameControl.createNewGame(SantaChallenge.getPlayer());
-
+       
         //Display the game introduction view
         //GameIntroductionView gameIntroduction = new GameIntroductionView();
         //gameIntroduction.display();

@@ -5,6 +5,7 @@
  */
 package byui.cit260.santaChallenge.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Arrays;
 /**
@@ -16,7 +17,7 @@ public class Map implements Serializable{
     private int noOfRows;
     private int noOfColumns;
     private Location[][] locations;
-    private Scene[] scenes;
+    //private Scene[] scenes;
     
 
     public Map(int noOfRows, int noOfColumns) {
@@ -45,6 +46,10 @@ public class Map implements Serializable{
         }
     } 
 
+    public void putActorOnLocation(Actor actor, Point point){
+        locations[point.y][point.x].setActor(actor);
+    }
+    
     public int getNoOfRows() {
         return noOfRows;
     }
@@ -69,14 +74,14 @@ public class Map implements Serializable{
         this.locations = locations;
     }
 
-    public Scene[] getScenes() {
+    /*public Scene[] getScenes() {
         return scenes;
     }
 
     public void setScenes(Scene[] scenes) {
         this.scenes = scenes;
     }
-
+*/
     @Override
     public int hashCode() {
         int hash = 7;
