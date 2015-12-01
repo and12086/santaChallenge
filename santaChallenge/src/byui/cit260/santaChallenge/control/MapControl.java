@@ -181,10 +181,7 @@ public class MapControl {
 
         Scene northPole = new Scene();
         northPole.setDescription(
-                "\n Twas the night before Christmas and at the North Pole nothing"
-                + "was quiet, not even the mouse. Santa and the elves "
-                + "are busy getting ready to deliver Christmas magic to "
-                + "the world.");
+                "The North Pole");
         northPole.setMapSymbol(" NP ");
         northPole.setBlocked(false);
         northPole.setMilesFromNorthPole(0);
@@ -353,10 +350,7 @@ public class MapControl {
 
         Scene finish = new Scene();
         finish.setDescription(
-                "\n You did it.  You were able to deliver presents throughout the"
-                + "world, and none of the children saw you. As you head "
-                + "back home to the North Pole you exclaim, 'Merry Christmas"
-                + "to all and to all a good night!'");
+                "The North Pole");
         finish.setMapSymbol(" FN ");
         finish.setBlocked(false);
         finish.setMilesFromNorthPole(0);
