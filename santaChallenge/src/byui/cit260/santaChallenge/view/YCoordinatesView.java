@@ -7,20 +7,18 @@ package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.MapControl;
 import byui.cit260.santaChallenge.model.Actor;
-import static byui.cit260.santaChallenge.view.XCoordinateView.doubleXCoordinate;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import java.awt.Point;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Wendy
  */
 public class YCoordinatesView {
+
     public static int doubleYCoordinate;
-     private final String MENU = "\n"
+    private final String MENU = "\n"
             + "Choose your y coordinate."
             + "The y coordinate must be between 0 and 4.";
 
@@ -52,8 +50,12 @@ public class YCoordinatesView {
                 System.out.println("Invalid menu selection!");
                 continue; //and repeat again
             }
-
-            double doubleYCoordinate = Double.parseDouble(yCoordinate);
+            try {
+                double doubleYCoordinate = Double.parseDouble(yCoordinate);
+            } catch (NumberFormatException nf) {
+                System.out.println("\nYou must enter a valid number between 0 and 4."
+                        + "Try again.");
+            }
 
             break; // Exit out of the repitition
         }
@@ -63,14 +65,14 @@ public class YCoordinatesView {
     }
 
     private void doAction(double doubleYCoordinate) {
-        Actor actor = null; 
+        Actor actor = null;
         Point coordinates = null;
-        
-        try {  
+
+        try {
             MapControl.moveActorToLocation(actor, coordinates);
         } catch (MapControlException me) {
             System.out.println(me.getMessage());
-        }      
+        }
     }
 
     private void moveAgain() {

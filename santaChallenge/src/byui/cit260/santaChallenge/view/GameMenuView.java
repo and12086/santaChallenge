@@ -103,8 +103,9 @@ public class GameMenuView extends View {
         //sort the list of inventory items
         InventoryItem[] sortedInventoryList = GameControl.getSortedInventoryList(inventory);
         
-        System.out.println("\nList of Inventory Items"); 
-        System.out.println("****************************************");
+        System.out.println("***************************");
+        System.out.println("* List of Inventory Items *"); 
+        System.out.println("***************************");
 
         //for each inventory item
         for (InventoryItem nextInventory : inventory) {
@@ -122,7 +123,9 @@ public class GameMenuView extends View {
         Map map = SantaChallenge.getCurrentGame().getMap();
         Location[][] locations = map.getLocations();
 
-        System.out.println("Map Locations");
+        System.out.println("*****************");
+        System.out.println("* Map Locations *");
+        System.out.println("*****************");
         System.out.println("\t" + 0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
 
         int noOfColumns = map.getNoOfColumns();
@@ -154,13 +157,16 @@ public class GameMenuView extends View {
         Scene[] sortedScenes = MapControl.getSortedScenes(scenes);
 
         //print a title
-        System.out.println("List of Scenes and their distance from the North Pole");
+        System.out.println("*********************************************************");
+        System.out.println("* List of Scenes and their distance from the North Pole *");
+        System.out.println("*********************************************************");
 
         //for each scene in the list
         for (Scene nextScene : sortedScenes) {
             //display the description and the miles from the north pole
-            System.out.println(nextScene.getDescription()
-                    + " " + nextScene.getMilesFromNorthPole());
+            System.out.println("Scene:" + "\t" + nextScene.getDescription());
+            System.out.println("Miles from the North Pole:" + "\t" + nextScene.getMilesFromNorthPole());
+            System.out.println("************************************");
         }
 
     }

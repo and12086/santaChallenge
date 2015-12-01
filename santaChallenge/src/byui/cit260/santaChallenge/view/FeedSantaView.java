@@ -78,8 +78,9 @@ public class FeedSantaView extends View {
            // GameControl.createBreakfastList();
     BreakfastFood[] sortedBreakfastFood = BreakfastFoodControl.getSortedBreakfastList();
     
-        System.out.println("\nList of Breakfast Foods for Santa");
-        System.out.println("****************************************************");
+        System.out.println("*************************************");
+        System.out.println("* List of Breakfast Foods for Santa *");
+        System.out.println("*************************************");
       
         for (BreakfastFood nextBreakfastFood : breakfastFood){            
             
