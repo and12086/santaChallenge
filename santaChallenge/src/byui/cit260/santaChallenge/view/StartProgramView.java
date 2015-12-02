@@ -7,7 +7,11 @@ package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.ProgramControl;
 import byui.cit260.santaChallenge.model.Player;
+import citbyui.cit260.santaChallenge.exceptions.MapControlException;
+import citbyui.cit260.santaChallenge.exceptions.ProgramControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,10 +28,24 @@ public class StartProgramView {
         this.displayBanner();
         
         //Get the players name
-        String playersName = this.getPlayersName();
+        String playersName;
+             
+        try {      
+            playersName = this.getPlayersName();
+        } catch (ProgramControlException ex) {
+           System.out.println(ex.getMessage());
+           return;
+        }
         
         //Create a new player
-        Player player = ProgramControl.createPlayer(playersName);
+        Player player;
+               
+        try {
+            player = ProgramControl.createPlayer(playersName);
+        } catch (ProgramControlException ex) {
+            System.out.println(ex.getMessage());
+            return;
+        }  
         
         //Display a customized welcome message
         this.displayWelcomeMessage(player);
@@ -72,7 +90,7 @@ public class StartProgramView {
                 
     }
 
-    public String getPlayersName() {
+    public String getPlayersName() throws ProgramControlException{
         boolean valid = false; //indicates if the name has been retrieved
         String playersName = null;
         Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -86,9 +104,8 @@ public class StartProgramView {
             playersName = playersName.trim();
             
             //if the name is invalid (less than 1 character in length)
-            if (playersName.length() <1){
-                System.out.println("Invalid entry.  You must enter a name.");
-                continue; //and repeat again
+            if (playersName.length() <1) {
+                throw new ProgramControlException("Please enter a valid name like Wendy :)");
             }
             break; // Exit out of the repitition
         }

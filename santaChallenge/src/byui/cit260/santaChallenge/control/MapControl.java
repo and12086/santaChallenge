@@ -6,6 +6,7 @@
 package byui.cit260.santaChallenge.control;
 
 import byui.cit260.santaChallenge.model.Actor;
+import static byui.cit260.santaChallenge.model.Actor.Mrs_Claus;
 import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.Scene;
 import byui.cit260.santaChallenge.model.Location;
@@ -95,9 +96,9 @@ public class MapControl {
         
         map.setLocations(locations);
     }
+//locations[0][0].setScene(scene[SceneType.start.ordinal()]);
 
-     
-    
+   
     public static Scene[] getSortedScenes(Scene[] originalScenes) {
        
         //clone originalList
