@@ -34,17 +34,12 @@ public class MainMenuView extends View {
     public boolean doAction(Object obj) {
 
         String value = (String) obj;
-       // value = value.toUpperCase();
+        // value = value.toUpperCase();
 
         switch (value) {
-            case "P": {
-                try {
-                    //start a new game
-                    this.startNewGame();
-                } catch (MapControlException ex) {
-                    Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            case "P": 
+                //start a new game
+                this.startNewGame();          
             break;
             case "C"://restart and existing game
                 this.continueGame();
@@ -64,11 +59,16 @@ public class MainMenuView extends View {
         return false;
     }
 
-    private void startNewGame() throws MapControlException {
-        //Create a new game
-        
-        GameControl.createNewGame(SantaChallenge.getPlayer());
-       
+    private void startNewGame() {
+        try {
+            //Create a new game
+
+            GameControl.createNewGame(SantaChallenge.getPlayer());
+        } catch (MapControlException mce) {
+            System.out.println(mce.getMessage());
+            return;
+        }
+
         //Display the game introduction view
         //GameIntroductionView gameIntroduction = new GameIntroductionView();
         //gameIntroduction.display();

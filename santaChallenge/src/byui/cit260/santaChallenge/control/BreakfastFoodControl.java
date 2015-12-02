@@ -5,7 +5,9 @@
  */
 package byui.cit260.santaChallenge.control;
 
+import static byui.cit260.santaChallenge.control.GameControl.Item.energyPoints;
 import byui.cit260.santaChallenge.model.BreakfastFood;
+import byui.cit260.santaChallenge.model.InventoryItem;
 import santachallenge.SantaChallenge;
 
 /**
@@ -50,12 +52,12 @@ public class BreakfastFoodControl {
             healthBenefit4 = 0;
         }
             
-    int caloriesConsumed = (calorieCount1 + calorieCount2 + calorieCount3 + calorieCount4) - (healthBenefit1 + healthBenefit2 + healthBenefit3 + healthBenefit4);
-    
-    
-    return caloriesConsumed;
+    int actualEnergyPoints = (calorieCount1 + calorieCount2 + calorieCount3 + calorieCount4) - (healthBenefit1 + healthBenefit2 + healthBenefit3 + healthBenefit4);
+    return actualEnergyPoints;    
     }
+
     
+
     
     public static BreakfastFood[] getSortedBreakfastList() {
 
@@ -82,5 +84,7 @@ public class BreakfastFoodControl {
         }
         return breakfastList;
     }
+
+    
 }
 

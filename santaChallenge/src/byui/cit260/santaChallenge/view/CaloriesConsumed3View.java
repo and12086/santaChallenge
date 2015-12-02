@@ -32,7 +32,7 @@ import java.util.Scanner;
             + "\nS - 3 links of sausage"
             + "\nQ - Quit your game"
             + "\n*********************************************"
-            + "\n Please choose Santa's first breakfast food! "
+            + "\n Please choose Santa's third breakfast food! "
             + "\n");
 
     public void displayMenu() {

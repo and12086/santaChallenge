@@ -9,6 +9,26 @@ package citbyui.cit260.santaChallenge.exceptions;
  *
  * @author Wendy
  */
-public class BreakfastFoodControlException {
+public class BreakfastFoodControlException extends Exception {
+
+    public BreakfastFoodControlException() {
+    }
+
+    public BreakfastFoodControlException(String message) {
+        super(message);
+    }
+
+    public BreakfastFoodControlException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public BreakfastFoodControlException(Throwable cause) {
+        super(cause);
+    }
+
+    public BreakfastFoodControlException(String message, Throwable cause, boolean enableSupression, boolean writableStackTrace) {
+        super(message, cause, enableSupression, writableStackTrace);
+    }
+
     
 }
