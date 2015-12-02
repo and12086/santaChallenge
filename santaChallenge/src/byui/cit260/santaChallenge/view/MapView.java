@@ -26,7 +26,7 @@ public class MapView {
         //Get the coordinates for x and y
         int xCoordinate = this.getCoordinate();
         
-        System.out.println("Enter an y coordinate below:");
+        System.out.println("Enter a y coordinate below:");
         int yCoordinate = this.getCoordinate();
 
 

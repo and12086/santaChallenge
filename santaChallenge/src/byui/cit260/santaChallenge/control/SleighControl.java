@@ -5,18 +5,20 @@
  */
 package byui.cit260.santaChallenge.control;
 
+import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
+
 /**
  *
  * @author Lisa Lou
  */
 public class SleighControl {
     
-    public double calcPullCapacity(double numberOfPresents, double numberOfReindeer) {
+    public double calcPullCapacity(double numberOfPresents, double numberOfReindeer) throws SleighControlException {
         if (numberOfPresents != 60 || numberOfPresents != 80 || numberOfPresents != 100 ) {
-            return -1;
+           throw new SleighControlException("Please enter the specified number of presents: 60, 80, or 100.");
         }
         if (numberOfReindeer !=3 || numberOfReindeer !=6 || numberOfReindeer !=9) {
-            return -1;
+            throw new SleighControlException("Please enter the specified number of reindeer: 3, 6, or 9.");
         }
         
         double pullCapacity = (numberOfPresents*2)/(numberOfReindeer*30);
