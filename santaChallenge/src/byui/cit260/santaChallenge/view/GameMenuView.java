@@ -64,19 +64,25 @@ public class GameMenuView extends View {
                 break;
             case "A"://view actors
                 this.displayActors();
+                break;
             case "N"://move to a new location
                 this.moveLocations();
+                break;
             case "C"://return to your game
                 this.continueGame();
+                break;
             case "S"://display the list of scenes
                 this.displaySceneList();
+                break;
             case "D":
                 this.displayMaxValue();
+                break;
             case "V":
                 this.displayMinValue();
-            default:
-                System.out.println("\n*** Invalid selection *** Try again!");
                 break;
+            default:
+               System.out.println("\n*** Invalid selection *** Try again!");
+               break;
         }
         return false;
 
@@ -196,7 +202,7 @@ public class GameMenuView extends View {
     }
 
     private void moveLocations() {
-        XCoordinateView xCoordinateView =  new XCoordinateView();
-        xCoordinateView.displayMenu();
+        MapView mapView =  new MapView();
+        mapView.inputCoordinates();
     }
 }

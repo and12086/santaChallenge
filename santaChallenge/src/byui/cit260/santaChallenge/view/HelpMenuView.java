@@ -63,8 +63,8 @@ public class HelpMenuView extends View {
                 this.displayContinue();
                 break;
             case "E":// exits back to main menu
-                System.out.println("***RETURNING TO MAIN MENU***");
-                return true;
+                this.displayMainMenu();              
+                break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
                 break;     
@@ -106,5 +106,10 @@ public class HelpMenuView extends View {
 
     private void displayContinue() {
         System.out.println("*** displayContinue function called");
+    }
+
+    private void displayMainMenu() {
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.display();
     }
 }

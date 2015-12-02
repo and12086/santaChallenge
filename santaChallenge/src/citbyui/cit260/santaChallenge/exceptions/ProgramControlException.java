@@ -9,24 +9,24 @@ package citbyui.cit260.santaChallenge.exceptions;
  *
  * @author Wendy
  */
-public class GameControlException extends Exception {
+public class ProgramControlException extends Exception {
 
-    public GameControlException() {
+    public ProgramControlException() {
     }
 
-    public GameControlException(String message) {
+    public ProgramControlException(String message) {
         super(message);
     }
 
-    public GameControlException(String message, Throwable cause) {
+    public ProgramControlException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public GameControlException(Throwable cause) {
+    public ProgramControlException(Throwable cause) {
         super(cause);
     }
 
-    public GameControlException(String message, Throwable cause, boolean enableSupression, boolean writableStackTrace) {
+    public ProgramControlException(String message, Throwable cause, boolean enableSupression, boolean writableStackTrace) {
         super(message, cause, enableSupression, writableStackTrace);
     }
     

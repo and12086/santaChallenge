@@ -26,7 +26,7 @@ public class MapControl {
 
         //create a list of the different scenes in the game
         Scene[] scenes = createScenes();
-       // map.setScenes(scenes);//save the scene to the map
+        map.setScenes(scenes);//save the scene to the map
         
         //assign the different scenes to locations in the map
         assignScenesToLocations(map, scenes);
@@ -139,10 +139,6 @@ public class MapControl {
             }
         }
         return minScene;
-    }
-
-    public static Scene[] getMaxValue() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public enum SceneType {

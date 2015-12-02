@@ -17,7 +17,7 @@ public class Map implements Serializable{
     private int noOfRows;
     private int noOfColumns;
     private Location[][] locations;
-    //private Scene[] scenes;
+    private Scene[] scenes;
     
 
     public Map(int noOfRows, int noOfColumns) {
@@ -74,14 +74,14 @@ public class Map implements Serializable{
         this.locations = locations;
     }
 
-    /*public Scene[] getScenes() {
+    public Scene[] getScenes() {
         return scenes;
     }
 
     public void setScenes(Scene[] scenes) {
         this.scenes = scenes;
     }
-*/
+    
     @Override
     public int hashCode() {
         int hash = 7;

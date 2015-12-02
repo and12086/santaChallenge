@@ -40,14 +40,6 @@ public class FeedSantaView extends View {
                 + "\n C - Continue on in the game                 *"
                 + "\n**********************************************");
     }
- 
-      
-    /*private void displaySortedBreakfastList() {
-        BreakfastFood[] breakfastList = BreakfastFoodControl.getSortedBreakfastList();
-            BreakfastFood[] sortedBreakfastList;
-                    
-    }
-    */
     
    
     
@@ -95,7 +87,7 @@ public class FeedSantaView extends View {
     
     public void caloriesConsumed1View() {
         CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();
-        caloriesConsumed1.display();
+        caloriesConsumed1.displayMenu();
     }
 
 }
