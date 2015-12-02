@@ -31,7 +31,7 @@ public class MapView {
 
 
         //Create a new set of coordinates
-        Point coordinates = new Point(xCoordinate, yCoordinate);
+        Point coordinates = new Point(yCoordinate, xCoordinate);
          //go to move actor to a new location
             
     }

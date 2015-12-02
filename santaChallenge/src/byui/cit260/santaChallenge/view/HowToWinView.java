@@ -12,7 +12,7 @@ package byui.cit260.santaChallenge.view;
 public class HowToWinView extends View {
     
     public HowToWinView() {
-        super ("/n"
+        super ("\n"
             + "\n"
             + "\n The purpose of the game is to deliver as many      "
                 + "\n presents as you can, to as many different      "
@@ -32,7 +32,7 @@ public class HowToWinView extends View {
                 + "\n make it to the most amount of countries.       "
                 + "\n                                                "
                 + "\n************************************************"
-                + "\n Press R to Return to the Help Menu             "
+                + "\n Type R to Return to the Help Menu             "
                 + "\n************************************************");
         }
 
@@ -44,7 +44,7 @@ public class HowToWinView extends View {
         //// value = value.toUpperCase();
         
         if ("R".equals(value)){
-            this.helpMenuView();            
+            this.displayHelpMenu();            
         } 
         
         else {
@@ -59,8 +59,10 @@ public class HowToWinView extends View {
         mainMenu.display();
     }
 
-    private void helpMenuView() {
-        System.out.println("*** helpMenuView function called");
+    private void displayHelpMenu() {
+        //display the help menu
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.display();
     }
 }
 

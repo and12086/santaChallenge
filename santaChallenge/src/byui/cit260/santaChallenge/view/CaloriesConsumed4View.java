@@ -11,12 +11,14 @@ import java.util.Scanner;
  *
  * @author Wendy
  */
-public class CaloriesConsumed4View extends View {
+    public class CaloriesConsumed4View {
 
     public CaloriesConsumed4View() {
-        super ("\n"
+    }
+
+    private final String MENU = ("\n"
             + "\n*********************************************"
-            + "\n| Breakfast food selections                                |"
+            + "\n| Breakfast food selections                 |"
             + "\n*********************************************"
             + "\nP - 2 frosted Poptarts with sprinkles"
             + "\nB - 1 slimming Banana"
@@ -30,67 +32,113 @@ public class CaloriesConsumed4View extends View {
             + "\nS - 3 links of sausage"
             + "\nQ - Quit your game"
             + "\n*********************************************"
-            + "\n Please choose Santa's final breakfast food! ");
-    }
-   
-   @Override
-    public boolean doAction(Object obj) {
-        
-        String value = (String) obj;
+            + "\n Please choose Santa's first breakfast food! "
+            + "\n");
 
-        switch (value){
-            case "P"://selects a food
+    public void displayMenu() {
+        char selection = ' ';
+        do {
+            System.out.println(MENU);//displays teh main menu
+
+            String input = this.getInput();//get the user's selection
+            selection = input.charAt(0);//get the first character of the string
+
+            this.doAction(selection);//do action based on selection
+
+        } while (selection != 'E');
+    }
+
+    public String getInput() {
+        boolean valid = false; //indicates if the menu selection has been retrieved   
+        String selection = null;
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+
+        while (!valid) {//while a valid menu selection has not been retrieved
+            //prompt the player for a valid menu selection
+            System.out.println("Please enter a valid menu selection.");
+
+            //get the menu selection from the keyboard and trim off the blanks
+            selection = keyboard.nextLine();
+            selection = selection.trim();
+
+            //if the menu selection is invalid
+            if (selection.length() < 1) {
+                System.out.println("Invalid menu selection!");
+                continue; //and repeat again
+            }
+            break; // Exit out of the repitition
+        }
+        return selection; //return the menu selection   
+    }
+
+    public int doAction(char selection) {
+
+      
+        int calorieCount4 = -1;
+        
+        switch (selection) {
+            case 'P'://selects a food
                 System.out.println("Santa has consumed 200 calories, but that food choice had very little nutritional value."
                         + "\nSanta may not make it around the world in 24 hours.");
+                calorieCount4 = 200;
                 this.calculate();
                 break;
-            case "B":
+            case 'B':
                 System.out.println("Santa has consumed 105 calories.  That was a good healthy choice!");
+                calorieCount4 = 105;
                 this.calculate();
                 break;
-            case "H":
+            case 'H':
                 System.out.println("Santa has consumed 250 calories.  That was a good healthy choice with lots of protein for energy!");
+                calorieCount4 = 250;
                 this.calculate();
                 break;
-            case "T":
+            case 'T':
                 System.out.println("Santa has consumed 267 calories.  That was a good healthy choice with lots of protein for energy!");
+                calorieCount4 = 267;
                 this.calculate();
                 break;
-            case "L":
-                System.out.println("Santa has consumed 220 calories, but that food choice had very little nutritional value.  "
+            case 'L':
+                System.out.println("Santa has consumed 220 calories, but that food choice had very little nutritional value."
                         + "\nSanta may not make it around the world in 24 hours.");
+                calorieCount4 = 220;
                 this.calculate();
                 break;
-            case "O":
+            case 'O':
                 System.out.println("Santa has consumed 160 calories.  That was a good healthy choice!");
+                calorieCount4 = 160;
                 this.calculate();
                 break;
-            case "Y":
+            case 'Y':
                 System.out.println("Santa has consumed 100 calories.  That was a good healthy choice!");
+                calorieCount4 = 100;
                 this.calculate();
                 break;
-            case "N":
+            case 'N':
                 System.out.println("You should always fuel your body in the mornings.  That was a bad choice!"
                         + "Santa may not make it around the world in 24 hours.");
+                calorieCount4 = 0;
                 this.calculate();
                 break;
-            case "C":
+            case 'C':
                 System.out.println("Santa has consumed 80 calories.  That was a good healthy choice with lots of protein for energy!");
+                calorieCount4 = 80;
                 this.calculate();
                 break;
-            case "S":
+            case 'S':
                 System.out.println("Santa has consumed 210 calories.  That was a good healthy choice with lots of protein for energy!");
+                calorieCount4 = 210;
                 this.calculate();
                 break;
-            case "Q"://Quit the current game
-                System.out.println("***Returning to the game menu.***");
+            case 'Q'://Quit the current game
+                System.out.println("***Returning to the main menu.***");
                 this.returnToMainMenu();
                 break;
             default:
                 System.out.println("\n*** Invalid selection *** Try again!");
-                break;        
+                break;
         }
-        return false;
+        return calorieCount4;
     }
 
     private void returnToMainMenu() {

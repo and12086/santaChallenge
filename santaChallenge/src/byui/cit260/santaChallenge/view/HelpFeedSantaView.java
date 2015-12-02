@@ -94,7 +94,7 @@ public class HelpFeedSantaView extends View {
      
     public void caloriesConsumed1View() {
         CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();
-        caloriesConsumed1.display();
+        caloriesConsumed1.displayMenu();
     }
     
     private void displayHelpMenu() {
