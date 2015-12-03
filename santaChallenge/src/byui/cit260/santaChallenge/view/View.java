@@ -5,7 +5,13 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import santachallenge.SantaChallenge;
 /**
  *
  * @author Wendy
@@ -13,6 +19,9 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface{
     
     private String promptMessage;
+    
+    protected final BufferedReader keyboard = SantaChallenge.getInFile();
+    protected final PrintWriter console = SantaChallenge.getOutFile();
     
     public View(String promptMessage){
         this.promptMessage = promptMessage;
@@ -35,22 +44,26 @@ public abstract class View implements ViewInterface{
     public String getInput() {
         boolean valid = false; //indicates if the menu selection has been retrieved   
         String value = null;
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        
         while(!valid){//while a valid menu selection has not been retrieved
             //prompt the player for a valid menu selection
             System.out.println("Please enter a valid menu selection.");
             
-            //get the menu selection from the keyboard and trim off the blanks
-            value = keyboard.nextLine();
-            value = value.trim();
+            try {
+               while (!valid) {
+                //get the menu selection from the keyboard and trim off the blanks
+                value = this.keyboard.readLine();
+                value = value.trim();
             
-            //if the menu selection is invalid
-           if (value.length() < 1){
-                System.out.println("Invalid menu selection!");
-                continue; //and repeat again
-            }
+                //if the menu selection is invalid
+               if (value.length() < 1){
+                    System.out.println("You must enter a value!");
+                    continue; //and repeat again
+                }
             break; // Exit out of the repitition
+        }
+        } catch(Exception e) {
+            System.out.println("Error reading input: " + e.getMessage());
+        }
         }
             return value; //return the menu selection   
     }

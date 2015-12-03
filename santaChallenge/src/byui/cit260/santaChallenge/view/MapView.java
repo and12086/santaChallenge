@@ -4,15 +4,21 @@
  * and open the template in the editor.
  */
 package byui.cit260.santaChallenge.view;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.awt.Point;
 import java.util.Scanner;
+import santachallenge.SantaChallenge;
+
+
 
 /**
  *
  * @author Wendy
  */
 public class MapView {
+    private Object keyboard;
 
     public MapView() {
     }
@@ -65,7 +71,6 @@ public class MapView {
         boolean valid = false; //indicates if the x coordinate has been retrieved
         String xCoordinate = null;
 
-        Scanner keyboard = new Scanner(System.in); //keyboard input stream
 
         int doubleXCoordinate = -1;
         
@@ -74,7 +79,7 @@ public class MapView {
             
 
             //get the coordinate from the keyboard and trim off the blanks
-            xCoordinate = keyboard.nextLine();
+            xCoordinate = this.keyboard.readLine();
             xCoordinate = xCoordinate.trim();
 
             //if the coordinate is invalid (less than 1 character in length)
@@ -87,7 +92,7 @@ public class MapView {
                 doubleXCoordinate = Integer.parseInt(xCoordinate);         
             } catch (NumberFormatException nf) {
                 System.out.println("\nYou must enter a valid number between 0 and 4."
-                        + "Please try again.");
+                        +"\n Please try again." + e.getMessage());
             }
             
             if (doubleXCoordinate < 0 || doubleXCoordinate > 4) {

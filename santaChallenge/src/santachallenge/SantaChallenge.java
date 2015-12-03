@@ -8,6 +8,12 @@ package santachallenge;
 import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.Player;
 import byui.cit260.santaChallenge.view.StartProgramView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,19 +25,54 @@ public class SantaChallenge {
     private static Game currentGame = null;
     private static Player player = null;
     
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null; 
+    
+    private static PrintWriter logFile = null;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
       
-        StartProgramView startProgramView = new StartProgramView();
+        
         try{
-         //create StartProgramView and start the program    
-        startProgramView.startProgram();       
+            
+            //opencharacter stream files for end user input and output
+            SantaChallenge.inFile = new BufferedReader(new InputStreamReader(System.in));
+                
+            SantaChallenge.outFile = new PrintWriter(System.out, true);
+            
+            //open log file
+            String filePath = "log.txt";
+            SantaChallenge.logFile = new PrintWriter (filePath);
+
+            //create StartProgramView and start the program    
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.displayBanner();
+            
         } catch (Throwable te) {
             System.out.println(te.getMessage());
             te.printStackTrace();
-            startProgramView.startProgram();
+            //startProgramView.startProgram();
+        }
+        finally {
+            try {
+                             
+                if (SantaChallenge.inFile != null)
+                    SantaChallenge.inFile.close();
+                
+                if (SantaChallenge.outFile != null)
+                SantaChallenge.outFile.close();
+                
+                if (SantaChallenge.logFile != null)
+                    SantaChallenge.logFile.close();
+
+            } catch (IOException ex) {
+                System.out.println("Error closing files");
+                return;
+            }
+            
         }
     }
     
@@ -50,4 +91,38 @@ public class SantaChallenge {
     public static void setPlayer(Player player) {
         SantaChallenge.player = player;
     }    
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        SantaChallenge.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        SantaChallenge.inFile = inFile;
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        SantaChallenge.logFile = logFile;
+    }
+
+  
+
+
+
+
+
+
+
+
 }
