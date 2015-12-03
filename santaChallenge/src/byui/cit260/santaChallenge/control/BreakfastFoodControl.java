@@ -5,9 +5,7 @@
  */
 package byui.cit260.santaChallenge.control;
 
-import static byui.cit260.santaChallenge.control.GameControl.Item.energyPoints;
 import byui.cit260.santaChallenge.model.BreakfastFood;
-import byui.cit260.santaChallenge.model.InventoryItem;
 import santachallenge.SantaChallenge;
 
 /**

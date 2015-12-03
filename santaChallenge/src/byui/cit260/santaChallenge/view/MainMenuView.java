@@ -7,8 +7,6 @@ package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.GameControl;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import santachallenge.SantaChallenge;
 
 /**
@@ -66,6 +64,10 @@ public class MainMenuView extends View {
             GameControl.createNewGame(SantaChallenge.getPlayer());
         } catch (MapControlException mce) {
             System.out.println(mce.getMessage());
+            return;
+        } catch (Throwable te) {
+            System.out.println(te.getMessage());
+            te.printStackTrace();
             return;
         }
 

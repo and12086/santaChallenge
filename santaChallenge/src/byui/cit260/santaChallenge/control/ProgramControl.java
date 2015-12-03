@@ -6,6 +6,7 @@
 package byui.cit260.santaChallenge.control;
 
 import byui.cit260.santaChallenge.model.Player;
+import citbyui.cit260.santaChallenge.exceptions.ProgramControlException;
 import santachallenge.SantaChallenge;
 
 /**
@@ -14,10 +15,11 @@ import santachallenge.SantaChallenge;
  */
 public class ProgramControl {
 
-    public static Player createPlayer(String name) {
+    public static Player createPlayer(String name) throws ProgramControlException {
         
-        if (name == null){
-            return null;
+        if (name == null)  {
+            //return null;
+        throw new ProgramControlException("Please enter a name.");
         }
         
         Player player = new Player();

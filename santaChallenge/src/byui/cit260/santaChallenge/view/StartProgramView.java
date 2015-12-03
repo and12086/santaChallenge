@@ -9,7 +9,11 @@ import santachallenge.SantaChallenge;
 
 import byui.cit260.santaChallenge.control.ProgramControl;
 import byui.cit260.santaChallenge.model.Player;
+import citbyui.cit260.santaChallenge.exceptions.MapControlException;
+import citbyui.cit260.santaChallenge.exceptions.ProgramControlException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -28,11 +32,25 @@ public class StartProgramView {
         this.displayBanner();
 
         //Get the players name
-        String playersName = this.getPlayersName();
-
+        String playersName;
+             
+        try {      
+            playersName = this.getPlayersName();
+        } catch (ProgramControlException ex) {
+           System.out.println(ex.getMessage());
+           return;
+        }
+        
         //Create a new player
-        Player player = ProgramControl.createPlayer(playersName);
-
+        Player player;
+               
+        try {
+            player = ProgramControl.createPlayer(playersName);
+        } catch (ProgramControlException ex) {
+            System.out.println(ex.getMessage());
+            return;
+        }  
+        
         //Display a customized welcome message
         this.displayWelcomeMessage(player);
 
@@ -76,26 +94,22 @@ public class StartProgramView {
 
     }
 
-    public String getPlayersName() {
+    public String getPlayersName() throws ProgramControlException{
         boolean valid = false; //indicates if the name has been retrieved
         String playersName = null;
-
-        try {
-            //while a valid name has not been retrieved
-            while (!valid) {
-                //prompt for the player's name
-                System.out.println("Enter the player's name below:");
-
-                //get the name from the keyboard and trim off the blanks
-                playersName = this.keyboard.readLine();
-                playersName = playersName.trim();
-
-                //if the name is invalid (less than 1 character in length)
-                if (playersName.length() < 1) {
-                    System.out.println("Invalid entry.  You must enter a name.");
-                    continue; //and repeat again
-                }
-                break; // Exit out of the repitition
+        Scanner keyboard = new Scanner(System.in); //keyboard input stream
+        
+        while(!valid){//while a valid name has not been retrieved
+            //prompt for the player's name
+            System.out.println("Enter the player's name below:");
+            
+            //get the name from the keyboard and trim off the blanks
+            playersName = keyboard.nextLine();
+            playersName = playersName.trim();
+            
+            //if the name is invalid (less than 1 character in length)
+            if (playersName.length() <1) {
+                throw new ProgramControlException("Please enter a valid name like Wendy :)");
             }
         } catch (Exception e) {
             System.out.println("error reading input: " + e.getMessage());

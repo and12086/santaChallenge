@@ -99,7 +99,8 @@ public class GameMenuView extends View {
     }
 
     private void loadSleigh() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        SleighView sleighView = new SleighView();
+        sleighView.displayMessage();
     }
 
     public void displayInventoryList() {
