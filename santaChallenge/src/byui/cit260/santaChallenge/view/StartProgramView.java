@@ -10,7 +10,6 @@ import byui.cit260.santaChallenge.model.Player;
 import citbyui.cit260.santaChallenge.exceptions.ProgramControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import santachallenge.SantaChallenge;
 
 /**
