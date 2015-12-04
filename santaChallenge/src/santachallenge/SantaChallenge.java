@@ -12,8 +12,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -45,25 +43,26 @@ public class SantaChallenge {
             
             //open log file
             String filePath = "log.txt";
-            SantaChallenge.logFile = new PrintWriter (filePath);
+            SantaChallenge.logFile = new PrintWriter(filePath);
 
             //create StartProgramView and start the program    
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.displayBanner();
             
-        } catch (Throwable te) {
-            System.out.println(te.getMessage());
-            te.printStackTrace();
+        } catch (Throwable e) {
+            System.out.println("Exception: " + e.toString() +
+                                "\nCause: " + e.getCause() +
+                                "\nMessage: " + e.getMessage());
+            e.printStackTrace();
             //startProgramView.startProgram();
         }
         finally {
-            try {
-                             
+            try {                           
                 if (SantaChallenge.inFile != null)
                     SantaChallenge.inFile.close();
                 
                 if (SantaChallenge.outFile != null)
-                SantaChallenge.outFile.close();
+                    SantaChallenge.outFile.close();
                 
                 if (SantaChallenge.logFile != null)
                     SantaChallenge.logFile.close();

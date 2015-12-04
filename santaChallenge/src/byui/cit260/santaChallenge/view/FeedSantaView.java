@@ -57,7 +57,7 @@ public class FeedSantaView extends View {
                 this.caloriesConsumed1View();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again!");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid selection *** Try again!");
                 break;
         }
         return false;
@@ -70,16 +70,16 @@ public class FeedSantaView extends View {
            // GameControl.createBreakfastList();
     BreakfastFood[] sortedBreakfastFood = BreakfastFoodControl.getSortedBreakfastList();
     
-        System.out.println("*************************************");
-        System.out.println("* List of Breakfast Foods for Santa *");
-        System.out.println("*************************************");
+        this.console.println("*************************************");
+        this.console.println("* List of Breakfast Foods for Santa *");
+        this.console.println("*************************************");
       
         for (BreakfastFood nextBreakfastFood : breakfastFood){            
             
-            System.out.println("Description:" + "\t" + "\t" + nextBreakfastFood.getDescription());
-            System.out.println("Calories:" + "\t" + "\t" + nextBreakfastFood.getCalorieCount());
-            System.out.println("Calorie Deduction:" + "\t" + nextBreakfastFood.getHealthBenefit());
-            System.out.println("***************************************************");
+            this.console.println("Description:" + "\t" + "\t" + nextBreakfastFood.getDescription());
+            this.console.println("Calories:" + "\t" + "\t" + nextBreakfastFood.getCalorieCount());
+            this.console.println("Calorie Deduction:" + "\t" + nextBreakfastFood.getHealthBenefit());
+            this.console.println("***************************************************");
                                
         }
     }

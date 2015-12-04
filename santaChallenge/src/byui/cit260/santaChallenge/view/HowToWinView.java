@@ -32,7 +32,8 @@ public class HowToWinView extends View {
                 + "\n make it to the most amount of countries.       "
                 + "\n                                                "
                 + "\n************************************************"
-                + "\n Type R to Return to the Help Menu             "
+                + "\n Type R to Return to the Help Menu              "
+                + "\n Type M to return to the Main Menu              "
                 + "\n************************************************");
         }
 
@@ -46,9 +47,11 @@ public class HowToWinView extends View {
         if ("R".equals(value)){
             this.displayHelpMenu();            
         } 
-        
+        else if ("M".equals(value)){
+            this.returnToMainMenu();
+        }
         else {
-            System.out.println("\n*** Invalid menu selection!");
+            ErrorView.display(this.getClass().getName(),"\n*** Invalid menu selection!");
         }
         
     return false;

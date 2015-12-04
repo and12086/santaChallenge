@@ -49,9 +49,9 @@ public class MainMenuView extends View {
                 this.displayHelpMenu();
                 break;
             case "E"://exit the program
-                System.out.println("\n*** Thank you for playing the Santa Challenge!");
+                this.console.println("\n*** Thank you for playing the Santa Challenge!");
             default:
-                System.out.println("\n*** Invalid selection *** Try again!");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid selection *** Try again!");
                 break;
         }
         return false;
@@ -63,10 +63,10 @@ public class MainMenuView extends View {
 
             GameControl.createNewGame(SantaChallenge.getPlayer());
         } catch (MapControlException mce) {
-            System.out.println(mce.getMessage());
+            ErrorView.display(this.getClass().getName(),mce.getMessage());
             return;
         } catch (Throwable te) {
-            System.out.println(te.getMessage());
+            ErrorView.display(this.getClass().getName(),te.getMessage());
             te.printStackTrace();
             return;
         }
@@ -80,11 +80,11 @@ public class MainMenuView extends View {
     }
 
     private void continueGame() {
-        System.out.println("*** continueGame function called");
+        this.console.println("*** continueGame function called");
     }
 
     private void saveGame() {
-        System.out.println("*** startSaveGame function called");
+        this.console.println("*** startSaveGame function called");
 
     }
 

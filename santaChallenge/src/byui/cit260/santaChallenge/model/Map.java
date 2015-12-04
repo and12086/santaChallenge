@@ -5,6 +5,7 @@
  */
 package byui.cit260.santaChallenge.model;
 
+import byui.cit260.santaChallenge.view.ErrorView;
 import java.awt.Point;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -23,7 +24,7 @@ public class Map implements Serializable{
     public Map(int noOfRows, int noOfColumns) {
         
         if (noOfRows < 1 || noOfColumns < 1) {
-            System.out.println("The number of rows and columns must be greater than zero.");
+            ErrorView.display(this.getClass().getName(),"The number of rows and columns must be greater than zero.");
             return;
         }
         this.noOfRows = noOfRows;

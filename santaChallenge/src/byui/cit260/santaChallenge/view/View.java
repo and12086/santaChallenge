@@ -6,11 +6,7 @@
 package byui.cit260.santaChallenge.view;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import santachallenge.SantaChallenge;
 /**
  *
@@ -33,7 +29,7 @@ public abstract class View implements ViewInterface{
         boolean done = false;
         
         do {
-            System.out.println(this.promptMessage);//display the main menu
+            this.console.println(this.promptMessage);//display the main menu
             
             value = this.getInput(); //get the user's selection            
             done = this.doAction(value); //do action based on selection
@@ -46,7 +42,7 @@ public abstract class View implements ViewInterface{
         String value = null;
         while(!valid){//while a valid menu selection has not been retrieved
             //prompt the player for a valid menu selection
-            System.out.println("Please enter a valid menu selection.");
+            this.console.println("Please enter a valid menu selection.");
             
             try {
                while (!valid) {
@@ -56,13 +52,13 @@ public abstract class View implements ViewInterface{
             
                 //if the menu selection is invalid
                if (value.length() < 1){
-                    System.out.println("You must enter a value!");
+                    ErrorView.display(this.getClass().getName(),"You must enter a value.");
                     continue; //and repeat again
                 }
             break; // Exit out of the repitition
         }
         } catch(Exception e) {
-            System.out.println("Error reading input: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
         }
         }
             return value; //return the menu selection   
