@@ -23,21 +23,23 @@ public class GameMenuView extends View {
 
     public GameMenuView() {
         super("\n"
-                + "\n*********************************************"
-                + "\n| Game Menu                                 |"
-                + "\n*********************************************"
-                + "\n Where to now chief? The night is up to you.*"
-                + "\n Choose an option from below.              *"
-                + "\n*********************************************"
-                + "\nM - View Map/Choose a Location              *"
-                + "\nF - Feed Santa                              *"
-                + "\nL - Load the sleigh, and choose reindeer    *"
-                + "\nI - View your inventory                     *"
-                + "\nA - View list of Actors                     *"
-                + "\nN - Move to new location                    *"
-                + "\nC - Continue your game                      *"
-                + "\nS - Display list of scenes                  *"
-                + "\n*********************************************");
+                + "\n************************************************"
+                + "\n| Game Menu                                    |"
+                + "\n************************************************"
+                + "\n Where to now chief? The night is up to you.   *"
+                + "\n Choose an option from below.                  *"
+                + "\n************************************************"
+                + "\nM - View Map/Choose a Location                 *"
+                + "\nF - Feed Santa                                 *"
+                + "\nL - Load the sleigh, and choose reindeer       *"
+                + "\nI - View your inventory                        *"
+                + "\nA - View list of Actors                        *"
+                + "\nN - Move to new location                       *"
+                + "\nS - Display list of scenes                     *"
+                + "\nP - Print the list of scenes                   *"
+                + "\nD - Display the maximum miles Santa will travel*"
+                + "\nV - Display the minimum miles Santa will travel*"
+                + "\n************************************************");
     }
 
     @Override
@@ -67,11 +69,11 @@ public class GameMenuView extends View {
             case "N"://move to a new location
                 this.moveLocations();
                 break;
-            case "C"://return to your game
-                this.continueGame();
-                break;
             case "S"://display the list of scenes
                 this.displaySceneList();
+                break;
+            case "P"://print the list of scenes to a file
+                this.saveBreakfastFood();
                 break;
             case "D":
                 this.displayMaxValue();
@@ -204,5 +206,21 @@ public class GameMenuView extends View {
     private void moveLocations() {
         MapView mapView =  new MapView();
         mapView.inputCoordinates();
+    }
+    
+    
+    private void saveBreakfastFood() {
+        //prompt for a get the name of the file to save the list of scenes in
+        this.console.println("\n\nEnter the file path for the file where the "
+                + "list of scenes is to be saved.");
+        
+        String filePath = this.getInput();
+        
+        try {
+            //save the list of scenes to the specified file
+            FeedSantaView.printBreakfastFood(SantaChallenge.getCurrentGame().getBreakfastFood(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
     }
 }

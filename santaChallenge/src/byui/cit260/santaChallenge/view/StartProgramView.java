@@ -17,28 +17,30 @@ import santachallenge.SantaChallenge;
  * @author Wendy
  */
 public class StartProgramView {
-
     
     protected final BufferedReader keyboard = SantaChallenge.getInFile();
     protected final PrintWriter console = SantaChallenge.getOutFile();
-
+    
     public StartProgramView() {
     }
+    
+   
 
     public void startProgram() {
-
+         
+    
         //Display the banner screen
         this.displayBanner();
-
+    
         //Get the players name
         String playersName;
 
-        try {
+        //try {
             playersName = this.getPlayersName();
-        } catch (ProgramControlException ex) {
-            System.out.println(ex.getMessage());
-            return;
-        }
+        //} catch (ProgramControlException ex) {
+            //System.out.println(ex.getMessage());
+            //return;
+       // }
 
         //Create a new player
         Player player;
@@ -93,7 +95,7 @@ public class StartProgramView {
 
     }
 
-    public String getPlayersName() throws ProgramControlException {
+    public String getPlayersName() /*throws ProgramControlException*/ {
         boolean valid = false; //indicates if the name has been retrieved
         String playersName = null;
         //Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -108,11 +110,12 @@ public class StartProgramView {
 
                 //if the name is invalid (less than 1 character in length)
                 if (playersName.length() < 1) {
-                    throw new ProgramControlException("Please enter a valid name like Wendy :)");
+                    //throw new ProgramControlException("Please enter a valid name like Wendy :)");
+                    ErrorView.display(this.getClass().getName(), playersName);
                 }
             }
         } catch (Exception e) {
-            ErrorView.display(this.getClass().getName(),"error reading input: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "error reading input: " + e.getMessage());
         }
 
         return playersName; //return the name

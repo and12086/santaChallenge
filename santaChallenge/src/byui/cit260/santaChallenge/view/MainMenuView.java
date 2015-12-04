@@ -80,12 +80,37 @@ public class MainMenuView extends View {
     }
 
     private void continueGame() {
-        this.console.println("*** continueGame function called");
+        
+        //prompt for and get the name of the file to save the game in
+        this.console.println("\n\nEnter the file path for the file where "
+                            + "the game has been saved.");
+        
+        String filePath = this.getInput();
+        
+        try {
+            //start a saved game
+            GameControl.getSavedGame(filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        //display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     private void saveGame() {
-        this.console.println("*** startSaveGame function called");
-
+        //prompt for and get the name of the file to save the game in
+        this.console.println("\n\nEnter the file path for the file where"
+                            + "the game is to be saved");
+        
+        String filePath = this.getInput();
+        
+        try {
+            //save the game to the specified file
+            GameControl.saveGame(SantaChallenge.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuview", ex.getMessage());
+        }
     }
 
     private void displayHelpMenu() {

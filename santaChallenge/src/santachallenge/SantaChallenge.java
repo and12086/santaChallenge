@@ -47,7 +47,7 @@ public class SantaChallenge {
 
             //create StartProgramView and start the program    
             StartProgramView startProgramView = new StartProgramView();
-            startProgramView.displayBanner();
+            startProgramView.startProgram();
             
         } catch (Throwable e) {
             System.out.println("Exception: " + e.toString() +

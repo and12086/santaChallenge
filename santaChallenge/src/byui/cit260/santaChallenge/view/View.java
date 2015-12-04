@@ -42,7 +42,7 @@ public abstract class View implements ViewInterface{
         String value = null;
         while(!valid){//while a valid menu selection has not been retrieved
             //prompt the player for a valid menu selection
-            this.console.println("Please enter a valid menu selection.");
+            this.console.println("Please enter a valid selection.");
             
             try {
                while (!valid) {
