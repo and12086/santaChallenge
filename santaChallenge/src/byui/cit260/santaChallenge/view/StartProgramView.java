@@ -48,8 +48,8 @@ public class StartProgramView {
         try {
             player = ProgramControl.createPlayer(playersName);
         } catch (ProgramControlException ex) {
-            System.out.println(ex.getMessage());
-            return;
+           System.out.println(ex.getMessage());
+           return;
         }
 
         //Display a customized welcome message
@@ -96,7 +96,7 @@ public class StartProgramView {
     }
 
     public String getPlayersName() /*throws ProgramControlException*/ {
-        boolean valid = false; //indicates if the name has been retrieved
+        boolean valid = true; //indicates if the name has been retrieved
         String playersName = null;
         //Scanner keyboard = new Scanner(System.in); //keyboard input stream
         try {

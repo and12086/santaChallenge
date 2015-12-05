@@ -18,10 +18,9 @@ public class ProgramControl {
     public static Player createPlayer(String name) throws ProgramControlException {
         
         if (name == null)  {
-            //return null;
         throw new ProgramControlException("Please enter a name.");
         }
-        
+        else {
         Player player = new Player();
         player.setName(name);
         
@@ -29,5 +28,5 @@ public class ProgramControl {
         
         return player;
     }
-    
+    }   
 }
