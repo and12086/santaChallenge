@@ -5,14 +5,20 @@
  */
 package byui.cit260.santaChallenge.control;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import santachallenge.SantaChallenge;
 
 /**
  *
  * @author and12_000
  */
 public class BreakfastFoodControlTest {
+    
+    protected final BufferedReader keyboard = SantaChallenge.getInFile();
+    protected final PrintWriter console = SantaChallenge.getOutFile();
     
     public BreakfastFoodControlTest() {
     }
@@ -22,123 +28,123 @@ public class BreakfastFoodControlTest {
      */
     @Test
     public void testCalcCalorieCount() {
-        System.out.println("calcCalorieCount");
+        this.console.println("calcCalorieCount");
         /******************************
          * Test Case #1
          ******************************/
-        System.out.println("\tTest case #1");
+        this.console.println("\tTest case #1");
         
         //input values for test case 1
-        double calorieCount1 = 200.0;
-        double calorieCount2 = 80.0;
-        double calorieCount3 = 160.0;
-        double calorieCount4 = 250.0;
-        double healthBenefit1 = 50.0;
-        double healthBenefit2 = 0.0;
-        double healthBenefit3 = 0.0;
-        double healthBenefit4 = 0.0;
+        int calorieCount1 = 200;
+        int calorieCount2 = 80;
+        int calorieCount3 = 160;
+        int calorieCount4 = 250;
+        int healthBenefit1 = 50;
+        int healthBenefit2 = 0;
+        int healthBenefit3 = 0;
+        int healthBenefit4 = 0;
         
         //create instance o f BreakfastFoodControl class
         BreakfastFoodControl instance = new BreakfastFoodControl();
-        double expResult = 640.0; //expected output for returned value
+        int expResult = 640; //expected output for returned value
         
         //call function to run test
-        double result = instance.calcCaloriesConsumed(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
+        int result = instance.calculateEnergyPoints(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
         
         //compare expected return value with actual value returned
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0);
       
         /******************************
          * Test Case #2
          ******************************/
-        System.out.println("\tTest case #2");
+        this.console.println("\tTest case #2");
         
         //input values for test case 2
-        calorieCount1 = 105.0;
-        calorieCount2 = 250.0;
-        calorieCount3 = 80.0;
-        calorieCount4 = 267.0;
-        healthBenefit1 = 0.0;
-        healthBenefit2 = 0.0;
-        healthBenefit3 = 0.0;
-        healthBenefit4 = 0.0;
+        calorieCount1 = 105;
+        calorieCount2 = 250;
+        calorieCount3 = 80;
+        calorieCount4 = 267;
+        healthBenefit1 = 0;
+        healthBenefit2 = 0;
+        healthBenefit3 = 0;
+        healthBenefit4 = 0;
         
-        expResult = 702.0; //expected output for returned value
+        expResult = 702; //expected output for returned value
         
         //call function to run test
-        result = instance.calcCaloriesConsumed(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
+        result = instance.calculateEnergyPoints(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
         
         //compare expected return value with actual value returned
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0);
         
         /******************************
          * Test Case #3
          ******************************/
-        System.out.println("\tTest case #3");
+        this.console.println("\tTest case #3");
         
         //input values for test case 3
-        calorieCount1 = 220.0;
-        calorieCount2 = 200.0;
-        calorieCount3 = 80.0;
-        calorieCount4 = 210.0;
-        healthBenefit1 = 50.0;
-        healthBenefit2 = 50.0;
-        healthBenefit3 = 0.0;
-        healthBenefit4 = 0.0;
+        calorieCount1 = 220;
+        calorieCount2 = 200;
+        calorieCount3 = 80;
+        calorieCount4 = 210;
+        healthBenefit1 = 50;
+        healthBenefit2 = 50;
+        healthBenefit3 = 0;
+        healthBenefit4 = 0;
         
-        expResult = 610.0; //expected output for returned value
+        expResult = 610; //expected output for returned value
         
         //call function to run test
-        result = instance.calcCaloriesConsumed(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
+        result = instance.calculateEnergyPoints(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
         
         //compare expected return value with actual value returned
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0);
         
         /******************************
          * Test Case #4
          ******************************/
-        System.out.println("\tTest case #4");
+        this.console.println("\tTest case #4");
         
         //input values for test case 4
-        calorieCount1 = 160.0;
-        calorieCount2 = 200.0;
-        calorieCount3 = 72.0;
-        calorieCount4 = 410.0;
-        healthBenefit1 = 0.0;
-        healthBenefit2 = 50.0;
-        healthBenefit3 = 0.0;
-        healthBenefit4 = 0.0;
+        calorieCount1 = 160;
+        calorieCount2 = 200;
+        calorieCount3 = 72;
+        calorieCount4 = 410;
+        healthBenefit1 = 0;
+        healthBenefit2 = 50;
+        healthBenefit3 = 0;
+        healthBenefit4 = 0;
         
-        expResult = -1.0; //expected output for returned value
+        expResult = -1; //expected output for returned value
         
         //call function to run test
-        result = instance.calcCaloriesConsumed(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
+        result = instance.calculateEnergyPoints(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
         
         //compare expected return value with actual value returned
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0);
         
         /******************************
          * Test Case #5
          ******************************/
-        System.out.println("\tTest case #5");
+        this.console.println("\tTest case #5");
         
         //input values for test case 5
-        calorieCount1 = 160.0;
-        calorieCount2 = 267.0;
-        calorieCount3 = 0.0;
-        calorieCount4 = 222.0;
-        healthBenefit1 = 0.0;
-        healthBenefit2 = 0.0;
-        healthBenefit3 = 50.0;
-        healthBenefit4 = 0.0;
+        calorieCount1 = 160;
+        calorieCount2 = 267;
+        calorieCount3 = 0;
+        calorieCount4 = 222;
+        healthBenefit1 = 0;
+        healthBenefit2 = 0;
+        healthBenefit3 = 50;
+        healthBenefit4 = 0;
         
-        expResult = -1.0; //expected output for returned value
+        expResult = -1; //expected output for returned value
         
         //call function to run test
-        result = instance.calcCaloriesConsumed(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
+        result = instance.calculateEnergyPoints(calorieCount1, calorieCount2, calorieCount3, calorieCount4, healthBenefit1, healthBenefit2, healthBenefit3, healthBenefit4);
         
         //compare expected return value with actual value returned
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0);
     }
     }
 

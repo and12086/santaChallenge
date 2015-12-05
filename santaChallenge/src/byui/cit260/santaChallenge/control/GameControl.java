@@ -11,7 +11,14 @@ import byui.cit260.santaChallenge.model.InventoryItem;
 import byui.cit260.santaChallenge.model.Map;
 import byui.cit260.santaChallenge.model.Player;
 import byui.cit260.santaChallenge.model.Sleigh;
+import citbyui.cit260.santaChallenge.exceptions.GameControlException;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import santachallenge.SantaChallenge;
 
 /**
@@ -68,6 +75,35 @@ public class GameControl {
                 }
         }
         return  inventory;
+    }
+
+    public static void saveGame(Game currentGame, String filePath) throws GameControlException {
+        Game game = null;
+        try(FileOutputStream fops = new FileOutputStream(filePath)) {
+            
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            
+            output.writeObject(game);//write the game object out to the file
+        }  catch (IOException e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void getSavedGame(String filePath) throws GameControlException {
+        Game game = null;
+        
+        try(FileInputStream fips = new FileInputStream(filePath)) {
+            
+            ObjectInputStream output = new ObjectInputStream(fips);
+            
+            game = (Game) output.readObject();//read the game object from file
+        } catch (FileNotFoundException fnfe) {
+            throw new GameControlException(fnfe.getMessage());
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        SantaChallenge.setCurrentGame(game);//save in SantaChallenge
     }
 
     

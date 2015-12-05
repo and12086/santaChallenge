@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package byui.cit260.santaChallenge.view;
-import java.util.Scanner;
 
 
 /**
@@ -49,12 +48,12 @@ public class GameIntroductionView extends View{
         
         
         else if ("E".equals(value)){
-          System.out.println("\n*** Are you sure you want to exit the game?");
+          this.console.println("\n*** Are you sure you want to exit the game?");
           this.returnToMainMenu();
         }
         
         else {
-            System.out.println("\n*** Invalid menu selection!");
+            ErrorView.display(this.getClass().getName(),"\n*** Invalid menu selection!");
         }
         
         return false;

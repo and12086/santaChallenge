@@ -6,13 +6,16 @@
 package byui.cit260.santaChallenge.control;
 
 import byui.cit260.santaChallenge.model.Actor;
-import static byui.cit260.santaChallenge.model.Actor.Mrs_Claus;
 import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.Scene;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import java.awt.Point;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import santachallenge.SantaChallenge;
 
 /**
@@ -141,6 +144,12 @@ public class MapControl {
         }
         return minScene;
     }
+
+  
+
+  
+
+  
 
     public enum SceneType {
 

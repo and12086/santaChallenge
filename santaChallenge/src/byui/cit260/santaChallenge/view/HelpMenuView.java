@@ -5,8 +5,6 @@
  */
 package byui.cit260.santaChallenge.view;
 
-import java.util.Scanner;
-
 
 /**
  *
@@ -66,7 +64,7 @@ public class HelpMenuView extends View {
                 this.displayMainMenu();              
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again!");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid selection *** Try again!");
                 break;     
                         
         }
@@ -80,7 +78,7 @@ public class HelpMenuView extends View {
     }
 
     private void displayMove() {
-        System.out.println("*** displayMove function called");
+        this.console.println("*** displayMove function called");
     }
 
     private void displayBreakfast() {
@@ -89,23 +87,23 @@ public class HelpMenuView extends View {
     }
 
     private void displayLoad() {
-        System.out.println("*** displayLoad function called");
+        this.console.println("*** displayLoad function called");
     }
 
     private void displayInventory() {
-        System.out.println("*** displayInventory function called");
+        this.console.println("*** displayInventory function called");
     }
 
     private void displayReindeer() {
-        System.out.println("*** displayReindeer function called");
+        this.console.println("*** displayReindeer function called");
     }
 
     private void displaySave() {
-        System.out.println("*** displaySave function called");
+        this.console.println("*** displaySave function called");
     }
 
     private void displayContinue() {
-        System.out.println("*** displayContinue function called");
+        this.console.println("*** displayContinue function called");
     }
 
     private void displayMainMenu() {

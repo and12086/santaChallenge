@@ -7,6 +7,8 @@ package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.BreakfastFoodControl;
 import byui.cit260.santaChallenge.model.BreakfastFood;
+import java.io.BufferedWriter;
+import java.io.PrintWriter;
 import santachallenge.SantaChallenge;
 
 /**
@@ -14,6 +16,8 @@ import santachallenge.SantaChallenge;
  * @author Wendy
  */
 public class FeedSantaView extends View {
+
+    
 
     public FeedSantaView() {
         super("\n"
@@ -57,7 +61,7 @@ public class FeedSantaView extends View {
                 this.caloriesConsumed1View();
                 break;
             default:
-                System.out.println("\n*** Invalid selection *** Try again!");
+                ErrorView.display(this.getClass().getName(),"\n*** Invalid selection *** Try again!");
                 break;
         }
         return false;
@@ -70,21 +74,42 @@ public class FeedSantaView extends View {
            // GameControl.createBreakfastList();
     BreakfastFood[] sortedBreakfastFood = BreakfastFoodControl.getSortedBreakfastList();
     
-        System.out.println("*************************************");
-        System.out.println("* List of Breakfast Foods for Santa *");
-        System.out.println("*************************************");
+        this.console.println("*************************************");
+        this.console.println("* List of Breakfast Foods for Santa *");
+        this.console.println("*************************************");
       
         for (BreakfastFood nextBreakfastFood : breakfastFood){            
             
-            System.out.println("Description:" + "\t" + "\t" + nextBreakfastFood.getDescription());
-            System.out.println("Calories:" + "\t" + "\t" + nextBreakfastFood.getCalorieCount());
-            System.out.println("Calorie Deduction:" + "\t" + nextBreakfastFood.getHealthBenefit());
-            System.out.println("***************************************************");
+            this.console.println("Description:" + "\t" + "\t" + nextBreakfastFood.getDescription());
+            this.console.println("Calories:" + "\t" + "\t" + nextBreakfastFood.getCalorieCount());
+            this.console.println("Calorie Deduction:" + "\t" + nextBreakfastFood.getHealthBenefit());
+            this.console.println("***************************************************");
                                
         }
     }
    
-    
+    static void printBreakfastFood(BreakfastFood[] breakfastFood, String filePath) {
+     
+        
+        try (BufferedWriter out = new BufferedWriter(new PrintWriter(filePath)) {
+        
+        //print title and column headings
+            out.println("\n\n           Breakfast Food Report           ");
+            out.printf("%n%-20s%-10s%-10s", "Description", "Calorie Count", "Health Benefit");
+            out.printf("%n%-20s%-10s%-10s", "-----------", "-------------", "--------------");
+            
+            //print the description, map symbol, and miles from the North Pole for each scene
+            for (BreakfastFood nextBreakfastFood : breakfastFood) {
+            out.printf("%n%-20s%-7s%7d", nextBreakfastFood.getDescription()
+                                       , nextBreakfastFood.getCalorieCount()
+                                       , nextBreakfastFood.getHealthBenefit());
+        }
+       
+    } catch(IOException ex) {
+        ErrorView.display(this.getClass().getName(), "I/) Error: " + ex.getMessage());
+    }
+}
+    }
     public void caloriesConsumed1View() {
         CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();
         caloriesConsumed1.displayMenu();

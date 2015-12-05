@@ -82,7 +82,7 @@ public class HelpFeedSantaView extends View {
             this.returnToMainMenu();
         }
         else {        
-            System.out.println("\n*** Invalid selection *** Try again!");
+            ErrorView.display(this.getClass().getName(),"\n*** Invalid selection *** Try again!");
         }
         return false;
      }
