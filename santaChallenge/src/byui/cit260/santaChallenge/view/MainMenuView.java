@@ -38,7 +38,7 @@ public class MainMenuView extends View {
             case "P": 
                 //start a new game
                 this.startNewGame();          
-            break;
+                break;
             case "C"://restart and existing game
                 this.continueGame();
                 break;

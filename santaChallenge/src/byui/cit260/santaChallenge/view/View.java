@@ -39,28 +39,28 @@ public abstract class View implements ViewInterface{
     @Override
     public String getInput() {
         boolean valid = false; //indicates if the menu selection has been retrieved   
-        String value = null;
-        while(!valid){//while a valid menu selection has not been retrieved
-            //prompt the player for a valid menu selection
-            this.console.println("Please enter a valid selection.");
+        String value = null;        
             
             try {
                while (!valid) {
+                   
+                 this.console.println("Please enter a valid selection.");
+
                 //get the menu selection from the keyboard and trim off the blanks
                 value = this.keyboard.readLine();
                 value = value.trim();
             
                 //if the menu selection is invalid
                if (value.length() < 1){
-                    ErrorView.display(this.getClass().getName(),"You must enter a value.");
-                    continue; //and repeat again
+                    ErrorView.display("View","You must enter a value.");
+                   
                 }
-            break; // Exit out of the repitition
-        }
+             break; // Exit out of the repitition}
+            }   
         } catch(Exception e) {
-            ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
+            ErrorView.display("View","Error reading input: " + e.getMessage());
         }
-        }
+       
             return value; //return the menu selection   
     }
     

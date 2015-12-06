@@ -7,7 +7,8 @@ package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.BreakfastFoodControl;
 import byui.cit260.santaChallenge.model.BreakfastFood;
-import java.io.BufferedWriter;
+import citbyui.cit260.santaChallenge.exceptions.BreakfastFoodControlException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import santachallenge.SantaChallenge;
 
@@ -88,28 +89,34 @@ public class FeedSantaView extends View {
         }
     }
    
-    static void printBreakfastFood(BreakfastFood[] breakfastFood, String filePath) {
+    public static void printBreakfastFood(BreakfastFood[] breakfastFood, String filePath) throws BreakfastFoodControlException {
      
-        
-        try (BufferedWriter out = new BufferedWriter(new PrintWriter(filePath)) {
-        
+        try (PrintWriter out = new PrintWriter(filePath)) {
+                     
         //print title and column headings
             out.println("\n\n           Breakfast Food Report           ");
             out.printf("%n%-20s%-10s%-10s", "Description", "Calorie Count", "Health Benefit");
             out.printf("%n%-20s%-10s%-10s", "-----------", "-------------", "--------------");
             
+            
             //print the description, map symbol, and miles from the North Pole for each scene
             for (BreakfastFood nextBreakfastFood : breakfastFood) {
-            out.printf("%n%-20s%-7s%7d", nextBreakfastFood.getDescription()
+            
+            out.printf("%n%-20s%-7f%-7f", nextBreakfastFood.getDescription()
                                        , nextBreakfastFood.getCalorieCount()
                                        , nextBreakfastFood.getHealthBenefit());
-        }
-       
-    } catch(IOException ex) {
-        ErrorView.display(this.getClass().getName(), "I/) Error: " + ex.getMessage());
+            }
+            while(filePath != null) {
+                System.out.println("You have successfully printed the list of breakfast foods.");
+                break;
+            }
+            
+    } catch(IOException e) {
+        throw new BreakfastFoodControlException(e.getMessage());
     }
 }
-    }
+    
+
     public void caloriesConsumed1View() {
         CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();
         caloriesConsumed1.displayMenu();

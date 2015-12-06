@@ -12,10 +12,6 @@ import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import java.awt.Point;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import santachallenge.SantaChallenge;
 
 /**

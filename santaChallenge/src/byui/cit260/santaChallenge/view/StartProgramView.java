@@ -96,7 +96,7 @@ public class StartProgramView {
     }
 
     public String getPlayersName() /*throws ProgramControlException*/ {
-        boolean valid = true; //indicates if the name has been retrieved
+        boolean valid = false; //indicates if the name has been retrieved
         String playersName = null;
         //Scanner keyboard = new Scanner(System.in); //keyboard input stream
         try {
@@ -111,11 +111,12 @@ public class StartProgramView {
                 //if the name is invalid (less than 1 character in length)
                 if (playersName.length() < 1) {
                     //throw new ProgramControlException("Please enter a valid name like Wendy :)");
-                    ErrorView.display(this.getClass().getName(), playersName);
+                    ErrorView.display("StartProgramView", playersName);
                 }
+                break;
             }
         } catch (Exception e) {
-            ErrorView.display(this.getClass().getName(), "error reading input: " + e.getMessage());
+            ErrorView.display("StartProgramView", "error reading input: " + e.getMessage());
         }
 
         return playersName; //return the name

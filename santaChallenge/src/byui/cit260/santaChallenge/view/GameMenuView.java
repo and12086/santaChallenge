@@ -36,7 +36,7 @@ public class GameMenuView extends View {
                 + "\nA - View list of Actors                        *"
                 + "\nN - Move to new location                       *"
                 + "\nS - Display list of scenes                     *"
-                + "\nP - Print the list of scenes                   *"
+                + "\nP - Print the list of breakfast foods          *"
                 + "\nD - Display the maximum miles Santa will travel*"
                 + "\nV - Display the minimum miles Santa will travel*"
                 + "\n************************************************");
@@ -89,10 +89,7 @@ public class GameMenuView extends View {
 
     }
 
-    private void continueGame() {
-        this.console.println("*** continueGame function called");
-    }
-
+   
     private void feedSanta() {
 
         FeedSantaView feedSanta = new FeedSantaView();
