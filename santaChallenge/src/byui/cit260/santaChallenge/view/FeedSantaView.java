@@ -55,15 +55,17 @@ public class FeedSantaView extends View {
         //value = value.toUpperCase();
 
         switch (value) {
-            case "L"://View Map/Choose Location
+            case "L"://View 
                 this.displayBreakfastFoodCalories();
                 break;
             case "C"://Feed Santa
                 this.caloriesConsumed1View();
-                break;
+                return true;
+            case "Q"://Feed Santa              
+                return true;
             default:
                 ErrorView.display(this.getClass().getName(),"\n*** Invalid selection *** Try again!");
-                break;
+                return false;
         }
         return false;
 
@@ -118,8 +120,8 @@ public class FeedSantaView extends View {
     
 
     public void caloriesConsumed1View() {
-        CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();
-        caloriesConsumed1.displayMenu();
+        CaloriesConsumedView caloriesConsumed1 = new CaloriesConsumedView();
+        caloriesConsumed1.displayViews();
     }
 
 }

@@ -137,21 +137,21 @@ public class GameMenuView extends View {
         int noOfRows = map.getNoOfRows();
 
         for (int row = 0; row < noOfRows; row++) {
-            this.console.println("\n*********************************************" + "\n" + row);
+            this.console.println("\n******************************************************" + "\n" + row);
 
             for (int column = 0; column < noOfColumns; column++) {
-                this.console.println("|");
+                this.console.print("\t|");
                 Location location = locations[row][column];
                 Scene scene = location.getScene();
-                this.console.println(scene.getMapSymbol());
+                this.console.print(scene.getMapSymbol());
                 if (!location.isVisited()) {
-                    this.console.println(scene.getMapSymbol());
+                    this.console.print("--");
                 } else {
-                    this.console.println("XX");//print to indicate location has not been visited yet
+                    this.console.print("XX");//print to indicate location has not been visited yet
                 }
             }
 
-            this.console.println("|");//print final column divider
+            this.console.print("|");//print final column divider
         }
     }
 

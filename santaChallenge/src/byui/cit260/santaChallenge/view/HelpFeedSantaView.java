@@ -79,7 +79,7 @@ public class HelpFeedSantaView extends View {
         }
         
         else if ("M".equals(value)){
-            this.returnToMainMenu();
+            return true;
         }
         else {        
             ErrorView.display(this.getClass().getName(),"\n*** Invalid selection *** Try again!");
@@ -93,20 +93,14 @@ public class HelpFeedSantaView extends View {
     } 
      
     public void caloriesConsumed1View() {
-        CaloriesConsumed1View caloriesConsumed1 = new CaloriesConsumed1View();
-        caloriesConsumed1.displayMenu();
+        CaloriesConsumedView caloriesConsumed1 = new CaloriesConsumedView();
+        caloriesConsumed1.display();
     }
     
     private void displayHelpMenu() {
         //display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
-    }  
-    
-     private void returnToMainMenu() {
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.display();
-    }
-    
+    }     
 }
 

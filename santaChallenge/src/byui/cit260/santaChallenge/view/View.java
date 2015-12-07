@@ -49,6 +49,7 @@ public abstract class View implements ViewInterface{
                 //get the menu selection from the keyboard and trim off the blanks
                 value = this.keyboard.readLine();
                 value = value.trim();
+                value = value.toUpperCase();
             
                 //if the menu selection is invalid
                if (value.length() < 1){
