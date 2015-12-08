@@ -13,17 +13,26 @@ import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
  */
 public class SleighControl {
     
-    public double calcPullCapacity(double numberOfPresents, double numberOfReindeer) throws SleighControlException {
-        if (numberOfPresents != 60 || numberOfPresents != 80 || numberOfPresents != 100 ) {
-           throw new SleighControlException("Please enter the specified number of presents: 60, 80, or 100.");
-        }
-        if (numberOfReindeer !=3 || numberOfReindeer !=6 || numberOfReindeer !=9) {
-            throw new SleighControlException("Please enter the specified number of reindeer: 3, 6, or 9.");
-        }
+    public static double calcFlyingSpeed(double numberOfPresents, double numberOfReindeer) throws SleighControlException {
         
-        double pullCapacity = (numberOfPresents*2)/(numberOfReindeer*30);
-
-        return pullCapacity;
+        double flyingSpeed;
+        double pullCapacity;
+        
+        pullCapacity = numberOfPresents/numberOfReindeer;
+        
+         if(pullCapacity < 20) {
+            flyingSpeed = 800;
+         }
+         
+         else if(pullCapacity >= 20 && pullCapacity <= 25) {
+             flyingSpeed = 700;
+         }
+         
+         else {
+             flyingSpeed = 600;
+         }
+         
+        return flyingSpeed;
     }
 }
 

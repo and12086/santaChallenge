@@ -6,8 +6,11 @@
 package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.SleighControl;
+import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import santachallenge.SantaChallenge;
 
 /**
@@ -22,25 +25,45 @@ public class SleighView {
     public SleighView() {
     }
 
-    public void getPullCapacity() {
+    public void getFlyingSpeed() {
 
         //Display the message asking for input
         this.displayMessage();
 
-        System.out.println("Enter how many presents you think Santa can deliver: 60, 80, or 100.");
+        System.out.println("\n\nEnter how many presents you think Santa can deliver:"
+                + "\n60, 80, or 100 presents.");
 
         //Get the number of presents
-        int presents = this.getPresents();
-        presents = (int) SantaChallenge.getCurrentGame().getSleigh().getNumberOfPresents();
+        double numberOfPresents = this.getPresents();
+        //save the number of presents to the game
+        SantaChallenge.getCurrentGame().getSleigh().setNumberOfPresents(numberOfPresents);
 
-        System.out.println("Enter how many reindeer you think"
+        System.out.println("\n\nEnter how many reindeer you think"
                 + "\nSanta needs to pull the sleigh,"
-                + "\nbased on how many presents you selected: 3, 6, or 9.");
+                + "\nbased on how many presents you selected:"
+                + "\n3, 6, or 9 reindeer.");
 
         //get the number of reindeer
-        int reindeer = this.getReindeer();
-        reindeer = (int) SantaChallenge.getCurrentGame().getSleigh().getNumberOfReindeer();
+        double numberOfReindeer = this.getReindeer();
+        //save the number of reindeer to the game
+        SantaChallenge.getCurrentGame().getSleigh().setNumberOfReindeer(numberOfReindeer);
         
+        //calculate the flying speed
+        double flyingSpeed = 0;
+        try {
+            flyingSpeed = SleighControl.calcFlyingSpeed(numberOfPresents, numberOfReindeer);
+        } catch (SleighControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+        
+        //save flying speed to flyingSpeed to the game
+        SantaChallenge.getCurrentGame().getSleigh().setFlyingSpeed(flyingSpeed);
+        
+        //print flying speed
+        this.console.println("\n\nYour flying speed is " + flyingSpeed + " miles per hour.");
+        
+        //return to game
+        return;
         
     }
 
@@ -60,34 +83,34 @@ public class SleighView {
 
     }
 
-    private int getPresents() {
-        boolean valid = false; //indicates if the x coordinate has been retrieved
+    private double getPresents() {
+        boolean valid = false; //indicates if a number has been retrieved
         String presents = null;
-
-        //Scanner keyboard = new Scanner(System.in); //keyboard input stream
-        int doublePresents = -1;
+        
+        double numberOfPresents = -1;
+        
         try {
-            while (!valid) {//while a valid coordinate has not been retrieved
-                //prompt for an x coordinate
+            while (!valid) {//while a valid number has not been retrieved
+                //prompt for a number of presents
 
-                //get the coordinate from the keyboard and trim off the blanks
+                //get the number from the keyboard and trim off the blanks
                 presents = this.keyboard.readLine();
                 presents = presents.trim();
 
-                //if the coordinate is invalid (less than 1 character in length)
+                //if the number is invalid (less than 1 character in length)
                 if (presents.length() < 1) {
                     ErrorView.display(this.getClass().getName(), "Invalid entry.  Please choose from the 3 options: 60, 80, or 100.");
                     continue; //and repeat again
                 }
-
+                //make the String into a double
                 try {
-                    doublePresents = Integer.parseInt(presents);
+                    numberOfPresents = Double.parseDouble(presents);
                 } catch (NumberFormatException nf) {
                     ErrorView.display(this.getClass().getName(), "\nYou must enter a number."
                             + "Please try again.");
                 }
-
-                if (doublePresents != 60 || doublePresents != 80 || doublePresents != 100) {
+                //test to see if the number is one of the preset choices.
+                if (numberOfPresents != 60 && numberOfPresents != 80 && numberOfPresents != 100) {
                     ErrorView.display(this.getClass().getName(), "Invalid entry.  Please enter one of the options listed.");
                     continue;//and repeat again
                 }
@@ -96,15 +119,15 @@ public class SleighView {
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
-        return doublePresents; //return the x coordinate
+        return numberOfPresents; //return the number of presents
     }
 
-    private int getReindeer() {
+    private double getReindeer() {
         boolean valid = false; //indicates if the x coordinate has been retrieved
         String reindeer = null;
 
-        int doubleReindeer = -1;
-        
+        double numberOfReindeer = -1;
+
         try {
             while (!valid) {//while a valid coordinate has not been retrieved
                 //prompt for an x coordinate
@@ -115,19 +138,19 @@ public class SleighView {
 
                 //if the coordinate is invalid (less than 1 character in length)
                 if (reindeer.length() < 1) {
-                    ErrorView.display(this.getClass().getName(),"Invalid entry.  Please choose from the 3 options: 3, 6, or 9.");
+                    ErrorView.display(this.getClass().getName(), "Invalid entry.  Please choose from the 3 options: 3, 6, or 9.");
                     continue; //and repeat again
                 }
 
                 try {
-                    doubleReindeer = Integer.parseInt(reindeer);
+                    numberOfReindeer = Double.parseDouble(reindeer);
                 } catch (NumberFormatException nf) {
-                    ErrorView.display(this.getClass().getName(),"\nYou must enter a valid number."
+                    ErrorView.display(this.getClass().getName(), "\nYou must enter a valid number."
                             + "Please try again.");
                 }
 
-                if (doubleReindeer != 3 || doubleReindeer != 6 || doubleReindeer != 9) {
-                    ErrorView.display(this.getClass().getName(),"Invalid entry.  Please enter one of the options listed.");
+                if (numberOfReindeer != 3 && numberOfReindeer != 6 && numberOfReindeer != 9) {
+                    ErrorView.display(this.getClass().getName(), "Invalid entry.  Please enter one of the options listed.");
                     continue;//and repeat again
                 }
                 valid = true; // Exit out of the repitition
@@ -135,6 +158,6 @@ public class SleighView {
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
         }
-        return doubleReindeer; //return the x coordinate
+        return numberOfReindeer; //return the x coordinate
     }
 }

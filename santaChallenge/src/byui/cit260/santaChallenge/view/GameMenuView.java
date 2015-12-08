@@ -98,8 +98,8 @@ public class GameMenuView extends View {
 
     private void loadSleigh() {
         SleighView sleighView = new SleighView();
-        sleighView.displayMessage();
-    }
+            sleighView.getFlyingSpeed();
+        }
 
     public void displayInventoryList() {
         
@@ -119,7 +119,6 @@ public class GameMenuView extends View {
             this.console.println("Required:" + "\t" + "\t" + nextInventory.getRequiredAmount());
             this.console.println("Acquired:" + "\t" + "\t" + nextInventory.getActualAmount());
             this.console.println("*****************************************");
-
         }
     }
 

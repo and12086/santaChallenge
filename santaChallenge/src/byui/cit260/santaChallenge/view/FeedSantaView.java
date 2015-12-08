@@ -61,7 +61,7 @@ public class FeedSantaView extends View {
                 break;
             case "C"://Feed Santa
                 this.caloriesConsumed1View();
-                break;
+                return true;
             case "Q"://Feed Santa              
                 return true;
             default:
