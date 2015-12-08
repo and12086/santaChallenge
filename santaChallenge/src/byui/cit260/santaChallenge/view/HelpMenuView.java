@@ -61,8 +61,7 @@ public class HelpMenuView extends View {
                 this.displayContinue();
                 break;
             case "E":// exits back to main menu
-                this.displayMainMenu();              
-                break;
+                return true;           
             default:
                 ErrorView.display(this.getClass().getName(),"\n*** Invalid selection *** Try again!");
                 break;     
@@ -104,10 +103,5 @@ public class HelpMenuView extends View {
 
     private void displayContinue() {
         this.console.println("*** displayContinue function called");
-    }
-
-    private void displayMainMenu() {
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.display();
     }
 }

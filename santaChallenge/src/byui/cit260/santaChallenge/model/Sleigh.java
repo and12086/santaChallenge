@@ -15,6 +15,7 @@ public class Sleigh implements Serializable{
     private final String description;
     private double pullCapacity;
     private double numberOfPresents;
+    private double numberOfReindeer;
     private double flyingSpeed;
 
     public Sleigh() {
@@ -25,6 +26,7 @@ public class Sleigh implements Serializable{
                 + "you won't make it to all the continents.";
         this.pullCapacity = 0;
         this.numberOfPresents = 0;
+        this.numberOfReindeer = 0;
         this.flyingSpeed = 0;
     }
 
@@ -46,6 +48,14 @@ public class Sleigh implements Serializable{
 
     public void setNumberOfPresents(double numberOfPresents) {
         this.numberOfPresents = numberOfPresents;
+    }
+
+    public double getNumberOfReindeer() {
+        return numberOfReindeer;
+    }
+
+    public void setNumberOfReindeer(double numberOfReindeer) {
+        this.numberOfReindeer = numberOfReindeer;
     }
 
     public double getFlyingSpeed() {

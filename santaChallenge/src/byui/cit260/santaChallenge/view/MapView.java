@@ -6,10 +6,8 @@
 package byui.cit260.santaChallenge.view;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.awt.Point;
-import java.util.Scanner;
 import santachallenge.SantaChallenge;
 
 /**

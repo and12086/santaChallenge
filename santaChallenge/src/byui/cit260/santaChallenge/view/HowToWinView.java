@@ -48,18 +48,13 @@ public class HowToWinView extends View {
             this.displayHelpMenu();            
         } 
         else if ("M".equals(value)){
-            this.returnToMainMenu();
+            return true;
         }
         else {
             ErrorView.display(this.getClass().getName(),"\n*** Invalid menu selection!");
         }
         
     return false;
-    }
-        
-    private void returnToMainMenu() {
-        MainMenuView mainMenu = new MainMenuView();
-        mainMenu.display();
     }
 
     private void displayHelpMenu() {

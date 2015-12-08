@@ -25,6 +25,10 @@ public class Game implements Serializable {
     private String[] actor;
     private BreakfastFood[] breakfastFood;
     
+    
+
+   
+    
     public Game() {
     }
 
@@ -84,6 +88,7 @@ public class Game implements Serializable {
     public void setBreakfastFood(BreakfastFood[] breakfastFood) {
         this.breakfastFood = breakfastFood;
     }
+    
 
     @Override
     public int hashCode() {

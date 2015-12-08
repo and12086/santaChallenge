@@ -14,45 +14,17 @@ import santachallenge.SantaChallenge;
  */
 public class BreakfastFoodControl {
 
-            
-    public int calculateEnergyPoints(int calorieCount1, int calorieCount2, int calorieCount3, int calorieCount4){ 
-                //int healthBenefit1, int healthBenefit2, int healthBenefit3, int healthBenefit4) {
-        int healthBenefit1 = -1;
-        int healthBenefit2 = -1;
-        int healthBenefit3 = -1;
-        int healthBenefit4 = -1;
-
-
-//consequence for poor food choices (pop-tart, Lucky Charms, and nothing)   
-        if (calorieCount1 == 200 || calorieCount1 == 220 || calorieCount1 == 0) {
-            healthBenefit1 = 50;
-        }
-        //no consequence because they made good choices
-        else {
-            healthBenefit1 = 0;
-        }
-        if (calorieCount2 == 200 || calorieCount2== 220 ||calorieCount2 == 0) {
-            healthBenefit2 = 50;
-        }
-        else {
-            healthBenefit2 = 0;
-        }
-        if (calorieCount3 == 200 || calorieCount3 == 220 ||calorieCount3 == 0) {
-            healthBenefit3 = 50;
-        }
-        else {
-            healthBenefit3 = 0;
-        }
-        if (calorieCount4 == 200 || calorieCount4 == 220 ||calorieCount4 == 0) {
-            healthBenefit4 = 50;
-        }
-        else {
-            healthBenefit4 = 0;
-        }
-            
-    int actualEnergyPoints = (calorieCount1 + calorieCount2 + calorieCount3 + calorieCount4) - (healthBenefit1 + healthBenefit2 + healthBenefit3 + healthBenefit4);
-    return actualEnergyPoints;    
+      public static double calculateEnergyPoints(double[] calorieCount[0], double[] calorieCount[1], double[] calorieCount[2], double[] calorieCount[3], double[] healthBenefit[0], double[] healthBenefit[1], double[] healthBenefit[2], double[] healthBenefit[3]) {
+    
+        double energyPoints = (caloriesConsumed[0] + caloriesConsumed[1] + caloriesConsumed[2] + caloriesConsumed[3]) - 
+               (healthBenefit[0] + healthBenefit[1] + healthBenefit[2] + healthBenefit[3]);
+        
+          return energyPoints;
     }
+        
+        
+        
+    
 
     
 
@@ -83,6 +55,9 @@ public class BreakfastFoodControl {
         return breakfastList;
     }
 
-    
+  
 }
+    
+    
+ 
 
