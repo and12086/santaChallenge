@@ -5,6 +5,7 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.SleighControl;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import santachallenge.SantaChallenge;
@@ -30,6 +31,7 @@ public class SleighView {
 
         //Get the number of presents
         int presents = this.getPresents();
+        presents = (int) SantaChallenge.getCurrentGame().getSleigh().getNumberOfPresents();
 
         System.out.println("Enter how many reindeer you think"
                 + "\nSanta needs to pull the sleigh,"
@@ -37,8 +39,9 @@ public class SleighView {
 
         //get the number of reindeer
         int reindeer = this.getReindeer();
-
-        //SleighControl.calcPullCapacity(double numberOfPresents, double numberOfReindeer);
+        reindeer = (int) SantaChallenge.getCurrentGame().getSleigh().getNumberOfReindeer();
+        
+        
     }
 
     public void displayMessage() {

@@ -43,6 +43,7 @@ public class FeedSantaView extends View {
                 + "\n**********************************************"
                 + "\n L - Preview Santa's breakfast food choices  *"
                 + "\n C - Continue on in the game                 *"
+                + "\n Q - Quit the game                           *"
                 + "\n**********************************************");
     }
     
@@ -60,7 +61,7 @@ public class FeedSantaView extends View {
                 break;
             case "C"://Feed Santa
                 this.caloriesConsumed1View();
-                return true;
+                break;
             case "Q"://Feed Santa              
                 return true;
             default:

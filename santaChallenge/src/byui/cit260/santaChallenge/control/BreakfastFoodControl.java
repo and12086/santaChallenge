@@ -14,7 +14,7 @@ import santachallenge.SantaChallenge;
  */
 public class BreakfastFoodControl {
 
-      public static double[] calculateEnergyPoints(double[] caloriesConsumed[0], double[] caloriesConsumed[1], double[] caloriesConsumed[2], double[] caloriesConsumed[3], double[] healthBenefit[0], double[] healthBenefit[1], double[] healthBenefit[2], double[] healthBenefit[3]) {
+      public static double calculateEnergyPoints(double[] calorieCount[0], double[] calorieCount[1], double[] calorieCount[2], double[] calorieCount[3], double[] healthBenefit[0], double[] healthBenefit[1], double[] healthBenefit[2], double[] healthBenefit[3]) {
     
         double energyPoints = (caloriesConsumed[0] + caloriesConsumed[1] + caloriesConsumed[2] + caloriesConsumed[3]) - 
                (healthBenefit[0] + healthBenefit[1] + healthBenefit[2] + healthBenefit[3]);

@@ -9,8 +9,6 @@ import byui.cit260.santaChallenge.control.BreakfastFoodControl;
 import byui.cit260.santaChallenge.control.GameControl;
 import byui.cit260.santaChallenge.model.BreakfastFood;
 import byui.cit260.santaChallenge.model.InventoryItem;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
 import santachallenge.SantaChallenge;
 
 /**
@@ -23,6 +21,7 @@ public class CaloriesConsumedView extends View {
     private int healthIndex = 0;
     private double[] caloriesConsumed = new double[4];
     private double[] healthBenefit = new double[4];
+    private double[] calorieCount;
 
     public CaloriesConsumedView() {
 
@@ -54,8 +53,8 @@ public class CaloriesConsumedView extends View {
                 return;
             }
         }
-        //calculate energyPoints
-        double energyPoints = BreakfastFoodControl.calculateEnergyPoints(caloriesConsumed[0], caloriesConsumed[1], caloriesConsumed[2], caloriesConsumed[3], 
+        double energyPoints;
+        energyPoints = BreakfastFoodControl.calculateEnergyPoints(calorieCount[0], calorieCount[1], calorieCount[2], calorieCount[3], 
                 healthBenefit[0], healthBenefit[1], healthBenefit[2], healthBenefit[3]);
 
        //add energy points to set.actual amount in inventory
@@ -137,7 +136,7 @@ public class CaloriesConsumedView extends View {
                 ErrorView.display(this.getClass().getName(), "\n*** Invalid selection *** Try again!");
                 return false;
         }
-        this.caloriesConsumed[this.calorieIndex] = calorieCount;      
+        this.calorieCount[this.calorieIndex] = calorieCount;      
         this.healthBenefit[this.healthIndex] = healthBenefit;
         this.calorieIndex++;
         this.healthIndex++;
