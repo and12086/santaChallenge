@@ -120,7 +120,7 @@ public class GameControl {
         
         InventoryItem energyPoints = new InventoryItem();
         energyPoints.setDescription("Energy Points - Did you feed Santa enough healthy foods at breakfast to get him through his deliveries?");
-        energyPoints.setRequiredAmount(0);
+        energyPoints.setRequiredAmount(500);
         energyPoints.setActualAmount(0);
         inventory[Item.energyPoints.ordinal()] = energyPoints;
        

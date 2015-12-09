@@ -95,7 +95,7 @@ public class StartProgramView {
 
     }
 
-    public String getPlayersName() /*throws ProgramControlException*/ {
+    public String getPlayersName() {
         boolean valid = false; //indicates if the name has been retrieved
         String playersName = null;
         //Scanner keyboard = new Scanner(System.in); //keyboard input stream
@@ -110,8 +110,8 @@ public class StartProgramView {
 
                 //if the name is invalid (less than 1 character in length)
                 if (playersName.length() < 1) {
-                    //throw new ProgramControlException("Please enter a valid name like Wendy :)");
-                    ErrorView.display("StartProgramView", playersName);
+                    this.console.println("You must enter a name.");
+                    continue;
                 }
                 break;
             }

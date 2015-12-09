@@ -1,2 +1,0 @@
-byui.cit260.santaChallenge.view.MainMenuView - 
-*** Invalid selection *** Try again!
