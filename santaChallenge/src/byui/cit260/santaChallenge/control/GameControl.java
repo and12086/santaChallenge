@@ -5,6 +5,7 @@
  */
 package byui.cit260.santaChallenge.control;
 
+import byui.cit260.santaChallenge.model.Actor;
 import byui.cit260.santaChallenge.model.BreakfastFood;
 import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.InventoryItem;
@@ -31,7 +32,10 @@ public class GameControl {
         Game game = new Game(); // create new game
         SantaChallenge.setCurrentGame(game); //save in Santa Challenge
         
+        player.setActor(Actor.Santa);//assigns an actor to the player 
         game.setPlayer(player); //save player in game
+        
+      
         
         // create the inventory list and save in the game
         InventoryItem[] inventory = GameControl.createInventoryList();

@@ -5,41 +5,29 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.MapControl;
+import byui.cit260.santaChallenge.model.Actor;
+import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.awt.Point;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import santachallenge.SantaChallenge;
 
 /**
  *
  * @author Wendy
  */
-public class MapView {
+public class MapView extends View {
 
-    protected final BufferedReader keyboard = SantaChallenge.getInFile();
-    protected final PrintWriter console = SantaChallenge.getOutFile();
-
-    public MapView() {
-    }
-
-    public void inputCoordinates() {
-
-        //Display the message asking for input
+    public MapView(String promptMessage) {
+        super(promptMessage);
         this.displayMessage();
-
-        this.console.println("Enter an x coordinate below:");
-        //Get the coordinates for x and y
-        int xCoordinate = this.getCoordinate();
-
-        this.console.println("Enter a y coordinate below:");
-        int yCoordinate = this.getCoordinate();
-
-        //Create a new set of coordinates
-        Point coordinates = new Point(yCoordinate, xCoordinate);
-        //go to move actor to a new location
-
     }
 
+   
+   
     public void displayMessage() {
         this.console.println("\n*********************************************");
 
@@ -100,6 +88,31 @@ public class MapView {
             ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
         }
         return doubleXCoordinate; //return the x coordinate
+    }
+
+    @Override
+    public boolean doAction(Object obj) {
+        
+        this.console.println("Enter an x coordinate below:");
+        //Get the coordinates for x and y
+        String xCoordinate = this.getInput();
+        int intXCoordinate = Integer.parseInt(xCoordinate);
+        
+        this.console.println("Enter a y coordinate below:");
+        String yCoordinate = this.getInput();
+        int intYCoordinate = Integer.parseInt(yCoordinate);
+        
+        //create a new point object (combining the x and y inputs in a single point of reference)
+        Point coordinates = new Point(intXCoordinate,intYCoordinate);
+        Actor actor = SantaChallenge.getCurrentGame().getPlayer().getActor();
+        
+        try {
+            MapControl.setActorToLocation(actor, coordinates);
+        } catch (MapControlException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());;
+            return false;
+        }
+    return true;
     }
 
 }

@@ -17,7 +17,8 @@ public class Player implements Serializable {
     //class instance variables
     private String name;
     private double bestTime;
-
+    private Actor actor;
+    
     public Player() {
     }
 
@@ -39,6 +40,15 @@ public class Player implements Serializable {
         this.bestTime = bestTime;
     }
 
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    
     @Override
     public String toString() {
         return "Player{" + "name=" + name + ", bestTime=" + bestTime + '}';

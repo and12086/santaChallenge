@@ -13,7 +13,8 @@ import java.io.Serializable;
  * @author Wendy
  */
 public enum Actor implements Serializable{
-       
+    
+    Santa ("The big guy himself....who hasn't wanted to be the 'REAL' Santa"),
     Mrs_Claus("She is Santa's wife and the true brains behind the operation"),
     Frosty("One of Santa's oldest friends"),
     Rudolph("Santa's lead reindeer"),
