@@ -20,35 +20,25 @@ import santachallenge.SantaChallenge;
  */
 public class MapView extends View {
 
-    public MapView(String promptMessage) {
-        super(promptMessage);
-        this.displayMessage();
-    }
+    public MapView() {
+       super("\n*********************************************"
+            + "\n*                                           *"
+            + "\n* Look at the map and decide where you      *"
+            + "\n* want to go first.                         *"
+            + "\n*                                           *"
+            + "\n* I suggest that you feed Santa first, then *"
+            + "\n* pick reindeer and load the sleigh with    *"
+            + "\n* presents.                                 *"
+            + "\n*                                           *"
+            + "\n* Next, you can begin choosing locations    *"
+            + "\n* all over the world to deliver presents to *"
+            + "\n* with Santa.                               *"
+            + "\n*                                           *"
+            + "\n* First you will indicate an x coordinate   *"
+            + "\n* on the map, followed by a y coordinate.   *"
+            + "\n*                                           *"
+            + "\n*********************************************");
 
-   
-   
-    public void displayMessage() {
-        this.console.println("\n*********************************************");
-
-        this.console.println("*                                           *"
-                + "\n* Look at the map and decide where you      *"
-                + "\n* want to go first.                         *"
-                + "\n*                                           *"
-                + "\n* I suggest that you feed Santa first, then *"
-                + "\n* pick reindeer and load the sleigh with    *"
-                + "\n presents.");
-
-        this.console.println("*                                           *"
-                + "\n* Next, you can begin choosing locations    *"
-                + "\n* all over the world to deliver presents to *"
-                + "\n* with Santa.                               *");
-
-        this.console.println("*                                           *"
-                + "\n* First you will indicate an x coordinate   *"
-                + "\n* on the map, followed by a y coordinate.   *");
-
-        this.console.println("*********************************************"
-        +"\n\n");
 
     }
 

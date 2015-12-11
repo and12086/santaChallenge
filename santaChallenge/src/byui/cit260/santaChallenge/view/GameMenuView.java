@@ -199,10 +199,10 @@ public class GameMenuView extends View {
         
     }
 
-    private void moveLocations() {
-       MapView mapView = new MapView();
-        mapView.displayMessage();
-    }
+//    private void moveLocations() {
+//       MapView mapView = new MapView();
+//        mapView.displayMessage();
+//    }
     
     
     private void saveBreakfastFood() {
