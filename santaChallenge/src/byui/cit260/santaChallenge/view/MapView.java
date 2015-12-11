@@ -7,6 +7,9 @@ package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.MapControl;
 import byui.cit260.santaChallenge.model.Actor;
+import byui.cit260.santaChallenge.model.Location;
+import byui.cit260.santaChallenge.model.Map;
+import byui.cit260.santaChallenge.model.Scene;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
