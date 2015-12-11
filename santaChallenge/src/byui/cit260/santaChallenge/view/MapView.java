@@ -5,6 +5,9 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.model.Location;
+import byui.cit260.santaChallenge.model.Map;
+import byui.cit260.santaChallenge.model.Scene;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.awt.Point;
@@ -26,18 +29,21 @@ public class MapView {
 
         //Display the message asking for input
         this.displayMessage();
+        
+        //display the map
+        this.displayMap();
 
         this.console.println("Enter an x coordinate below:");
         //Get the coordinates for x and y
         int xCoordinate = this.getCoordinate();
-
+     
         this.console.println("Enter a y coordinate below:");
         int yCoordinate = this.getCoordinate();
-
+        
         //Create a new set of coordinates
         Point coordinates = new Point(yCoordinate, xCoordinate);
-        //go to move actor to a new location
-
+       
+        
     }
 
     public void displayMessage() {
@@ -60,7 +66,8 @@ public class MapView {
                 + "\n* First you will indicate an x coordinate   *"
                 + "\n* on the map, followed by a y coordinate.   *");
 
-        this.console.println("*********************************************");
+        this.console.println("*********************************************"
+        +"\n\n");
 
     }
 
@@ -99,7 +106,42 @@ public class MapView {
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
         }
+        
         return doubleXCoordinate; //return the x coordinate
+    }
+    
+    private void displayMap() {
+
+        Map map = SantaChallenge.getCurrentGame().getMap();
+        Location[][] locations = map.getLocations();
+
+        this.console.println("*****************");
+        this.console.println("* Map Locations *");
+        this.console.println("*****************");
+        this.console.println("\t" + 0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
+
+        int noOfColumns = map.getNoOfColumns();
+        int noOfRows = map.getNoOfRows();
+
+        for (int row = 0; row < noOfRows; row++) {
+            this.console.println("\n******************************************************" + "\n" + row);
+
+            for (int column = 0; column < noOfColumns; column++) {
+                this.console.print("\t|");
+                Location location = locations[row][column];
+                Scene scene = location.getScene();
+                this.console.print(scene.getMapSymbol());
+                if (!location.isVisited()) {
+                    this.console.print("--");
+                } else {
+                    this.console.print("XX");//print to indicate location has not been visited yet
+                }
+            }
+
+            this.console.print("|" );//print final column divider
+        }
+        this.console.println("\n******************************************************");
+        this.console.println("\n\n");
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package byui.cit260.santaChallenge.model;
 
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 /**
@@ -16,6 +17,7 @@ public class Player implements Serializable {
     //class instance variables
     private String name;
     private double bestTime;
+    private Point currentLocation;
 
     public Player() {
     }
@@ -38,6 +40,16 @@ public class Player implements Serializable {
         this.bestTime = bestTime;
     }
 
+    public Point getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Point currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Player{" + "name=" + name + ", bestTime=" + bestTime + '}';

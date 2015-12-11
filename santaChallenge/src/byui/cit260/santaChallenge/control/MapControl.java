@@ -29,7 +29,7 @@ public class MapControl {
         map.setScenes(scenes);//save the scene to the map
         
         //assign the different scenes to locations in the map
-        assignScenesToLocations(map, scenes);
+        assignScenesToLocations(map, scenes);     
 
         return map;
     }
@@ -52,6 +52,7 @@ public class MapControl {
         
         int newRow = coordinates.y;
         int newColumn = coordinates.x;
+        
         
         if (newRow < 0 || newRow >= map.getNoOfRows() || newColumn < 0 || newColumn >= map.getNoOfColumns()) {
             throw new MapControlException("Can not move actor to location "
@@ -93,10 +94,9 @@ public class MapControl {
         locations[4][3].setScene(scenes[SceneType.ulaanbaatar.ordinal()]);
         locations[4][4].setScene(scenes[SceneType.finish.ordinal()]);
         
-        map.setLocations(locations);
+        //save the locations to the map
+        map.setLocations(locations);      
     }
-//locations[0][0].setScene(scene[SceneType.start.ordinal()]);
-
    
     public static Scene[] getSortedScenes(Scene[] originalScenes) {
        
@@ -139,13 +139,14 @@ public class MapControl {
             }
         }
         return minScene;
+    }  
+
+    public static double calcTimeRemaining(double milesFromNorthPole, double flyingSpeed) {
+        
+        double timeRemaining;
+        timeRemaining = 24 - (milesFromNorthPole/flyingSpeed);
+        return timeRemaining;
     }
-
-  
-
-  
-
-  
 
     public enum SceneType {
 
@@ -361,5 +362,6 @@ public class MapControl {
         return scenes;
     }
 
+  
     
 }

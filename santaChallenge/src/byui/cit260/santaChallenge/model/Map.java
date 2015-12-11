@@ -43,12 +43,14 @@ public class Map implements Serializable{
                 
                 //assign the Location object to the current position in array
                 locations [row][column] = location;
+                
             }
         }
     } 
 
-    public void putActorOnLocation(Actor actor, Point point){
-        locations[point.y][point.x].setActor(actor);
+    public void putPlayerOnLocation(Actor actor, Point coordinates){
+        locations[coordinates.y][coordinates.x].setActor(actor);
+        
     }
     
     public int getNoOfRows() {

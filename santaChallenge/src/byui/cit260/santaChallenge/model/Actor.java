@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @author Wendy
  */
 public enum Actor implements Serializable{
-       
+    
     Mrs_Claus("She is Santa's wife and the true brains behind the operation"),
     Frosty("One of Santa's oldest friends"),
     Rudolph("Santa's lead reindeer"),
@@ -25,7 +25,7 @@ public enum Actor implements Serializable{
 
     Actor(String description) {
         this.description = description;
-        coordinates = new Point(0,2);
+        coordinates = new Point(0,0);
     }
 
     public String getDescription() {

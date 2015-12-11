@@ -29,7 +29,7 @@ public class GameMenuView extends View {
                 + "\n Where to now chief? The night is up to you.   *"
                 + "\n Choose an option from below.                  *"
                 + "\n************************************************"
-                + "\nM - View Map/Choose a Location                 *"
+                + "\nM - View Map                                   *"
                 + "\nF - Feed Santa                                 *"
                 + "\nL - Load the sleigh, and choose reindeer       *"
                 + "\nI - View your inventory                        *"
@@ -200,8 +200,8 @@ public class GameMenuView extends View {
     }
 
     private void moveLocations() {
-        MapView mapView =  new MapView();
-        mapView.inputCoordinates();
+       MapView mapView = new MapView();
+        mapView.displayMessage();
     }
     
     
