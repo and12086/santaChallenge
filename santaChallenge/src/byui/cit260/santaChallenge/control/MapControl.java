@@ -64,15 +64,15 @@ public class MapControl {
             throw new MapControlException("Actor not specified, please choose another option");
         }
         
-        //get the old location in the actor
+    //get the old location in the actor
+        SantaChallenge.getCurrentGame().getActor();
+    //get new location from the map.locations[](index-values of new row and new column)
         
-        //get new location from the map.locations[](index-values of new row and new column)
-        
-        //set the actor in the old location to null (call setter function)
-        
-        //set the actor in the new location to the actor passed when the function was called
-        
-        //set the location in the Actor to the new location
+    //set the actor in the old location to null (call setter function)
+
+    //set the actor in the new location to the actor passed when the function was called
+
+    //set the location in the Actor to the new location
         
     }
     

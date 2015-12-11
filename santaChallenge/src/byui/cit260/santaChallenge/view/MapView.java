@@ -24,65 +24,55 @@ import santachallenge.SantaChallenge;
  */
 public class MapView extends View {
 
-    public MapView(String promptMessage) {
-        super(promptMessage);
-        this.displayMessage();
-    }
+    public MapView() {
+       super("\n*********************************************"
+            + "\n*                                           *"
+            + "\n* Look at the map and decide where you      *"
+            + "\n* want to go first.                         *"
+            + "\n*                                           *"
+            + "\n* I suggest that you feed Santa first, then *"
+            + "\n* pick reindeer and load the sleigh with    *"
+            + "\n* presents.                                 *"
+            + "\n*                                           *"
+            + "\n* Next, you can begin choosing locations    *"
+            + "\n* all over the world to deliver presents to *"
+            + "\n* with Santa.                               *"
+            + "\n*                                           *"
+            + "\n* First you will indicate an x coordinate   *"
+            + "\n* on the map, followed by a y coordinate.   *"
+            + "\n*                                           *"
+            + "\n*********************************************");
 
-   
-   
-    public void displayMessage() {
-        this.console.println("\n*********************************************");
-
-        this.console.println("*                                           *"
-                + "\n* Look at the map and decide where you      *"
-                + "\n* want to go first.                         *"
-                + "\n*                                           *"
-                + "\n* I suggest that you feed Santa first, then *"
-                + "\n* pick reindeer and load the sleigh with    *"
-                + "\n presents.");
-
-        this.console.println("*                                           *"
-                + "\n* Next, you can begin choosing locations    *"
-                + "\n* all over the world to deliver presents to *"
-                + "\n* with Santa.                               *");
-
-        this.console.println("*                                           *"
-                + "\n* First you will indicate an x coordinate   *"
-                + "\n* on the map, followed by a y coordinate.   *");
-
-        this.console.println("*********************************************"
-        +"\n\n");
 
     }
 
     private int getCoordinate() {
         boolean valid = false; //indicates if the x coordinate has been retrieved
-        String xCoordinate = null;
+        String Coordinate = null;
 
-        int doubleXCoordinate = -1;
+        int doubleCoordinate = -1;
         try {
             while (!valid) {//while a valid coordinate has not been retrieved
                 //prompt for an x coordinate
 
                 //get the coordinate from the keyboard and trim off the blanks
-                xCoordinate = this.keyboard.readLine();
-                xCoordinate = xCoordinate.trim();
+                Coordinate = this.keyboard.readLine();
+                Coordinate = Coordinate.trim();
 
                 //if the coordinate is invalid (less than 1 character in length)
-                if (xCoordinate.length() < 1) {
+                if (Coordinate.length() < 1) {
                     ErrorView.display(this.getClass().getName(),"Invalid entry.  Please enter a coordinate between 0 and 4.");
                     continue; //and repeat again
                 }
 
                 try {
-                    doubleXCoordinate = Integer.parseInt(xCoordinate);
+                    doubleCoordinate = Integer.parseInt(Coordinate);
                 } catch (NumberFormatException nf) {
                     ErrorView.display(this.getClass().getName(),"\nYou must enter a valid number between 0 and 4."
                             + "\n Please try again.");
                 }
 
-                if (doubleXCoordinate < 0 || doubleXCoordinate > 4) {
+                if (doubleCoordinate < 0 || doubleCoordinate > 4) {
                     ErrorView.display(this.getClass().getName(),"Invalid entry.  Please enter a coordinate between 0 and 4.");
                     continue;//and repeat again
                 }
@@ -92,7 +82,7 @@ public class MapView extends View {
             ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
         }
         
-        return doubleXCoordinate; //return the x coordinate
+        return doubleCoordinate; //return the x coordinate
     }
     
     private void displayMap() {
