@@ -123,9 +123,12 @@ public class StartProgramView {
     }
 
     private void displayWelcomeMessage(Player player) {
-        this.console.println("\n\n*********************************************");
-        this.console.println("\tWelcome to the Santa Challenge " + player.getName() + ".");
-        this.console.println("\tWe hope you have a jolly time!");
-        this.console.println("*********************************************");
+        this.console.println("\n************************************************"
+                           + "\n*    Welcome to the Santa Challenge " + player.getName() + "." *"    
+                           + "\n*    We hope you have a jolly time!            *"
+                           + "\n************************************************");
+//                         + "\n************************************************"
+        
+        
     }
 }

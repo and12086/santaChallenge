@@ -6,7 +6,7 @@
 package byui.cit260.santaChallenge.control;
 
 import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
-
+     
 /**
  *
  * @author Lisa Lou

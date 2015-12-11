@@ -5,6 +5,8 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import santachallenge.SantaChallenge;
+
 
 /**
  *
@@ -72,17 +74,47 @@ public class HelpMenuView extends View {
 
     
     private void displayWin() {
-        HowToWinView howToWin = new HowToWinView();
-        howToWin.display();
+       this.console.println("\n"
+                + "\n************************************************"
+                + "\n               How to WIN the game              "
+                + "\n************************************************"
+                + "\n                                                "
+                + "\n The purpose of the game is to deliver as many  "
+                + "\n presents as you can, to as many different      "
+                + "\n countries as you can. At the end of the game   "
+                + "\n you will recieve a score that encompasses both "
+                + "\n the number of presents that you were able to   "
+                + "\n deliver and the number of countries that were  "
+                + "\n visited.                                       "
+                + "\n                                                "
+                + "\n************************************************"
+                + "\n                                                "
+                + "\n                     TIPS!!                     "
+                + "\n                                                "
+                + "\n Be sure to balance your load of presents with  "
+                + "\n the right amount of reindeer to pull the       "
+                + "\n sleigh in order to increase your flying speed. "
+                + "\n                                                "
+                + "\n Plan your stops strategicaly so that you can   "
+                + "\n make it to the most amount of countries.       "
+                + "\n                                                "
+                + "\n                                                "
+                + "\n************************************************"
+                + "\n Type R to Return to the Help Menu              "
+                + "\n Type M to return to the Main Menu              "
+                + "\n************************************************");
     }
 
     private void displayMove() {
-        this.console.println("*** displayMove function called");
+        this.console.println("To move your player to a new location use the  "
+                + "\n coordinates on the map to identify the city you"
+                + "\n would like to travel to next and type enter    "
+                + "\n All trips orginate from the North Pole.        ");
     }
 
     private void displayBreakfast() {
-        HelpFeedSantaView feedSanta = new HelpFeedSantaView();
-        feedSanta.display();
+        this.console.println("To move your player to a new location use the  ");
+        
     }
 
     private void displayLoad() {
