@@ -50,11 +50,11 @@ public class MapControl {
                             throws MapControlException {
         Map map = SantaChallenge.getCurrentGame().getMap();
         
-        int newRow = coordinates.y;
-        int newColumn = coordinates.x;
+        int intYCoordinate = coordinates.y;
+        int intXCoordinate = coordinates.x;
         
         
-        if (newRow < 0 || newRow >= map.getNoOfRows() || newColumn < 0 || newColumn >= map.getNoOfColumns()) {
+        if (intXCoordinate < 0 || intXCoordinate >= map.getNoOfRows() || intYCoordinate < 0 || intYCoordinate >= map.getNoOfColumns()) {
             throw new MapControlException("Can not move actor to location "
                                             + coordinates.y + ", " + coordinates.x
                                             + " because that location is outside"
@@ -65,15 +65,21 @@ public class MapControl {
         }
         
         //get the old location in the actor
-        
+        SantaChallenge.getCurrentGame().getActor();
+        SantaChallenge.getCurrentGame().getMap();
         //get new location from the map.locations[](index-values of new row and new column)
+        Location[][] locations = SantaChallenge.getCurrentGame().getMap().getLocations(); 
         
+        locations[coordinates.y][coordinates.x].setActor(actor);
         //set the actor in the old location to null (call setter function)
+        
         
         //set the actor in the new location to the actor passed when the function was called
         
         //set the location in the Actor to the new location
-        
+//        Location newScene;
+//        newScene = locations[coordinates.y][coordinates.x].setScene();
+//        
     }
     
     

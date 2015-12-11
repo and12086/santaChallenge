@@ -7,12 +7,11 @@ package byui.cit260.santaChallenge.view;
 
 import byui.cit260.santaChallenge.control.MapControl;
 import byui.cit260.santaChallenge.model.Actor;
+import byui.cit260.santaChallenge.model.Location;
+import byui.cit260.santaChallenge.model.Map;
+import byui.cit260.santaChallenge.model.Scene;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
-import java.io.BufferedReader;
-import java.io.PrintWriter;
 import java.awt.Point;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import santachallenge.SantaChallenge;
 
 /**
@@ -55,31 +54,31 @@ public class MapView extends View {
 
     private int getCoordinate() {
         boolean valid = false; //indicates if the x coordinate has been retrieved
-        String xCoordinate = null;
+        String coordinate = null;
 
-        int doubleXCoordinate = -1;
+        int doubleCoordinate = -1;
         try {
             while (!valid) {//while a valid coordinate has not been retrieved
                 //prompt for an x coordinate
 
                 //get the coordinate from the keyboard and trim off the blanks
-                xCoordinate = this.keyboard.readLine();
-                xCoordinate = xCoordinate.trim();
+                coordinate = this.keyboard.readLine();
+                coordinate = coordinate.trim();
 
                 //if the coordinate is invalid (less than 1 character in length)
-                if (xCoordinate.length() < 1) {
+                if (coordinate.length() < 1) {
                     ErrorView.display(this.getClass().getName(),"Invalid entry.  Please enter a coordinate between 0 and 4.");
                     continue; //and repeat again
                 }
 
                 try {
-                    doubleXCoordinate = Integer.parseInt(xCoordinate);
+                    doubleCoordinate = Integer.parseInt(coordinate);
                 } catch (NumberFormatException nf) {
                     ErrorView.display(this.getClass().getName(),"\nYou must enter a valid number between 0 and 4."
                             + "\n Please try again.");
                 }
 
-                if (doubleXCoordinate < 0 || doubleXCoordinate > 4) {
+                if (doubleCoordinate < 0 || doubleCoordinate > 4) {
                     ErrorView.display(this.getClass().getName(),"Invalid entry.  Please enter a coordinate between 0 and 4.");
                     continue;//and repeat again
                 }
@@ -89,7 +88,7 @@ public class MapView extends View {
             ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
         }
         
-        return doubleXCoordinate; //return the x coordinate
+        return doubleCoordinate; //return the x coordinate
     }
     
     private void displayMap() {
