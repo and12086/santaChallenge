@@ -67,7 +67,7 @@ public class GameMenuView extends View {
                 this.displayActors();
                 break;
             case "N"://move to a new location
-                this.moveLocations();
+                //this.moveLocations();
                 break;
             case "S"://display the list of scenes
                 this.displaySceneList();
@@ -199,11 +199,15 @@ public class GameMenuView extends View {
         
     }
 
-    private void moveLocations() {
-        MapView mapView =  new MapView();
-        mapView.inputCoordinates();
-    }
-    
+  
+//    ***taking out this section for now***
+//    
+//    private void moveLocations() {
+//        MapView mapView =  new MapView();
+//        mapView.inputCoordinates();
+//    }
+//   
+  
     
     private void saveBreakfastFood() {
         //prompt for a get the name of the file to save the list of scenes in
