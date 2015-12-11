@@ -29,7 +29,7 @@ public class GameMenuView extends View {
                 + "\n Where to now chief? The night is up to you.   *"
                 + "\n Choose an option from below.                  *"
                 + "\n************************************************"
-                + "\nM - View Map/Choose a Location                 *"
+                + "\nM - View Map                                   *"
                 + "\nF - Feed Santa                                 *"
                 + "\nL - Load the sleigh, and choose reindeer       *"
                 + "\nI - View your inventory                        *"
@@ -199,15 +199,11 @@ public class GameMenuView extends View {
         
     }
 
-  
-//    ***taking out this section for now***
-//    
-//    private void moveLocations() {
-//        MapView mapView =  new MapView();
-//        mapView.inputCoordinates();
-//    }
-//   
-  
+    private void moveLocations() {
+       MapView mapView = new MapView();
+        mapView.displayMessage();
+    }
+    
     
     private void saveBreakfastFood() {
         //prompt for a get the name of the file to save the list of scenes in

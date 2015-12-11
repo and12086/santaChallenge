@@ -7,15 +7,13 @@ package byui.cit260.santaChallenge.model;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**
  *
  * @author Wendy
  */
-public class Location implements Serializable{
-    
+public class Location implements Serializable{    
     
     private int row;
     private int column;

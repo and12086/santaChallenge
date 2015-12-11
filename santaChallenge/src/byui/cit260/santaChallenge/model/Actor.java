@@ -26,7 +26,7 @@ public enum Actor implements Serializable{
 
     Actor(String description) {
         this.description = description;
-        coordinates = new Point(0,2);
+        coordinates = new Point(0,0);
     }
 
     public String getDescription() {

@@ -48,7 +48,8 @@ public class MapView extends View {
                 + "\n* First you will indicate an x coordinate   *"
                 + "\n* on the map, followed by a y coordinate.   *");
 
-        this.console.println("*********************************************");
+        this.console.println("*********************************************"
+        +"\n\n");
 
     }
 
@@ -87,7 +88,42 @@ public class MapView extends View {
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(),"Error reading input: " + e.getMessage());
         }
+        
         return doubleXCoordinate; //return the x coordinate
+    }
+    
+    private void displayMap() {
+
+        Map map = SantaChallenge.getCurrentGame().getMap();
+        Location[][] locations = map.getLocations();
+
+        this.console.println("*****************");
+        this.console.println("* Map Locations *");
+        this.console.println("*****************");
+        this.console.println("\t" + 0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
+
+        int noOfColumns = map.getNoOfColumns();
+        int noOfRows = map.getNoOfRows();
+
+        for (int row = 0; row < noOfRows; row++) {
+            this.console.println("\n******************************************************" + "\n" + row);
+
+            for (int column = 0; column < noOfColumns; column++) {
+                this.console.print("\t|");
+                Location location = locations[row][column];
+                Scene scene = location.getScene();
+                this.console.print(scene.getMapSymbol());
+                if (!location.isVisited()) {
+                    this.console.print("--");
+                } else {
+                    this.console.print("XX");//print to indicate location has not been visited yet
+                }
+            }
+
+            this.console.print("|" );//print final column divider
+        }
+        this.console.println("\n******************************************************");
+        this.console.println("\n\n");
     }
 
     @Override

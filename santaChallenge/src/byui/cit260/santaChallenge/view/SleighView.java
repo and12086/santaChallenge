@@ -9,8 +9,6 @@ import byui.cit260.santaChallenge.control.SleighControl;
 import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import santachallenge.SantaChallenge;
 
 /**
