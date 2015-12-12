@@ -74,6 +74,7 @@ public class MapControl {
                     + " because that location is outside"
                     + " the bounds of the map.");
         }
+        
         if (actor == null) {
             throw new MapControlException("Actor not specified, please choose another option");
         }

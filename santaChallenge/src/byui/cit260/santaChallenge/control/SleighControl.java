@@ -21,15 +21,15 @@ public class SleighControl {
         pullCapacity = numberOfPresents/numberOfReindeer;
         
          if(pullCapacity < 20) {
-            flyingSpeed = 800;
+            flyingSpeed = 1600;
          }
          
          else if(pullCapacity >= 20 && pullCapacity <= 25) {
-             flyingSpeed = 700;
+             flyingSpeed = 1400;
          }
          
          else {
-             flyingSpeed = 600;
+             flyingSpeed = 1200;
          }
          
         return flyingSpeed;
