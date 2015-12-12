@@ -50,11 +50,11 @@ public class MapControl {
                             throws MapControlException {
         Map map = SantaChallenge.getCurrentGame().getMap();
         
-        int intYCoordinate = coordinates.y;
-        int intXCoordinate = coordinates.x;
+        int yCoordinate = coordinates.y;
+        int xCoordinate = coordinates.x;
         
         
-        if (intXCoordinate < 0 || intXCoordinate >= map.getNoOfRows() || intYCoordinate < 0 || intYCoordinate >= map.getNoOfColumns()) {
+        if (xCoordinate < 0 || xCoordinate >= map.getNoOfRows() || yCoordinate < 0 || yCoordinate >= map.getNoOfColumns()) {
             throw new MapControlException("Can not move actor to location "
                                             + coordinates.y + ", " + coordinates.x
                                             + " because that location is outside"
