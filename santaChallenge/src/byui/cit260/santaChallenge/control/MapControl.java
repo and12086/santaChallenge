@@ -10,7 +10,9 @@ import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.Scene;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
+import byui.cit260.santaChallenge.model.Sleigh;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
+import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
 import java.awt.Point;
 import santachallenge.SantaChallenge;
 
@@ -27,64 +29,70 @@ public class MapControl {
         //create a list of the different scenes in the game
         Scene[] scenes = createScenes();
         map.setScenes(scenes);//save the scene to the map
-        
+
         //assign the different scenes to locations in the map
-        assignScenesToLocations(map, scenes);     
+        assignScenesToLocations(map, scenes);
 
         return map;
     }
-    
-    public static void moveActorsToStartingLocation(Map map) 
-                                throws MapControlException {
+
+    public static void moveActorsToStartingLocation(Map map)
+            throws MapControlException, SleighControlException {
         //for every actor
         Actor[] actors = Actor.values();
-        
+
         for (Actor actor : actors) {
             Point coordinates = actor.getCoordinates();
             MapControl.setActorToLocation(actor, coordinates);
         }
- 
+
     }
-    
-    public static void setActorToLocation(Actor actor, Point coordinates) 
-                            throws MapControlException {
+
+    public static void updateTimeRemaining(Point coordinates) throws SleighControlException {
+        Scene newScene;
         Map map = SantaChallenge.getCurrentGame().getMap();
-        
+        Location[][] locations = map.getLocations();
+        newScene = locations[coordinates.y][coordinates.x].getScene();
+        double tempMiles = newScene.getMilesFromNorthPole();
+        Sleigh sleigh = SantaChallenge.getCurrentGame().getSleigh();
+        double tempFlyingSpeed = SleighControl.calcFlyingSpeed(sleigh.getNumberOfPresents(), sleigh.getNumberOfReindeer());
+        MapControl.calcTimeRemaining(tempMiles, tempFlyingSpeed);
+        System.out.println(tempMiles);
+        System.out.println(SantaChallenge.getCurrentGame().getTime());
+    }
+
+    public static void setActorToLocation(Actor actor, Point coordinates)
+            throws MapControlException, SleighControlException {
+        Map map = SantaChallenge.getCurrentGame().getMap();
+
         int yCoordinate = coordinates.y;
         int xCoordinate = coordinates.x;
-        
-        
+
         if (xCoordinate < 0 || xCoordinate >= map.getNoOfRows() || yCoordinate < 0 || yCoordinate >= map.getNoOfColumns()) {
             throw new MapControlException("Can not move actor to location "
-                                            + coordinates.y + ", " + coordinates.x
-                                            + " because that location is outside"
-                                            + " the bounds of the map.");
+                    + coordinates.y + ", " + coordinates.x
+                    + " because that location is outside"
+                    + " the bounds of the map.");
         }
         if (actor == null) {
             throw new MapControlException("Actor not specified, please choose another option");
         }
-        
+
         //get the old location in the actor
         SantaChallenge.getCurrentGame().getActor();
+
         SantaChallenge.getCurrentGame().getMap();
+
         //get new location from the map.locations[](index-values of new row and new column)
-        Location[][] locations = SantaChallenge.getCurrentGame().getMap().getLocations(); 
-        
+        Location[][] locations = SantaChallenge.getCurrentGame().getMap().getLocations();
+
         locations[coordinates.y][coordinates.x].setActor(actor);
         //set the actor in the old location to null (call setter function)
-        
-        
+
         //set the actor in the new location to the actor passed when the function was called
-        
         //set the location in the Actor to the new location
-        Scene newScene;
-        newScene = locations[coordinates.y][coordinates.x].getScene();
-        double tempMiles = newScene.getMilesFromNorthPole();
         
-        System.out.println(tempMiles);
     }
-    
-    
 
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
         Location[][] locations = map.getLocations();
@@ -115,13 +123,13 @@ public class MapControl {
         locations[4][2].setScene(scenes[SceneType.casaBlanca.ordinal()]);
         locations[4][3].setScene(scenes[SceneType.ulaanbaatar.ordinal()]);
         locations[4][4].setScene(scenes[SceneType.finish.ordinal()]);
-        
+
         //save the locations to the map
-        map.setLocations(locations);      
+        map.setLocations(locations);
     }
-   
+
     public static Scene[] getSortedScenes(Scene[] originalScenes) {
-       
+
         //clone originalList
         Scene[] scenes = originalScenes.clone();
 
@@ -138,11 +146,11 @@ public class MapControl {
         }
         return scenes;
     }
-   
-   // getting the maximum value
+
+    // getting the maximum value
     public static Scene getMaxValue(Scene[] scenes) {
         Scene maxScene = scenes[0];//get scene list from Scene class
-        
+
         //advance the positition through the entire array
         for (int i = 0; i < scenes.length - 1; i++) {
             if (scenes[i].getMilesFromNorthPole() > maxScene.getMilesFromNorthPole()) {
@@ -161,13 +169,15 @@ public class MapControl {
             }
         }
         return minScene;
-    }  
+    }
 
-    public static double calcTimeRemaining(double milesFromNorthPole, double flyingSpeed) {
-        
+    public static void calcTimeRemaining(double milesFromNorthPole, double flyingSpeed) {
+
+        double totalTime;
+        totalTime = (SantaChallenge.getCurrentGame()).getTime();
         double timeRemaining;
-        timeRemaining = 24 - (milesFromNorthPole/flyingSpeed);
-        return timeRemaining;
+        timeRemaining = totalTime - (milesFromNorthPole / flyingSpeed);
+        (SantaChallenge.getCurrentGame()).setTime(timeRemaining);
     }
 
     public enum SceneType {
@@ -384,6 +394,4 @@ public class MapControl {
         return scenes;
     }
 
-  
-    
 }

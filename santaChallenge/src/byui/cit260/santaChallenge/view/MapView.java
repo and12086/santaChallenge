@@ -11,6 +11,7 @@ import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
 import byui.cit260.santaChallenge.model.Scene;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
+import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
 import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -42,13 +43,14 @@ public class MapView  {
         int yCoordinate = this.getCoordinate();
         //int intYCoordinate = Integer.parseInt(yCoordinate);
 
-        //create a new point object (combining the x and y inputs in a single point of reference)
-        Point coordinates = new Point(xCoordinate, yCoordinate);
+        //create a new point object (combining the y and x inputs in a single point of reference)
+        Point coordinates = new Point(yCoordinate, xCoordinate);
         Actor actor = SantaChallenge.getCurrentGame().getPlayer().getActor();
 
         try {
             MapControl.setActorToLocation(actor, coordinates);
-        } catch (MapControlException ex) {
+            MapControl.updateTimeRemaining(coordinates);
+        } catch (MapControlException | SleighControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
             return false;
         }

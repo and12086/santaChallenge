@@ -14,6 +14,7 @@ import byui.cit260.santaChallenge.model.Player;
 import byui.cit260.santaChallenge.model.Sleigh;
 import citbyui.cit260.santaChallenge.exceptions.GameControlException;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
+import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -28,7 +29,7 @@ import santachallenge.SantaChallenge;
  */
 public class GameControl {
 
-    public static void createNewGame(Player player) throws MapControlException {
+    public static void createNewGame(Player player) throws MapControlException, SleighControlException {
         Game game = new Game(); // create new game
         SantaChallenge.setCurrentGame(game); //save in Santa Challenge
         
@@ -49,6 +50,10 @@ public class GameControl {
         
         Map map = MapControl.createMap();//create and initialize new map
         game.setMap(map);//save map in game
+        
+        
+        //initialize total time
+        game.setTime(24);
         
         //move actors to starting position in the map
         MapControl.moveActorsToStartingLocation(map);
