@@ -48,7 +48,7 @@ public class MapView extends View {
 
     private int getCoordinate() {
         boolean valid = false; //indicates if the x coordinate has been retrieved
-        String Coordinate = null;
+        String coordinate = null;
 
         int doubleCoordinate = -1;
         try {
@@ -56,17 +56,17 @@ public class MapView extends View {
                 //prompt for an x coordinate
 
                 //get the coordinate from the keyboard and trim off the blanks
-                Coordinate = this.keyboard.readLine();
-                Coordinate = Coordinate.trim();
+                coordinate = this.keyboard.readLine();
+                coordinate = coordinate.trim();
 
                 //if the coordinate is invalid (less than 1 character in length)
-                if (Coordinate.length() < 1) {
+                if (coordinate.length() < 1) {
                     ErrorView.display(this.getClass().getName(),"Invalid entry.  Please enter a coordinate between 0 and 4.");
                     continue; //and repeat again
                 }
 
                 try {
-                    doubleCoordinate = Integer.parseInt(Coordinate);
+                    doubleCoordinate = Integer.parseInt(coordinate);
                 } catch (NumberFormatException nf) {
                     ErrorView.display(this.getClass().getName(),"\nYou must enter a valid number between 0 and 4."
                             + "\n Please try again.");
