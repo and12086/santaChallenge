@@ -119,25 +119,32 @@ public class GameControl {
     
     public enum Item {
         energyPoints,
-        time;
+        flyingSpeed,
+        timeRemaining;
     }
     
     public static InventoryItem[] createInventoryList() {
         
         //created array(list) of inventory items
-        InventoryItem[] inventory = new InventoryItem[Constants.NUMBER_OF_INVENTORY_ITEMS];
+        InventoryItem[] inventory = new InventoryItem[Item.values().length];
         
         InventoryItem energyPoints = new InventoryItem();
         energyPoints.setDescription("Energy Points - Did you feed Santa enough healthy foods at breakfast to get him through his deliveries?");
         energyPoints.setRequiredAmount(500);
         energyPoints.setActualAmount(0);
         inventory[Item.energyPoints.ordinal()] = energyPoints;
+        
+        InventoryItem flyingSpeed = new InventoryItem();
+        flyingSpeed.setDescription("Flying Speed - Did you load the sleigh with a good ratio of presents to reindeer?");
+        flyingSpeed.setRequiredAmount(0);
+        flyingSpeed.setActualAmount(0);
+        inventory[Item.flyingSpeed.ordinal()] = flyingSpeed;
        
         InventoryItem time = new InventoryItem();
         time.setDescription("Time - How much time do you have left to help Santa finish his deliveries?");
-        time.setRequiredAmount(0);
-        time.setActualAmount(0);
-        inventory[Item.time.ordinal()] = time;
+        time.setRequiredAmount(24);
+        time.setActualAmount(24);
+        inventory[Item.timeRemaining.ordinal()] = time;
         
         return inventory;
     }

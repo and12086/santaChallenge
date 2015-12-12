@@ -5,16 +5,21 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.GameControl;
 import byui.cit260.santaChallenge.control.MapControl;
+import byui.cit260.santaChallenge.control.SleighControl;
 import byui.cit260.santaChallenge.model.Actor;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
 import byui.cit260.santaChallenge.model.Scene;
+import byui.cit260.santaChallenge.model.Sleigh;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
 import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import santachallenge.SantaChallenge;
 
 /**
@@ -49,41 +54,72 @@ public class MapView  {
 
         try {
             MapControl.setActorToLocation(actor, coordinates);
-            MapControl.updateTimeRemaining(coordinates);
+            
         } catch (MapControlException | SleighControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
             return false;
         }
+
+        Scene newScene;
+        Map map = SantaChallenge.getCurrentGame().getMap();
+        Location[][] locations = map.getLocations();
+        newScene = locations[coordinates.y][coordinates.x].getScene();
+
+        double tempMiles = newScene.getMilesFromNorthPole();
+
+        this.console.println("\n\nSanta has successfully arrived in " + newScene.getDescription() + " and delivered 5 presents. " + 
+                newScene.getDescription() + " is " + newScene.getMilesFromNorthPole() + " miles from the North Pole.");
         
+        Sleigh sleigh = SantaChallenge.getCurrentGame().getSleigh();
         
+        double tempFlyingSpeed = 0;
+         try {
+             tempFlyingSpeed = SleighControl.calcFlyingSpeed(sleigh.getNumberOfPresents(), sleigh.getNumberOfReindeer());
+         } catch (SleighControlException ex) {
+             Logger.getLogger(MapView.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        double time = MapControl.calcTime(tempMiles, tempFlyingSpeed);
+        
+        //calculate how much time in a 24 hour period Santa has left to deliver presents
+        double timeRemaining = MapControl.calcTimeRemaining(tempMiles, tempFlyingSpeed);
+        //set the timeRemaining into inventory
+        SantaChallenge.getCurrentGame().getInventory()[GameControl.Item.timeRemaining.ordinal()].setActualAmount(timeRemaining);
+        
+        if(timeRemaining < 0) {
+            this.console.println("Santa ran out of time!! Game over.  See you next year.");
+            this.endGame();
+        }
+        else {
+        this.console.println("\n This took Santa " + time + " hours.");  
+        this.console.println("Santa only has " + timeRemaining + " hours left to deliver as many presents as he can to children all over the world.");
         return true;
+        }
+         return true;
     }
     
     public void displayMessage() {
-        this.console.println("\n*********************************************"
-                + "\n*                                           *"
-                + "\n* Look at the map and decide where you      *"
-                + "\n* want to go first.                         *"
-                + "\n*                                           *"
-                + "\n* I suggest that you feed Santa first, then *"
-                + "\n* pick reindeer and load the sleigh with    *"
-                + "\n* presents.                                 *"
-                + "\n*                                           *"
-                + "\n* Next, you can begin choosing locations    *"
-                + "\n* all over the world to deliver presents to *"
-                + "\n* with Santa.                               *"
-                + "\n*                                           *"
-                + "\n* First you will indicate an x coordinate   *"
-                + "\n* on the map, followed by a y coordinate.   *"
-                + "\n*                                           *"
-                + "\n*********************************************");
+        this.console.println("\n***********************************************"
+                + "\n*                                             *"
+                + "\n* Look at the map and decide where you        *"
+                + "\n* want to deliver presents.                   *"
+                + "\n*                                             *"
+                + "\n* But first, you need to help Santa choose a  *"
+                + "\n* healthy breakfast.                          *"
+                + "\n                                              *"
+                + "\n Then be sure to load the sleigh with presents *"
+                + "\n* and choose the best number of reindeer.     *"
+                + "\n*                                             *"
+                + "\n* After all that, you can begin choosing      *"
+                + "\n* locations all over the world to deliver     *"
+                + "\n* presents to with Santa.                     *"
+                + "\n*                                             *"
+                + "\n* First you will indicate an x coordinate     *"
+                + "\n* on the map, followed by a y coordinate.     *"
+                + "\n*                                             *"
+                + "\n***********************************************");
 
     }
 
-    
-    
-   
-   
 
     private int getCoordinate() {
         boolean valid = false; //indicates if the x coordinate has been retrieved
@@ -124,7 +160,7 @@ public class MapView  {
         return doubleCoordinate; //return the x coordinate
     }
 
-    private void displayMap() {
+     private void displayMap() {
 
         Map map = SantaChallenge.getCurrentGame().getMap();
         Location[][] locations = map.getLocations();
@@ -132,30 +168,36 @@ public class MapView  {
         this.console.println("*****************");
         this.console.println("* Map Locations *");
         this.console.println("*****************");
-        this.console.println("\t" + 0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
+        this.console.println("\t" + 0 + "\t\t\t" + 1 + "\t\t\t" + 2 + "\t\t\t" + 3 + "\t\t\t" + 4);
 
         int noOfColumns = map.getNoOfColumns();
         int noOfRows = map.getNoOfRows();
 
         for (int row = 0; row < noOfRows; row++) {
-            this.console.println("\n******************************************************" + "\n" + row);
+            this.console.println("\n***********************************************************************************************************************" + "\n" + row);
 
             for (int column = 0; column < noOfColumns; column++) {
-                this.console.print("\t|");
+                this.console.print("|");
                 Location location = locations[row][column];
                 Scene scene = location.getScene();
-                this.console.print(scene.getMapSymbol());
-                if (!location.isVisited()) {
-                    this.console.print("--");
-                } else {
-                    this.console.print("XX");//print to indicate location has not been visited yet
-                }
+                this.console.print(scene.getMapSymbol() + "\t\t");
+//                if (!location.isVisited()) {
+//                    this.console.print("--");
+//                } else {
+//                    this.console.print("XX");//print to indicate location has not been visited yet
+//                }
             }
 
             this.console.print("|");//print final column divider
         }
-        this.console.println("\n******************************************************");
+        this.console.println("\n***********************************************************************************************************************");
         this.console.println("\n\n");
+    }
+
+    private void endGame() {
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.display();
+        
     }
 
 }

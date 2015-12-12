@@ -5,6 +5,7 @@
  */
 package byui.cit260.santaChallenge.view;
 
+import byui.cit260.santaChallenge.control.GameControl;
 import byui.cit260.santaChallenge.control.SleighControl;
 import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
 import java.io.BufferedReader;
@@ -56,6 +57,7 @@ public class SleighView {
         
         //save flying speed to flyingSpeed to the game
         SantaChallenge.getCurrentGame().getSleigh().setFlyingSpeed(flyingSpeed);
+        SantaChallenge.getCurrentGame().getInventory()[GameControl.Item.flyingSpeed.ordinal()].setActualAmount(flyingSpeed);
         
         //print flying speed
         this.console.println("\n\nYour flying speed is " + flyingSpeed + " miles per hour.");
