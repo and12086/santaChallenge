@@ -77,9 +77,11 @@ public class MapControl {
         //set the actor in the new location to the actor passed when the function was called
         
         //set the location in the Actor to the new location
-//        Location newScene;
-//        newScene = locations[coordinates.y][coordinates.x].setScene();
-//        
+        Scene newScene;
+        newScene = locations[coordinates.y][coordinates.x].getScene();
+        double tempMiles = newScene.getMilesFromNorthPole();
+        
+        System.out.println(tempMiles);
     }
     
     
