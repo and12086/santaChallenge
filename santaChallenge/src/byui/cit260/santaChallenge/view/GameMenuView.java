@@ -33,7 +33,6 @@ public class GameMenuView extends View {
                 + "\nF - Feed Santa                                 *"
                 + "\nL - Load the sleigh, and choose reindeer       *"
                 + "\nI - View your inventory                        *"
-                + "\nA - View list of Actors                        *"
                 + "\nN - Move to new location                       *"
                 + "\nS - Display list of scenes                     *"
                 + "\nP - Print the list of breakfast foods          *"
@@ -49,7 +48,7 @@ public class GameMenuView extends View {
         value = value.toUpperCase();
         Actor actor;
         Point coordinates;
-        
+
         switch (value) {
             case "M"://View Map/Choose Location
                 this.displayMap();
@@ -62,9 +61,6 @@ public class GameMenuView extends View {
                 break;
             case "I"://View Inventory
                 this.displayInventoryList();
-                break;
-            case "A"://view actors
-                this.displayActors();
                 break;
             case "N"://move to a new location
                 this.moveLocations();
@@ -82,14 +78,13 @@ public class GameMenuView extends View {
                 this.displayMinValue();
                 break;
             default:
-               ErrorView.display(this.getClass().getName(),"\n*** Invalid selection *** Try again!");
-               break;
+                ErrorView.display(this.getClass().getName(), "\n*** Invalid selection *** Try again!");
+                break;
         }
         return false;
 
     }
 
-   
     private void feedSanta() {
 
         FeedSantaView feedSanta = new FeedSantaView();
@@ -98,25 +93,25 @@ public class GameMenuView extends View {
 
     private void loadSleigh() {
         SleighView sleighView = new SleighView();
-            sleighView.getFlyingSpeed();
-        }
+        sleighView.getFlyingSpeed();
+    }
 
     public void displayInventoryList() {
-        
+
         //get the list of inventroy items in the game
         InventoryItem[] inventory = SantaChallenge.getCurrentGame().getInventory();
         //sort the list of inventory items
         InventoryItem[] sortedInventoryList = GameControl.getSortedInventoryList(inventory);
-        
+
         this.console.println("***************************");
-        this.console.println("* List of Inventory Items *"); 
+        this.console.println("* List of Inventory Items *");
         this.console.println("***************************");
 
         //for each inventory item
         for (InventoryItem nextInventory : inventory) {
             //DISPLAY the description, the required amount, and the amount the user has)
             this.console.println("Description:" + "\t" + nextInventory.getDescription());
-            this.console.println("Required:" + "\t" + "\t" + nextInventory.getRequiredAmount());
+            this.console.println("Baseline:" + "\t" + "\t" + nextInventory.getRequiredAmount());
             this.console.println("Acquired:" + "\t" + "\t" + nextInventory.getActualAmount());
             this.console.println("*****************************************");
         }
@@ -130,28 +125,30 @@ public class GameMenuView extends View {
         this.console.println("*****************");
         this.console.println("* Map Locations *");
         this.console.println("*****************");
-        this.console.println("\t" + 0 + "\t" + 1 + "\t" + 2 + "\t" + 3 + "\t" + 4);
+        this.console.println("\t" + 0 + "\t\t\t" + 1 + "\t\t\t" + 2 + "\t\t\t" + 3 + "\t\t\t" + 4);
 
         int noOfColumns = map.getNoOfColumns();
         int noOfRows = map.getNoOfRows();
 
         for (int row = 0; row < noOfRows; row++) {
-            this.console.println("\n******************************************************" + "\n" + row);
+            this.console.println("\n**********************************************************************************************************************" + "\n" + row);
 
             for (int column = 0; column < noOfColumns; column++) {
-                this.console.print("\t|");
+                this.console.print("|");
                 Location location = locations[row][column];
                 Scene scene = location.getScene();
-                this.console.print(scene.getMapSymbol());
-                if (!location.isVisited()) {
-                    this.console.print("--");
-                } else {
-                    this.console.print("XX");//print to indicate location has not been visited yet
-                }
+                this.console.print(scene.getMapSymbol() + "\t\t");
+//                if (!location.isVisited()) {
+//                    this.console.print("--");
+//                } else {
+//                    this.console.print("XX");//print to indicate location has not been visited yet
+//                }
             }
 
             this.console.print("|");//print final column divider
         }
+        this.console.println("\n**********************************************************************************************************************");
+        this.console.println("\n\n");
     }
 
     private void displaySceneList() {
@@ -181,7 +178,8 @@ public class GameMenuView extends View {
         //find the maximum mileage in the list of scenes
         Scene maxScene = MapControl.getMaxValue(scenes);
 
-        this.console.println("The location furthest from the North Pole that Santa has to deliver to is" + " " + maxScene);
+        this.console.println("\n\nThe location furthest from the North Pole that Santa has to deliver to is" + " "
+                + "\n" + maxScene.getDescription() + " which is " + maxScene.getMilesFromNorthPole() + " miles from the North Pole.");
 
     }
 
@@ -191,27 +189,23 @@ public class GameMenuView extends View {
         //find the maximum mileage in the list of scenes
         Scene minScene = MapControl.getMinValue(scenes);
 
-        this.console.println("The location closest to the North Pole that Santa has to deliver to is" + " " + minScene);
+        this.console.println("\n\nThe location closest to the North Pole that Santa has to deliver to is" + " "
+                + "\n" + minScene.getDescription() + " which is " + minScene.getMilesFromNorthPole() + " miles from the North Pole.");
 
-    }
-
-    private void displayActors() {
-        
     }
 
     private void moveLocations() {
-       MapView mapView = new MapView();
+        MapView mapView = new MapView();
         mapView.doAction();
     }
-    
-    
+
     private void saveBreakfastFood() {
         //prompt for a get the name of the file to save the list of scenes in
         this.console.println("\n\nEnter the file path for the file where the "
                 + "list of scenes is to be saved.");
-        
+
         String filePath = this.getInput();
-        
+
         try {
             //save the list of scenes to the specified file
             FeedSantaView.printBreakfastFood(SantaChallenge.getCurrentGame().getBreakfastFood(), filePath);

@@ -10,7 +10,6 @@ import byui.cit260.santaChallenge.model.Game;
 import byui.cit260.santaChallenge.model.Scene;
 import byui.cit260.santaChallenge.model.Location;
 import byui.cit260.santaChallenge.model.Map;
-import byui.cit260.santaChallenge.model.Sleigh;
 import citbyui.cit260.santaChallenge.exceptions.MapControlException;
 import citbyui.cit260.santaChallenge.exceptions.SleighControlException;
 import java.awt.Point;
@@ -45,20 +44,21 @@ public class MapControl {
             Point coordinates = actor.getCoordinates();
             MapControl.setActorToLocation(actor, coordinates);
         }
-
     }
 
-    public static void updateTimeRemaining(Point coordinates) throws SleighControlException {
-        Scene newScene;
-        Map map = SantaChallenge.getCurrentGame().getMap();
-        Location[][] locations = map.getLocations();
-        newScene = locations[coordinates.y][coordinates.x].getScene();
-        double tempMiles = newScene.getMilesFromNorthPole();
-        Sleigh sleigh = SantaChallenge.getCurrentGame().getSleigh();
-        double tempFlyingSpeed = SleighControl.calcFlyingSpeed(sleigh.getNumberOfPresents(), sleigh.getNumberOfReindeer());
-        MapControl.calcTimeRemaining(tempMiles, tempFlyingSpeed);
-        System.out.println(tempMiles);
-        System.out.println(SantaChallenge.getCurrentGame().getTime());
+    public static double calcTime(double tempMiles, double tempFlyingSpeed) {
+        double time;
+        time = Math.round((tempMiles / tempFlyingSpeed) * 100) / 100;
+        return time;
+    }
+    
+    public static double calcTimeRemaining(double tempMiles, double tempFlyingSpeed) {
+
+        double timeRemaining = SantaChallenge.getCurrentGame().getInventory()[GameControl.Item.timeRemaining.ordinal()].getActualAmount();
+      
+        timeRemaining = Math.round((timeRemaining - (tempMiles / tempFlyingSpeed)) * 100) / 100;
+        SantaChallenge.getCurrentGame().setTime(timeRemaining);
+        return timeRemaining;      
     }
 
     public static void setActorToLocation(Actor actor, Point coordinates)
@@ -91,7 +91,6 @@ public class MapControl {
 
         //set the actor in the new location to the actor passed when the function was called
         //set the location in the Actor to the new location
-        
     }
 
     private static void assignScenesToLocations(Map map, Scene[] scenes) {
@@ -162,22 +161,13 @@ public class MapControl {
 
 // getting the miniumum value
     public static Scene getMinValue(Scene[] scenes) {
-        Scene minScene = scenes[0];//get scene list from Scene class
-        for (int i = 0; i < scenes.length - 1; i++) {// advance the position through the entire array
+        Scene minScene = scenes[4];//get scene list from Scene class
+        for (int i = 4; i < scenes.length - 1; i++) {// advance the position through the entire array
             if (scenes[i].getMilesFromNorthPole() < minScene.getMilesFromNorthPole()) {
                 minScene = scenes[i];//found new minimum; remember its index
             }
         }
         return minScene;
-    }
-
-    public static void calcTimeRemaining(double milesFromNorthPole, double flyingSpeed) {
-
-        double totalTime;
-        totalTime = (SantaChallenge.getCurrentGame()).getTime();
-        double timeRemaining;
-        timeRemaining = totalTime - (milesFromNorthPole / flyingSpeed);
-        (SantaChallenge.getCurrentGame()).setTime(timeRemaining);
     }
 
     public enum SceneType {
@@ -215,170 +205,169 @@ public class MapControl {
         Scene[] scenes = new Scene[SceneType.values().length];
 
         Scene northPole = new Scene();
-        northPole.setDescription(
-                "The North Pole");
-        northPole.setMapSymbol(" NP ");
+        northPole.setDescription("The North Pole");
+        northPole.setMapSymbol(" Start ");
         northPole.setBlocked(false);
         northPole.setMilesFromNorthPole(0);
         scenes[SceneType.northPole.ordinal()] = northPole;
 
         Scene santasKitchen = new Scene();
         santasKitchen.setDescription("Santa's Kitchen");
-        santasKitchen.setMapSymbol(" SK ");
+        santasKitchen.setMapSymbol(" Kitchen ");
         santasKitchen.setBlocked(false);
         santasKitchen.setMilesFromNorthPole(0);
         scenes[SceneType.santasKitchen.ordinal()] = santasKitchen;
 
         Scene santasWorkshop = new Scene();
         santasWorkshop.setDescription("Santa's Workshop");
-        santasWorkshop.setMapSymbol(" SW ");
+        santasWorkshop.setMapSymbol(" Workshop ");
         santasWorkshop.setBlocked(false);
         santasWorkshop.setMilesFromNorthPole(0);
         scenes[SceneType.santasWorkshop.ordinal()] = santasWorkshop;
 
         Scene stables = new Scene();
         stables.setDescription("Santa's stables");
-        stables.setMapSymbol(" RD ");
+        stables.setMapSymbol(" Stables ");
         stables.setBlocked(false);
         stables.setMilesFromNorthPole(0);
         scenes[SceneType.stables.ordinal()] = stables;
 
         Scene seattle = new Scene();
         seattle.setDescription("Seattle, Washington, USA");
-        seattle.setMapSymbol(" SU ");
+        seattle.setMapSymbol(" Seattle ");
         seattle.setBlocked(false);
         seattle.setMilesFromNorthPole(2698);
         scenes[SceneType.seattle.ordinal()] = seattle;
 
         Scene ottawa = new Scene();
         ottawa.setDescription("Ottawa, Canada");
-        ottawa.setMapSymbol(" OC ");
+        ottawa.setMapSymbol(" Ottawa ");
         ottawa.setBlocked(false);
         ottawa.setMilesFromNorthPole(2577);
         scenes[SceneType.ottawa.ordinal()] = ottawa;
 
         Scene anchorage = new Scene();
         anchorage.setDescription("Anchorage, Alaska, USA");
-        anchorage.setMapSymbol(" AU ");
+        anchorage.setMapSymbol(" Anchorage ");
         anchorage.setBlocked(false);
         anchorage.setMilesFromNorthPole(2026);
         scenes[SceneType.anchorage.ordinal()] = anchorage;
 
         Scene mexicoCity = new Scene();
         mexicoCity.setDescription("Mexico City, Mexico");
-        mexicoCity.setMapSymbol(" MC ");
+        mexicoCity.setMapSymbol(" Mexico City ");
         mexicoCity.setBlocked(false);
         mexicoCity.setMilesFromNorthPole(4463);
         scenes[SceneType.mexicoCity.ordinal()] = mexicoCity;
 
         Scene saoPaulo = new Scene();
         saoPaulo.setDescription("Sao Paulo, Brazil");
-        saoPaulo.setMapSymbol(" SP ");
+        saoPaulo.setMapSymbol(" Sao Paulo ");
         saoPaulo.setBlocked(false);
         saoPaulo.setMilesFromNorthPole(7342);
         scenes[SceneType.saoPaulo.ordinal()] = saoPaulo;
 
         Scene buenasAires = new Scene();
         buenasAires.setDescription("Buenos Aires, Argentina");
-        buenasAires.setMapSymbol(" BA ");
+        buenasAires.setMapSymbol(" Buenos Aires ");
         buenasAires.setBlocked(false);
         buenasAires.setMilesFromNorthPole(8088);
         scenes[SceneType.buenasAires.ordinal()] = buenasAires;
 
         Scene bogota = new Scene();
         bogota.setDescription("Bogota, Columbia");
-        bogota.setMapSymbol(" BC ");
+        bogota.setMapSymbol(" Bogota ");
         bogota.setBlocked(false);
         bogota.setMilesFromNorthPole(5383);
         scenes[SceneType.bogota.ordinal()] = bogota;
 
         Scene capeTown = new Scene();
         capeTown.setDescription("Capetown, South Africa");
-        capeTown.setMapSymbol(" CT ");
+        capeTown.setMapSymbol(" Capetown ");
         capeTown.setBlocked(false);
         capeTown.setMilesFromNorthPole(8453);
         scenes[SceneType.capeTown.ordinal()] = capeTown;
 
         Scene nairobi = new Scene();
         nairobi.setDescription("Nairobi, Kenya");
-        nairobi.setMapSymbol(" NK ");
+        nairobi.setMapSymbol(" Nairobi ");
         nairobi.setBlocked(false);
         nairobi.setMilesFromNorthPole(6386);
         scenes[SceneType.nairobi.ordinal()] = nairobi;
 
         Scene casaBlanca = new Scene();
         casaBlanca.setDescription("Casablanca, Morocco");
-        casaBlanca.setMapSymbol(" CM ");
+        casaBlanca.setMapSymbol(" Casablanca ");
         casaBlanca.setBlocked(false);
         casaBlanca.setMilesFromNorthPole(3615);
         scenes[SceneType.casaBlanca.ordinal()] = casaBlanca;
 
         Scene moscow = new Scene();
         moscow.setDescription("Moscow, Russia");
-        moscow.setMapSymbol(" MR ");
+        moscow.setMapSymbol(" Moscow ");
         moscow.setBlocked(false);
         moscow.setMilesFromNorthPole(2501);
         scenes[SceneType.moscow.ordinal()] = moscow;
 
         Scene london = new Scene();
         london.setDescription("London, England");
-        london.setMapSymbol(" LE ");
+        london.setMapSymbol(" London ");
         london.setBlocked(false);
         london.setMilesFromNorthPole(2454);
         scenes[SceneType.london.ordinal()] = london;
 
         Scene madrid = new Scene();
         madrid.setDescription("Madrid, Spain");
-        madrid.setMapSymbol(" MS ");
+        madrid.setMapSymbol(" Madrid ");
         madrid.setBlocked(false);
         madrid.setMilesFromNorthPole(3178);
         scenes[SceneType.madrid.ordinal()] = madrid;
 
         Scene prague = new Scene();
         prague.setDescription("Prague, Czech Republic");
-        prague.setMapSymbol(" PC ");
+        prague.setMapSymbol(" Prague ");
         prague.setBlocked(false);
         prague.setMilesFromNorthPole(2679);
         scenes[SceneType.prague.ordinal()] = prague;
 
         Scene mumbai = new Scene();
         mumbai.setDescription("Mumbai, India");
-        mumbai.setMapSymbol(" MI ");
+        mumbai.setMapSymbol(" Mumbai ");
         mumbai.setBlocked(false);
         mumbai.setMilesFromNorthPole(5270);
         scenes[SceneType.mumbai.ordinal()] = mumbai;
 
         Scene hongKong = new Scene();
         hongKong.setDescription("Hong Kong, China");
-        hongKong.setMapSymbol(" HK ");
+        hongKong.setMapSymbol(" Hong Kong ");
         hongKong.setBlocked(false);
         hongKong.setMilesFromNorthPole(5184);
         scenes[SceneType.hongKong.ordinal()] = hongKong;
 
         Scene ulaanbaatar = new Scene();
         ulaanbaatar.setDescription("Ulaanbaatar, Mongolia");
-        ulaanbaatar.setMapSymbol(" UM ");
+        ulaanbaatar.setMapSymbol(" Ulaanbaatar ");
         ulaanbaatar.setBlocked(false);
         ulaanbaatar.setMilesFromNorthPole(3417);
         scenes[SceneType.ulaanbaatar.ordinal()] = ulaanbaatar;
 
         Scene bangkok = new Scene();
         bangkok.setDescription("Bangkok, Thailand");
-        bangkok.setMapSymbol(" BT ");
+        bangkok.setMapSymbol(" Bangkok ");
         bangkok.setBlocked(false);
         bangkok.setMilesFromNorthPole(5760);
         scenes[SceneType.bangkok.ordinal()] = bangkok;
 
         Scene perth = new Scene();
         perth.setDescription("Perth, Austrailia");
-        perth.setMapSymbol(" PA ");
+        perth.setMapSymbol(" Perth ");
         perth.setBlocked(false);
         perth.setMilesFromNorthPole(8938);
         scenes[SceneType.perth.ordinal()] = perth;
 
         Scene auckland = new Scene();
         auckland.setDescription("Auckland, New Zealand");
-        auckland.setMapSymbol(" ANZ ");
+        auckland.setMapSymbol(" Auckland ");
         auckland.setBlocked(false);
         auckland.setMilesFromNorthPole(9020);
         scenes[SceneType.auckland.ordinal()] = auckland;
@@ -386,7 +375,7 @@ public class MapControl {
         Scene finish = new Scene();
         finish.setDescription(
                 "The North Pole");
-        finish.setMapSymbol(" FN ");
+        finish.setMapSymbol(" Finish ");
         finish.setBlocked(false);
         finish.setMilesFromNorthPole(0);
         scenes[SceneType.finish.ordinal()] = finish;
