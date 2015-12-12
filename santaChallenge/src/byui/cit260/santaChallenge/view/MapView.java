@@ -52,6 +52,8 @@ public class MapView  {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
             return false;
         }
+        
+        
         return true;
     }
     
